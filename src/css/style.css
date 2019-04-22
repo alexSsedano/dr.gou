@@ -1,0 +1,54 @@
+.background::before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 99, 247, 0.856);
+    opacity: 1;
+    z-index:-999;
+}
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: -2000px 2000px; }
+}
+
+#animate-area	{ 
+    
+	width:100%; 
+	height: 100%; 
+	background-image: url(../assets/landing-users.png);
+	background-position: 0px 0px;
+	background-repeat: repeat;
+    
+	animation: animatedBackground 200s linear infinite;
+}
+.backgroundWhite{
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+}
+.textcolour{
+    color: white
+}
+.loginPosition{
+    margin-top: 15%
+}
+.marginTop{
+    margin-top: 20px
+}
+.marginBot{
+    margin-bottom: 20px
+}
+.buttonColorWhite{
+    color: white;
+    border-color: rgb(255, 255, 255);
+}
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.25s ease-out;
+  }
+  
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
