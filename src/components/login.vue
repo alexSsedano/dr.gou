@@ -83,30 +83,33 @@
         methods:{
 
             signUp:function(){
-                this.coincidences = 0;
+                this.coincidencesName = 0;
+                this.coincidencesEmail = 0;
                 if(this.registerPassword == this.registerPassword2){
-                    firebase.database().ref('users/').on('value', snapshots => this.loadUsers(snapshots.val()))
-                        //    console.log(this.registeredUsers.length)
-                        for(let i=0; i< this.registeredUsers.length; i++){
-                            console.log(this.registerEmail);
-                            console.log(this.registeredUsers[i].email);
+                        for(let i=0; i < this.registeredUsers.length; i++){
                             if(this.registerUserName == this.registeredUsers[i].username){
                                 this.coincidencesName ++;  
-                                i = this.registeredUsers.length
+                                i = this.registeredUsers.length -1
                             }
                             if(this.registerEmail == this.registeredUsers[i].email){
                                 this.coincidencesEmail ++;  
-                                i = this.registeredUsers.length
+                                i = this.registeredUsers.length -1
                             }
                         }
                         if(this.coincidencesName > 0){
                             this.$notify({
                                 group: 'foo',
-                                title: 'Este usuario ya existe',
+                                title: 'Este usuario ya existe.',
                                 type: 'error',
                                 position: 'top left'
                             });
                         }else if(this.coincidencesEmail > 0){
+                             this.$notify({
+                                group: 'foo',
+                                title: 'Este email ya existe.',
+                                type: 'error',
+                                position: 'top left'
+                            });
                         }else{
                             firebase.database().ref('users/' + this.registerUserName).set({
                                 username: this.registerUserName,
@@ -118,20 +121,19 @@
                                 this.register = true
                             }); 
                         } 
-                    
                 }else{
                     this.$notify({
                         group: 'foo',
-                        title: 'Las contraseñas no coinciden',
+                        title: 'Las contraseñas no coinciden.',
                         type: 'error',
                         position: 'top left'
                     });
                 }
             },
+
             loadUsers(users){
                 this.registeredUsers = []
                 for(let key in users){
-                   
                     this.registeredUsers.push({
                         username: users[key].username,
                         email: users[key].email,
@@ -139,7 +141,6 @@
                         userType: users[key].userType
                     })
                 }
-                console.log(this.registeredUsers)
                
             },
 
@@ -151,17 +152,18 @@
                     this.register = true
                 }            
             },
+
             registerSuccess: function(){
                 this.$notify({
                     group: 'foo',
-                    title: 'Te has registrado con exito',
+                    title: 'Te has registrado con exito.',
                     type: 'success',
                     position: 'top left'
                 });
             },
-           
-            
-
         },
+        mounted(){
+            firebase.database().ref('users/').on('value', snapshots => this.loadUsers(snapshots.val()))
+        }
       }
 </script>
