@@ -21,8 +21,8 @@ export default {
 }
 </script>
 <style>
- body::before{
-   background-color: white !important;
-   }
+  homeBody{
+    background-color: white !important;
+  }
 </style>
 

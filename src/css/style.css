@@ -1,12 +1,13 @@
 .background::before{
     content: '';
-    display: block;
+    display: ; 
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     background-color: rgba(0, 99, 247, 0.856);
+    height: 100%;
     opacity: 1;
     z-index:-999;
 }
@@ -52,3 +53,9 @@
 .fade-enter, .fade-leave-to {
 opacity: 0;
 }
+ .bgColorWhite{
+     background-color: white
+ }
+ .padingTop{
+    padding-top: 30px
+ }
