@@ -15,14 +15,14 @@
                     <fieldset>
                         <div class="form-group marginTop ">
                             <label for="exampleInputEmail1">Correo electronico</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input v-model="loginUser" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                             <small id="emailHelp" class="form-text text-muted">No comparetiremos tu correo con nadie.</small>
                         </div>
                         <div class="form-group ">
                             <label for="exampleInputPassword1">Contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <input v-model="loginPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                         </div>
-                        <button type="button" class="btn btn-outline-primary marginBot">Login</button>
+                        <button @click="login" type="button" class="btn btn-outline-primary marginBot">Login</button>
                     </fieldset>
                 
                 </form>
@@ -77,6 +77,8 @@
                 registerUserName: '',
                 coincidencesName:0,
                 coincidencesEmail:0,
+                loginUser:'',
+                loginPassword:'',
                 
             }
         },
@@ -144,16 +146,32 @@
                
             },
 
-            registerButton: function(){
+            login:function(){
+                for(let i=0; i < this.registeredUsers.length; i++){
+                    if(this.loginUser == this.registeredUsers[i].username && this.loginPassword == this.registeredUsers[i].password){
+                        i = this.registeredUsers.length -1
+                        this.$router.push('Home') 
+                    }else{
+                        this.$notify({
+                        group: 'foo',
+                        title: 'Nmbre o contraseña incorrecto',
+                        type: 'error',
+                        position: 'top left'
+                    });
+                    }
+                }
+
+            },
+
+            registerButton:function(){
                 if(this.register == true){
                     this.register = false
-                   
                 }else{
                     this.register = true
                 }            
             },
 
-            registerSuccess: function(){
+            registerSuccess:function(){
                 this.$notify({
                     group: 'foo',
                     title: 'Te has registrado con exito.',
