@@ -17,6 +17,20 @@
 <script>
         export default {   
             name: "homeBody",
-            data: function () {}
+            data: function () {},
+            mounted(){
+            firebase.database().ref('users/').on('value', snapshots => this.loadUsers(snapshots.val()))
+            let count=0;
+            for(let i=0; i < this.registeredUsers.length; i++){
+                
+                let id = localStorage.getItem('userId')
+                if( id ==  this.registeredUsers[i].userId){
+                    count++
+                }
+            }
+            if(count<=0){
+                this.$router.push('login') 
+            }
+        }
         }
 </script>

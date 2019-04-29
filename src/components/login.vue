@@ -79,6 +79,7 @@
                 coincidencesEmail:0,
                 loginUser:'',
                 loginPassword:'',
+                filter: false
                 
             }
         },
@@ -219,10 +220,22 @@
             },
         },
         created(){
-            window.addEventListener('beforeunload', this.removeUserId)  
+            window.addEventListener('beforeunload', this.removeUserId)
+
         },
         mounted(){
             firebase.database().ref('users/').on('value', snapshots => this.loadUsers(snapshots.val()))
+            let count=0;
+            for(let i=0; i < this.registeredUsers.length; i++){
+                
+                let id = localStorage.getItem('userId')
+                if( id ==  this.registeredUsers[i].userId){
+                    count++
+                }
+            }
+            if(count<=0){
+                this.$router.push('login') 
+            }
         }
-      }
+    }
 </script>

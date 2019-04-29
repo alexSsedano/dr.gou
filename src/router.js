@@ -23,16 +23,5 @@ let router = new Router({
   ]
 })
 
-const openRoutes=['login'];
-
-router.beforeEach((to, from, next) => {
-  firebase.database().ref('users/').on('value', snapshots => this.loadUsers(snapshots.val()))
-  let id =localStorage.getItem('userId')
-
-  if(){
-
-  }
-  
-})
 
 export default router
