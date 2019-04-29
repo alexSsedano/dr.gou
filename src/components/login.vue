@@ -117,7 +117,8 @@
                                 username: this.registerUserName,
                                 email: this.registerEmail,
                                 password : this.registerPassword,
-                                userType: 'user'
+                                userType: 'user',
+                                userId: ''
                             }).then(() => {
                                 this.registerSuccess(),
                                 this.register = true
@@ -133,6 +134,26 @@
                 }
             },
 
+            removeUserId(){
+                for(let i=0; i < this.registeredUsers.length; i++){
+                    let id = localStorage.getItem('userId')
+                    
+                    if( id ==  this.registeredUsers[i].userId){
+                        let path = "users/" + this.registeredUsers[i].username                    
+                        firebase.database().ref(path).set({
+                            username: this.registeredUsers[i].username,
+                            email: this.registeredUsers[i].email,
+                            password : this.registeredUsers[i].password,
+                            userType: 'user',
+                            userId: ''
+                            
+                        });
+                            
+                    }
+                }
+                localStorage.removeItem('userId')
+            },
+
             loadUsers(users){
                 this.registeredUsers = []
                 for(let key in users){
@@ -140,7 +161,9 @@
                         username: users[key].username,
                         email: users[key].email,
                         password: users[key].password,
-                        userType: users[key].userType
+                        userType: users[key].userType,
+                        userId: users[key].userId
+                        
                     })
                 }
                
@@ -149,6 +172,21 @@
             login:function(){
                 for(let i=0; i < this.registeredUsers.length; i++){
                     if(this.loginUser == this.registeredUsers[i].username && this.loginPassword == this.registeredUsers[i].password){
+                        
+                        this.iduniq = function () {
+                            return Math.random().toString(36).substr(2, 27);
+                        };
+                        let path = "users/" + this.loginUser
+                        let userId = ''+this.iduniq()+this.iduniq()+this.iduniq()
+                        localStorage.setItem("userId", userId);
+                        firebase.database().ref(path ).set({
+                            username: this.registeredUsers[i].username,
+                            email: this.registeredUsers[i].email,
+                            password : this.registeredUsers[i].password,
+                            userType: 'user',
+                            userId: userId
+                            
+                        });
                         i = this.registeredUsers.length -1
                         this.$router.push('Home') 
                     }else{
@@ -179,6 +217,9 @@
                     position: 'top left'
                 });
             },
+        },
+        created(){
+            window.addEventListener('beforeunload', this.removeUserId)  
         },
         mounted(){
             firebase.database().ref('users/').on('value', snapshots => this.loadUsers(snapshots.val()))
