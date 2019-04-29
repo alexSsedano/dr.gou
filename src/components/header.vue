@@ -30,6 +30,6 @@
         export default {
             
             name: "header",
-            data: function () {}
+         
         }
 </script>
