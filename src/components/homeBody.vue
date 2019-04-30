@@ -15,46 +15,8 @@
 
 </template>
 <script>
-import firebase from 'firebase'
+
         export default {   
             name: "homeBody",
-            data: function () {
-            return {
-                registeredUsers:[],
-            }
-            },
-            methods:{
-
-        loadUsers(users){
-                this.registeredUsers = []
-                for(let key in users){
-                    this.registeredUsers.push({
-                        username: users[key].username,
-                        email: users[key].email,
-                        password: users[key].password,
-                        userType: users[key].userType,
-                        userId: users[key].userId
-                        
-                    })
-                }
-               
-            }
-
-            },
-            mounted(){
-            firebase.database().ref('users/').on('value', snapshots => this.loadUsers(snapshots.val()))
-            
-            let count=0;
-            for(let i=0; i < this.registeredUsers.length; i++){
-                
-                let id = localStorage.getItem('userId')
-                if( id ===  this.registeredUsers[i].userId){
-                    count++
-                }
-            }
-            if(count<=0){
-                this.$router.push('/') ;
-            }
-        }
         }
 </script>
