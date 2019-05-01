@@ -24,7 +24,7 @@
 	background-position: 0px 0px;
 	background-repeat: repeat;
     
-	animation: animatedBackground 200s linear infinite;
+	animation: animatedBackground 300s alternate-reverse infinite;
 }
 .backgroundWhite{
     background-color: rgb(255, 255, 255);
