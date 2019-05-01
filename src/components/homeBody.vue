@@ -8,9 +8,30 @@
                 <button style="width: 100%" @click="addPost" type="button" class="btn btn-primary">Post</button>
             </div>
         </div>
-        <div class="row justify-content-center">
+        
+        <div style="margin-top: 16px" class="row justify-content-center">
             <div class="col-sm-11">
-                
+                <div v-for="msg in this.foro" v-bind:key="msg.id" class="row justify-content-center">
+                    <div class="col-sm-11">
+                    <div class="card border-secondary mb-3" >
+                    <div class="card-header">
+                        <div class="row justify-content-between">
+                            <div class="col-sm-2">
+                                <p  >{{msg.username}}</p>
+                            </div>
+                            <div class="col-sm-2">
+                                <p style="text-align:center">{{msg.date}}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{msg.msg}}</p>
+                    </div>
+                    </div>
+                    </div>
+                    
+                </div>
             </div>
         </div>
         
@@ -37,14 +58,16 @@
                     msg: this.msg
 
                 });
+                this.msg =  ''
             },
             loadForo(msgs){
-                this.registeredUsers = []
+                this.foro = []
                 for(let key in msgs){
-                    this.registeredUsers.push({
-                        username: users[key].userName,
-                        date: users[key].date,
-                        msg: users[key].msg,
+                    this.foro.push({
+                        id: Math.random().toString(36).substr(2, 27),
+                        username: msgs[key].userName,
+                        date: msgs[key].date,
+                        msg: msgs[key].msg,
                         
                         
                     })
@@ -55,6 +78,7 @@
         mounted(){
             this.userName =  user()
              firebase.database().ref('post/').on('value', snapshots => this.loadForo(snapshots.val()))
+             console.log(this.foro)
         }
     }
 </script>
