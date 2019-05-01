@@ -19,22 +19,18 @@ let router = new Router({
     {
       path: '/home',
       name: 'home',
-      component: Home
+      component: Home,
+      beforeEnter: (to, from, next) => { 
+        let user = auth()
+          if (user == "user") {
+            return next();
+          }else{
+            return next('/');
+          }
+        
+      }
     },
   ]
-})
-
-router.beforeEach((to, from, next) => {
-  
-  
- 
-  let user = auth();
-  
-  if ("user" == "user") {
-    return next();
-  }else{
-    return next('/');
-  }
 })
 
 export default router
