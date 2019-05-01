@@ -25,12 +25,12 @@ let router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  // redirect to login page if not logged in and trying to access a restricted page
+  
   
  
+  let user = auth();
   
-  
-  if (auth() == "user") {
+  if ("user" == "user") {
     return next();
   }else{
     return next('/');
