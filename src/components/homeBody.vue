@@ -77,8 +77,8 @@
         },
         mounted(){
             this.userName =  user()
-             firebase.database().ref('post/').on('value', snapshots => this.loadForo(snapshots.val()))
-             console.log(this.foro)
+            firebase.database().ref('post/').on('value', snapshots => this.loadForo(snapshots.val()))
+
         }
     }
 </script>

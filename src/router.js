@@ -22,7 +22,7 @@ let router = new Router({
       component: Home,
       beforeEnter: (to, from, next) => { 
         let user = auth()
-          if (user == "user") {
+          if (user == "user" || user == "admin" || user == "superAdmin" ) {
             return next();
           }else{
             return next('/');
