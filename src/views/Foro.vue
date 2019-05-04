@@ -1,7 +1,7 @@
 <template>
-  <div class="home" >
+  <div class="foro" >
     <Header></Header>
-    
+    <ForoBody></ForoBody>
     <Footer></Footer>
     <notifications group="foo" />
     <router-view></router-view>
@@ -11,21 +11,20 @@
 <script>
 // @ is an alias to /src
 import Header from '../components/header.vue'
-//import HomeBody from '../components/homeBody.vue'
+import ForoBody from '../components/foroBody.vue'
 import Footer from '../components/footer.vue'
 
 export default {
-  name: 'home',
+  name: 'foro',
   components: {
     Header,
-    //HomeBody,
+    ForoBody,
     Footer
   }
 }
 </script>
 <style>
-  homeBody{
+  ForoBody{
     background-color: white !important;
   }
 </style>
-

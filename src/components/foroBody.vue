@@ -53,7 +53,7 @@
             addPost:function(){
                 let today  = new Date();
                 firebase.database().ref('post/').push({
-                    date: today.toLocaleDateString("es-ES"),
+                    date: today.toLocaleDateString("es-ES")+ ' ' + today.getHours()+ ':' + today.getMinutes()+ ':' + today.getSeconds(),
                     userName: this.userName,
                     msg: this.msg
 

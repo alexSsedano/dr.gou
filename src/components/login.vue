@@ -3,14 +3,14 @@
     <div class="container loginPosition">
         
         <div class="row justify-content-between ">
-            <div class="col-4">
+            <div class="col-sm-4">
                 <h2 class="textcolour marginTop">Bienvenido a Dr.gou</h2>
                 <br>
                 <h5 class="textcolour">Somos una organizacion sin animo de lucro creada para ayudarte.</h5>
                 <button type="button" class="  btn btn-outline-primary marginBot buttonColorWhite" v-on:click="registerButton()">Registrate</button>
             </div>
              
-            <div class="col-4  backgroundWhite " v-if="register">
+            <div class="col-sm-4  backgroundWhite " v-if="register">
                 <form>
                     <fieldset>
                         <div class="form-group marginTop ">
@@ -29,7 +29,7 @@
             </div>
              
            
-            <div class="col-4  backgroundWhite " v-if="!register">
+            <div class="col-sm-4  backgroundWhite " v-if="!register">
                 <form>
                     <fieldset>
                         <div class="form-group marginTop ">
@@ -183,7 +183,7 @@
                             username: this.registeredUsers[i].username,
                             email: this.registeredUsers[i].email,
                             password : this.registeredUsers[i].password,
-                            userType: 'user',
+                            userType: this.registeredUsers[i].userType ,
                             userId: userId
                             
                         });
@@ -219,7 +219,7 @@
             },
         },
         created(){
-            window.addEventListener('beforeunload', this.removeUserId)  
+            window.addEventListener('onunload', this.removeUserId)  
         },
         mounted(){
             firebase.database().ref('users/').on('value', snapshots => this.loadUsers(snapshots.val()))
