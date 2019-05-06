@@ -1,7 +1,6 @@
 
 import firebase from 'firebase'
 var registeredUsers = [];
-var userT = '';
 
 
 export function auth() {
@@ -19,15 +18,27 @@ export function auth() {
             }
             for (let i = 0; i <= registeredUsers.length; i++) {
                 if (id == registeredUsers[i].userId) {
-                    console.log(registeredUsers[i].userType)
                     return registeredUsers[i].userType
-                    
                 }
             }
         })
     }
-    
 }
+
+
+export function user(){
+    let id =localStorage.getItem('userId')
+    if(id){
+        firebase.database().ref('users/').on('value', snapshots => loadUsers(snapshots.val()))   
+        for(let i=0; i <= registeredUsers.length; i++){ 
+            if( id ==  registeredUsers[i].userId){
+                return registeredUsers[i].username; 
+            }   
+        }
+        return "no"
+    }
+}
+
 function loadUsers(users){
     registeredUsers = []
     for(let key in users){
@@ -39,23 +50,9 @@ function loadUsers(users){
     }
 }
 
-export function user() {
-    let id = localStorage.getItem('userId')
-    if (id) {
-        firebase.database().ref('users/').on('value', snapshots => loadUsers(snapshots.val()))
-        for (let i = 0; i <= registeredUsers.length; i++) {
-            if (id == registeredUsers[i].userId) {
-                return registeredUsers[i].username;
-            }
-        }
-        return "no"
-    }
-}
 
 export function ward(ruta) {
     for (let i = 0; i < this.registeredUsers.length; i++) {
-
-
         this.iduniq = function () {
             return Math.random().toString(36).substr(2, 27);
         };
