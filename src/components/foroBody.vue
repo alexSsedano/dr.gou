@@ -76,7 +76,19 @@
             }
         },
         mounted(){
-            this.userName =  user()
+            let id = localStorage.getItem('userId')
+    if (id) {
+        firebase.database().ref('users/').on('value', snapshots => loadUsers(snapshots.val()))
+        for (let i = 0; i <= registeredUsers.length; i++) {
+            if (id == registeredUsers[i].userId) {
+                this.userName= registeredUsers[i].username;
+            }
+        }
+        
+    }
+            
+            
+            
             firebase.database().ref('post/').on('value', snapshots => this.loadForo(snapshots.val()))
 
         }

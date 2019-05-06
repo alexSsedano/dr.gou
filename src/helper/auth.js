@@ -28,7 +28,17 @@ export function auth() {
     }
     
 }
-/*
+function loadUsers(users){
+    registeredUsers = []
+    for(let key in users){
+        registeredUsers.push({
+            userType: users[key].userType,
+            userId: users[key].userId,
+            username: users[key].username 
+        })
+    }
+}
+
 export function user() {
     let id = localStorage.getItem('userId')
     if (id) {
@@ -41,7 +51,7 @@ export function user() {
         return "no"
     }
 }
-*/
+
 export function ward(ruta) {
     for (let i = 0; i < this.registeredUsers.length; i++) {
 
