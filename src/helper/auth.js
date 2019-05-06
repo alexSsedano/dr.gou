@@ -3,6 +3,7 @@ import firebase from 'firebase'
 var registeredUsers = [];
 
 
+
 export function auth() {
     let id = localStorage.getItem('userId')
     if (id) {
@@ -48,6 +49,40 @@ function loadUsers(users){
             username: users[key].username 
         })
     }
+}
+function loadForo(msgs) {
+     foro = [];
+    for (let key in msgs) {
+      foro.push({
+        id: Math.random()
+          .toString(36)
+          .substr(2, 27),
+        username: msgs[key].userName,
+        date: msgs[key].date,
+        msg: msgs[key].msg
+      });
+    }
+    console.log(foro)
+    foro.reverse();
+  }
+
+export function loadForoFun(){
+   return firebase.database().ref("post/").once("value").then( function (snapshots){
+       var foro = [];
+    for (let key in msgs) {
+      foro.push({
+        id: Math.random()
+          .toString(36)
+          .substr(2, 27),
+        username: msgs[key].userName,
+        date: msgs[key].date,
+        msg: msgs[key].msg
+      });
+    }
+    console.log(foro)
+    foro.reverse();
+    });
+    
 }
 
 

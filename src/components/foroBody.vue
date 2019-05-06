@@ -37,6 +37,7 @@
 <script>
 import firebase from "firebase";
 import {user} from '../helper/auth.js'
+import {loadForoFun} from '../helper/auth.js'
 
 export default {
   name: "homeBody",
@@ -78,28 +79,13 @@ export default {
         });
       }
     },
-    loadForo: function(msgs) {
-      this.foro = [];
-      for (let key in msgs) {
-        this.foro.push({
-          id: Math.random()
-            .toString(36)
-            .substr(2, 27),
-          username: msgs[key].userName,
-          date: msgs[key].date,
-          msg: msgs[key].msg
-        });
-      }
-      this.foro.reverse();
-    }
+    
   },
   mounted() {
     this.userName = user()
-    console.log(this.userName)
-    firebase
-      .database()
-      .ref("post/")
-      .on("value", snapshots => this.loadForo(snapshots.val()));
+    this.foro = loadForoFun()
+    console.log(loadForoFun())
+    
   }
 };
 </script>
