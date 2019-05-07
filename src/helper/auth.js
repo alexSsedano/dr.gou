@@ -50,10 +50,11 @@ function loadUsers(users){
         })
     }
 }
-function loadForo(msgs) {
-     foro = [];
+export function loadForo(arr ,msgs) {
+    console.log('entra')
+     arr = [];
     for (let key in msgs) {
-      foro.push({
+      arr.push({
         id: Math.random()
           .toString(36)
           .substr(2, 27),
@@ -62,28 +63,10 @@ function loadForo(msgs) {
         msg: msgs[key].msg
       });
     }
-    console.log(foro)
-    foro.reverse();
+    
+    arr.reverse();
   }
 
-export function loadForoFun(){
-   return firebase.database().ref("post/").once("value").then( function (snapshots){
-       var foro = [];
-    for (let key in msgs) {
-      foro.push({
-        id: Math.random()
-          .toString(36)
-          .substr(2, 27),
-        username: msgs[key].userName,
-        date: msgs[key].date,
-        msg: msgs[key].msg
-      });
-    }
-    console.log(foro)
-    foro.reverse();
-    });
-    
-}
 
 
 export function ward(ruta) {
