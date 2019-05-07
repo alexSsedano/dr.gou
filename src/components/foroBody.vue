@@ -81,17 +81,12 @@ export default {
     }
   },
   created() {
-    
-      
-      
+    this.userName = user();
   },
   mounted() {
-    this.userName = user();
-    firebase
-      .database()
-      .ref("post/")
-      .on("value",snap => function(snapshot) {
-        var arr = [];
+    
+    var arr = [];
+      firebase.database().ref("post/").on("value", function(snapshot) {
         var els = snapshot.val();
         for (let key in els) {
           arr.push({
@@ -101,10 +96,11 @@ export default {
             msg: els[key].msg
           });
         }
-        
-      
       });
-      this.foro =snap;
+      arr.reverse();
+      this.foro = arr
+    
+      
   }
 };
 </script>

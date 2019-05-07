@@ -33,6 +33,7 @@ export function user(){
         firebase.database().ref('users/').on('value', snapshots => loadUsers(snapshots.val()))   
         for(let i=0; i <= registeredUsers.length; i++){ 
             if( id ==  registeredUsers[i].userId){
+                console.log(registeredUsers[i].username)
                 return registeredUsers[i].username; 
             }   
         }
