@@ -24,7 +24,7 @@ export default {
 }
 </script>
 <style>
-  ForoBody{
+  .foroBody{
     background-color: white !important;
   }
 </style>

@@ -1,19 +1,29 @@
 <template>
-  <div class="homeBody">
+  <div>
     <div class="row justify-content-center">
-      <div style=" padding-right: 0px!important" class="col-sm-11">
-        <input v-model="msg" type="text" class="form-control" placeholder="¿ Que esta ocurriendo ?">
-      </div>
-      <div style="padding-left: 0px!important; " class="col-sm-1">
-        <button style="width: 100%" @click="addPost" type="button" class="btn btn-primary">Post</button>
-      </div>
-    </div>
-
-    <div style="margin-top: 16px" class="row justify-content-center">
-      <div class="col-sm-11">
+      <div class="col-sm-11 foroBody">
+        <div class="row justify-content-center" style="padding-top: 16px">
+          <div style=" padding: 0px!important" class="col-sm-7">
+            <input
+              v-model="msg"
+              type="text"
+              class="form-control"
+              placeholder="¿ Que esta ocurriendo ?"
+            >
+          </div>
+          <div style="padding: 0px!important; " class="col-sm-2">
+            <button
+              style="width: 100%"
+              @click="addPost"
+              @en
+              type="button"
+              class="btn btn-primary"
+            >Publicar</button>
+          </div>
+        </div>
         <div v-for="msg in this.foro" v-bind:key="msg.id" class="row justify-content-center">
-          <div class="col-sm-11">
-            <div class="card border-secondary mb-3">
+          <div style="padding-top: 16px" class="col-sm-11">
+            <div class="card border-secondary mb-3" style="border-radius: 10px">
               <div class="card-header">
                 <div class="row justify-content-between">
                   <div class="col-sm-2">
@@ -36,7 +46,6 @@
 </template>
 <script>
 import firebase from "firebase";
-import { user } from "../helper/auth.js";
 
 export default {
   name: "homeBody",
@@ -81,26 +90,29 @@ export default {
     }
   },
   created() {
-    this.userName = user();
+    this.userName = localStorage.getItem("userName");
   },
   mounted() {
-    
     var arr = [];
-      firebase.database().ref("post/").on("value", function(snapshot) {
+    firebase
+      .database()
+      .ref("post/")
+      .on("value", function(snapshot) {
         var els = snapshot.val();
         for (let key in els) {
           arr.push({
-            id: Math.random().toString(36).substr(2, 27),
+            id: Math.random()
+              .toString(36)
+              .substr(2, 27),
             username: els[key].userName,
             date: els[key].date,
             msg: els[key].msg
           });
         }
+        arr.reverse();
       });
-      arr.reverse();
-      this.foro = arr
-    
-      
+
+    this.foro = arr;
   }
 };
 </script>
