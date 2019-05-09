@@ -2,8 +2,6 @@
 import firebase from 'firebase'
 var registeredUsers = [];
 
-
-
 export function auth() {
     let id = localStorage.getItem('userId')
     if (id) {
@@ -25,7 +23,6 @@ export function auth() {
         })
     }
 }
-
 
 export function user(){
     let id =localStorage.getItem('userId')
@@ -64,7 +61,6 @@ export function loadForo(arr ,msgs) {
         msg: msgs[key].msg
       });
     }
-    
     arr.reverse();
   }
 

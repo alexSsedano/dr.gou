@@ -15,7 +15,7 @@
             <button
               style="width: 100%"
               @click="addPost"
-              @en
+              
               type="button"
               class="btn btn-primary"
             >Publicar</button>
