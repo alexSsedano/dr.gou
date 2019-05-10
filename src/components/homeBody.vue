@@ -1,11 +1,11 @@
 <template>
     <div class="homebody">
 
-        <div  class="img-fluid  d-block d-sm-none extrasmall" style="height: 150px;"><p>sss</p></div>
-        <div  class="img-fluid  d-none d-sm-block d-md-none small " style="height: 200px;"><p>sss</p></div>
-        <div  class="img-fluid  d-none d-md-block d-lg-none medium " style="height: 250px;"><p>sss</p></div>
-        <div  class="img-fluid  d-none d-lg-block d-xl-none large " style="height: 250px;"><p>sss</p></div>
-        <div  class="img-fluid  d-none d-xl-block extralarge " style="height: 250px;"><p>sss</p></div>
+        <div  class="img-fluid  d-block d-sm-none extrasmall" style="height: 150px;"><h2 class="text-center">sss</h2></div>
+        <div  class="img-fluid  d-none d-sm-block d-md-none small " style="height: 200px;"><h2 class="text-center">sss</h2></div>
+        <div  class="img-fluid  d-none d-md-block d-lg-none medium " style="height: 250px;"><h2 class="text-center">sss</h2></div>
+        <div  class="img-fluid  d-none d-lg-block d-xl-none large " style="height: 250px;"><h2 class="text-center">sss</h2></div>
+        <div  class="img-fluid  d-none d-xl-block extralarge " style="height: 250px;"><h2 class="text-center">sss</h2></div>
 
     </div>
 </template>
