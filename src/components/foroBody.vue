@@ -1,24 +1,13 @@
 <template>
-  <div>
-    <div class="row justify-content-center">
-      <div class="col-sm-11 foroBody">
+  <div class="homeBody container">
+    <div class="row">
+      <div class="col-sm-12">
         <div class="row justify-content-center" style="padding-top: 16px">
-          <div style=" padding: 0px!important" class="col-sm-7">
-            <input
-              v-model="msg"
-              type="text"
-              class="form-control"
-              placeholder="¿ Que esta ocurriendo ?"
-            >
+          <div class="col-sm-7">
+            <input v-model="msg" type="text" class="form-control" placeholder="¿ Que esta ocurriendo ?">
           </div>
-          <div style="padding: 0px!important; " class="col-sm-2">
-            <button
-              style="width: 100%"
-              @click="addPost"
-              
-              type="button"
-              class="btn btn-primary"
-            >Publicar</button>
+          <div  class="col-sm-2">
+            <button style="width: 100%" @click="addPost" type="button" class="btn btn-primary">Publicar</button>
           </div>
         </div>
         <div v-for="msg in this.foro" v-bind:key="msg.id" class="row justify-content-center">

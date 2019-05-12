@@ -1,5 +1,5 @@
 <template>
-  <div class="foro" >
+  <div class="foroBody">
     <Header></Header>
     <ForoBody></ForoBody>
     <Footer></Footer>
