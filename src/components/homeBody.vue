@@ -52,8 +52,8 @@
                 </div>
             </div>
         </div>
-        <div>
-            <div class="row " style="margin-top: 100px">
+        <div class="container">
+            <div class="row  " style="margin-top: 100px">
                 <div class="  col-sm-4 ">
                     <h2 class="text-center" style="margin: 10px"><strong>¿ Cómo surge DR.GOU ?</strong></h2>
                     <p class="text-center" style="margin: 10px">La idea de crear este grupo surge como respuesta a las diversas necesidades y demandas que el alumnado plantea a lo largo de los diferentes cursos académicos y de las distintas promociones que van pasando por la Universidad. Estas necesidades y demandas están presentes de forma general en este alumnado, tanto al comenzar su andadura universitaria como al finalizarla, y hacen que sea más complicado su proceso de adaptación a la Universidad.</p>
@@ -74,17 +74,17 @@
                 <h2 class="text-center" style="margin-top: 100px"><strong>Facultades colaboradoras con DR.GOU</strong></h2> 
                 </div>
             </div>
-            
+            <div class="container">
             <div class="row ">  
                 <div class="col-sm-12">
-                    <ul>
-                        <li><p class="text-center" style="margin-top: 10px">Facultad de Psicología</p></li>
-                        <li><p class="text-center" style="margin-top: 10px">Facultad de Ciencias de la Educación</p></li>
-                        <li><p class="text-center" style="margin-top: 10px">Facultad de Telecomunicaciones</p></li>
-                        <li><p class="text-center" style="margin-top: 10px">FEST</p></li>
-                        <li><p class="text-center" style="margin-top: 10px">Facultad de Derecho</p></li>
-                    </ul>
-                
+                    
+                        <p class="text-center" style="margin-top: 10px">Facultad de Psicología</p>
+                        <p class="text-center" style="margin-top: 10px">Facultad de Ciencias de la Educación</p>
+                        <p class="text-center" style="margin-top: 10px">Facultad de Telecomunicaciones</p>
+                        <p class="text-center" style="margin-top: 10px">FEST</p>
+                        <p class="text-center" style="margin-top: 10px">Facultad de Derecho</p>
+                    
+                </div>
                 </div>
             </div>  
         </div>
