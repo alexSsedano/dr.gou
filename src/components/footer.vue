@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark " >
         <div class="row justify-content-between align-items-center" style="width: 100%">
             <div class="col-sm-5 col-md-5 ">
                 <p style="color: white; text-align: center">creater by Alejandro Sedano Sanchez</p>

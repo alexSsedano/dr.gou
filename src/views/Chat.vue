@@ -1,10 +1,12 @@
 <template>
-  <div class="chat" >
+  <div class="chat"  >
+    <div >
     <Header></Header>
-    <ChatBody></ChatBody>
-    <Footer></Footer>
+    <ChatBody ></ChatBody>
+    <Footer ></Footer>
     <notifications group="foo" />
     <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -27,5 +29,7 @@ export default {
   homeBody{
     background-color: white !important;
   }
+
+ 
 </style>
 
