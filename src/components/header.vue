@@ -9,16 +9,16 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="nav-link" href="#">Inicio</a>
+            <a class="nav-link" href="home">Inicio</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="foro">Foro</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Eventos</a>
+            <a class="nav-link" href="chat">Chat</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Chats</a>
+            <a class="nav-link" href="#">Administracion</a>
         </li>
         </ul>
         
