@@ -26,7 +26,7 @@
     margin: 0%
 }
 .cg{
-    background-image: linear-gradient(rgb(85, 85, 85), rgb(75, 75, 75));
+    background-image: linear-gradient(rgb(217, 247, 255), rgb(217, 247, 255));
 }
 
 
