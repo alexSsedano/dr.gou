@@ -75,16 +75,14 @@
                 </div>
             </div>
             <div class="container">
-            <div class="row ">  
-                <div class="col-sm-12">
-                    
+                <div class="row ">  
+                    <div class="col-sm-12">
                         <p class="text-center" style="margin-top: 10px">Facultad de Psicología</p>
                         <p class="text-center" style="margin-top: 10px">Facultad de Ciencias de la Educación</p>
                         <p class="text-center" style="margin-top: 10px">Facultad de Telecomunicaciones</p>
                         <p class="text-center" style="margin-top: 10px">FEST</p>
                         <p class="text-center" style="margin-top: 10px">Facultad de Derecho</p>
-                    
-                </div>
+                    </div>
                 </div>
             </div>  
         </div>
@@ -94,13 +92,11 @@
     
 </template>
 <script>
-  
-
-        export default {
-            
-            name: "homeBody",
-         
-        }
+    export default {
+        
+        name: "homeBody",
+        
+    }
 </script>
 <style>
 .extrasmall{
