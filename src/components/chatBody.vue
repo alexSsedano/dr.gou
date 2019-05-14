@@ -5,14 +5,14 @@
             <div class="row w-100 antim h-100"  >
                 <div class="col-sm-2 h-100 cg" >
                     <button type="button " style="margin-top:10px; " @click="changeAdd" class="btn btn-primary btn w-100">Añadir chat</button>
-                    <div v-if="this.add">
-                        <input  v-model="newChatText" type="text" class="w-100" style="margin-top:10px;">
+                        <div v-if="this.add">
+                            <input  v-model="newChatText" type="text" class="w-100" style="margin-top:10px;">
+                        </div>
                     </div>
+                    <div class="col-sm-10"></div>
                 </div>
-                <div class="col-sm-10"></div>
             </div>
         </div>
-    </div>
     </div>
 </template>
 <script>
@@ -26,12 +26,15 @@ import firebase from "firebase";
             };
         },
         methods: {
+            
             changeAdd: function(){
+                let name = localStorage.getItem('userName')
                 if(this.add){
                     if(this.newChatText!=''){
                         console.log(this.newChatText)
                         firebase.database().ref("newChat/").push({
-                            newChat: this.newChatText
+                            newChat: this.newChatText,
+                            userName: name
                         });
                     this.newChatText = "";
                     }
@@ -52,7 +55,7 @@ import firebase from "firebase";
     margin: 0%
 }
 .cg{
-    background-image: linear-gradient(rgb(217, 247, 255), rgb(217, 247, 255));
+    background-image: linear-gradient(rgb(87, 87, 87), rgb(87, 87, 87));
 }
 
 
