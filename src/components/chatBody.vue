@@ -31,7 +31,6 @@ import firebase from "firebase";
                 let name = localStorage.getItem('userName')
                 if(this.add){
                     if(this.newChatText!=''){
-                        console.log(this.newChatText)
                         firebase.database().ref("newChat/").push({
                             newChat: this.newChatText,
                             userName: name

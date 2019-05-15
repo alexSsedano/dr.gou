@@ -1,7 +1,7 @@
 <template>
   <div class="admin"  >
     <div >
-    <Header></Header>
+    <Head></Head>
     <AdminBody></AdminBody>
     <Footer ></Footer>
     <notifications group="foo" />
@@ -12,14 +12,14 @@
 
 <script>
 // @ is an alias to /src
-import Header from '../components/header.vue'
+import Head from '../components/header.vue'
 import AdminBody from '../components/adminBody.vue'
 import Footer from '../components/footer.vue'
 
 export default {
   name: 'admin',
   components: {
-    Header,
+    Head,
     AdminBody,
     Footer
   }

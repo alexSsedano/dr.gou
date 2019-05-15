@@ -1,4 +1,5 @@
 <template>
+<div class="foot">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark " >
         <div class="row justify-content-between align-items-center" style="width: 100%">
             <div class="col-sm-5 col-md-5 ">
@@ -9,13 +10,14 @@
             </div>
         </div>
     </nav>
+</div>
 </template>
 <script>
   
 
         export default {
             
-            name: "footer",
+            name: "foot",
          
         }
 </script>
