@@ -2,17 +2,25 @@
   <div class="chatBody">
     <div class="anti">
       <div class="w-100 h-100">
-        <div class="row w-100 antim h-100">
-          <div class="col-sm-2 h-100 cg"></div>
-          <div class="col-sm-8"></div>
-          <div class="col-sm-2 h-100 cg">
-            <ul class="nav nav-pills scrollbar-primary nav-stacked anyClass h-100 w-100">
-              <div v-for="msg in this.chat" v-bind:key="msg.id" class="row justify-content-center w-100">
-                <li class="nav-item w-100">
-                  <a class="nav-link active w-100" href="#">{{msg.msg}}</a>
-                </li>
+        <div class="row w-100 h-100">
+          <div class="col-sm-3 h-100 " style="overflow-y: scroll;padding-top: 10px">
+              <div v-for="msg in this.chat" v-bind:key="msg.id" class="row mar justify-content-center w-100">
+
+                <div class="card border-primary mb-3 w-100"   >
+                    <div class="card-header">{{msg.username}}</div>
+                    <div class="card-body">
+                        <p class="card-text">{{msg.msg}}</p>
+                    </div>
+                </div>
+                  
+              
+                
               </div>
-            </ul>
+           
+          </div>
+          <div class="col-sm-7"></div>
+          <div class="col-sm-2 h-100 cg bl w-100" >
+            
           </div>
         </div>
       </div>
@@ -33,7 +41,7 @@ export default {
       for (let key in x) {
         this.chat.push({
           id: Math.random().toString(36).substr(2, 27),
-          username: x[key].usereName,
+          username: x[key].userName,
           msg: x[key].newChat
         });
       }
@@ -49,21 +57,14 @@ export default {
   height: 86vh;
   background-color: white;
 }
-.antim {
-  margin: 0%;
-}
+
 .cg {
-  background-image: linear-gradient(rgb(87, 87, 87), rgb(87, 87, 87));
+  background-image: linear-gradient(rgb(237, 241, 245), rgb(237, 241, 245));
 }
-.anyClass {
-  overflow-y: scroll;
+.mar{
+    margin-left: 10px !important;
+
 }
-.scrollbar-primary::-webkit-scrollbar {
-  width: 12px;
-  background-color: #f5f5f5;
-}
-.scrollbar-primary::-webkit-scrollbar-thumb {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-  background-color: #4285f4;
-}
+
+
 </style>

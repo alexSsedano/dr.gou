@@ -179,7 +179,6 @@
                         let path = "users/" + this.loginUser
                         let userId = ''+this.iduniq()+this.iduniq()+this.iduniq()
                         localStorage.setItem("userId", userId);
-                        localStorage.setItem("userName", this.registeredUsers[i].username);
                         firebase.database().ref(path).set({
                             username: this.registeredUsers[i].username,
                             email: this.registeredUsers[i].email,
