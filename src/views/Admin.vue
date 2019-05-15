@@ -26,10 +26,7 @@ export default {
 }
 </script>
 <style>
-  homeBody{
-    background-color: white !important;
-  }
-
+  
  
 </style>
 
