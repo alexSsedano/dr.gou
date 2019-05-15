@@ -37,7 +37,6 @@ export default {
           msg: x[key].newChat
         });
       }
-      console.log(this.chat)
     }
   },
   mounted() {

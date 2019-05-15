@@ -49,59 +49,37 @@ export default {
   methods: {
     addPost: function() {
       let today = new Date();
-      firebase
-        .database()
-        .ref("post/")
-        .push({
-          date:
-            today.toLocaleDateString("es-ES") +
-            " " +
-            today.getHours() +
-            ":" +
-            today.getMinutes() +
-            ":" +
-            today.getSeconds(),
+      firebase.database().ref("post/").push({
+          date: today.toLocaleDateString("es-ES") + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(),
           userName: this.userName,
           msg: this.msg
         });
       this.msg = "";
     },
-
-    loadUsers: function(users) {
-      this.registeredUsers = [];
+    loadUser: function(users){
       for (let key in users) {
-        this.registeredUsers.push({
-          userType: users[key].userType,
-          userId: users[key].userId,
-          username: users[key].username
+        if(users[key].userId == localStorage.getItem("userId")){
+          this.userName = users[key].username
+        }
+      }
+
+    },
+
+    loadForo: function(users) {
+      this.foro= []
+      for (let key in users) {
+        this.foro.push({
+          date: users[key].date,
+          msg: users[key].msg,
+          username: users[key].userName
         });
       }
+      this.foro = this.foro.reverse()
     }
   },
-  created() {
-    this.userName = localStorage.getItem("userName");
-  },
   mounted() {
-    var arr = [];
-    firebase
-      .database()
-      .ref("post/")
-      .on("value", function(snapshot) {
-        var els = snapshot.val();
-        for (let key in els) {
-          arr.push({
-            id: Math.random()
-              .toString(36)
-              .substr(2, 27),
-            username: els[key].userName,
-            date: els[key].date,
-            msg: els[key].msg
-          });
-        }
-        arr.reverse();
-      });
-
-    this.foro = arr;
+    firebase.database().ref("post/").on("value", snapshot => this.loadForo(snapshot.val()))
+    firebase.database().ref("users/").on("value", snapshot => this.loadUser(snapshot.val()))    
   }
 };
 </script>
