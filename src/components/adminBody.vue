@@ -56,11 +56,11 @@
                   <div  class="card-header">{{user.username}}</div>
               </div>
               <div v-if="!user.show" key="2" class="card border-primary mb-3" @click="clickUser(user)">
-                  <div  class="card-header pad clear" >
-                    <div class="row clear">
-                      <div class="col-sm-4 pad"><button type="button" class="btn btn-primary pad" style="width:100%; margin-left:5px; margin-right:5px">a</button></div>
-                      <div class="col-sm-4 pad"><button type="button" class="btn btn-warning pad" style="width:100%; margin-left:5px; margin-right:5px">a</button></div>
-                      <div class="col-sm-4 pad"><button type="button" class="btn btn-danger pad" style="width:100%; margin-left:5px; margin-right:5px">a</button></div>
+                  <div  class="card-header pad " >
+                    <div class="row mar justify-content-center" style="width:100%;">
+                      <div class="col-sm-4"><button type="button" class="btn btn-primary " style="width:100%;" ><i class="fas fa-comment-dots"></i></button></div>
+                      <div class="col-sm-4 "><button type="button" class="btn btn-warning " style="width:100%;" ><i class="fas fa-cog"></i></button></div>
+                      <div class="col-sm-4 "><button type="button" class="btn btn-danger " style="width:100%;" ><i class="fas fa-times"></i></button></div>
                     </div>
                   </div>
               </div>
