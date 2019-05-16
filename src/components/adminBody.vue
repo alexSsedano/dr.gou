@@ -52,17 +52,26 @@
         <div v-for="user in this.usersFiltered" v-bind:key="user.id" class="row"  style="padding-top: 15px">
           <div class="col-sm-12 pad">
             <transition mode="out-in" name="custom-classes-transition" enter-active-class="animated slideInLeft " leave-active-class=" animated slideOutLeft">
-              <div v-if="user.show" key="1" class="card border-primary mb-3" @click="clickUser(user)">
+              <div v-if="user.show" key="1" class="card border-primary mb-3" @click="clickUser(user) " style="margin:15px">
                   <div  class="card-header">{{user.username}}</div>
               </div>
-              <div v-if="!user.show" key="2" class="card border-primary mb-3" @click="clickUser(user)">
+              <div v-if="!user.show" key="2" class="card border-primary mb-3" style="margin:15px">
                   <div  class="card-header pad " >
                     <div class="row mar justify-content-center" style="width:100%;">
-                      <div class="col-sm-4"><button type="button" class="btn btn-primary " style="width:100%;" ><i class="fas fa-comment-dots"></i></button></div>
-                      <div class="col-sm-4 "><button type="button" class="btn btn-warning " style="width:100%;" ><i class="fas fa-cog"></i></button></div>
-                      <div class="col-sm-4 "><button type="button" class="btn btn-danger " style="width:100%;" ><i class="fas fa-times"></i></button></div>
+                      <div class="col-sm-4"><button type="button" class="btn btn-success " style="width:100%;" ><i class="fas fa-comment-dots"></i></button></div>
+                      <div class="col-sm-4 "><button type="button" @click="adjust(user)" class="btn btn-warning " style="width:100%;" ><i class="fas fa-cog"></i></button></div>
+                      <div class="col-sm-4 "><button type="button" class="btn btn-primary " style="width:100%;" ><i class="fas fa-undo-alt"></i></button></div>
                     </div>
                   </div>
+                  <transition mode="out-in" name="custom-classes-transition" enter-active-class="animated zoomInDown " leave-active-class=" animated zoomOutUp">
+                  <div v-if="user.adjust"   style="margin:15px">
+                    <div class="row mar justify-content-center" style="width:100%;">
+                      <div class="col-sm-6"><button type="button"  class="btn btn-success " style="width:100%;" ><i class="fas fa-comment-dots"></i></button></div>
+                      <div class="col-sm-6 "><button type="button" class="btn btn-warning " style="width:100%;" ><i class="fas fa-cog"></i></button></div>
+                     
+                    </div>
+                  </div>
+                </transition>
               </div>
             </transition>
           </div>
@@ -100,6 +109,18 @@ export default {
         }
       }
     },
+    adjust: function(user){
+         console.log('entra')
+        if(user.adjust ){
+            user.adjust = false
+          }else{
+            user.adjust = true
+          }
+          
+       
+
+        },
+    
     clickUser: function(user){
          
         if(user.userTipe == 'admin'){
@@ -114,8 +135,6 @@ export default {
         }else{
 
         }
-      
-      
     },
     loadChat: function(x) {
       for (let key in x) {
@@ -137,7 +156,8 @@ export default {
           username: x[key].username,
           email: x[key].email,
           userTipe: x[key].userType,
-          show: true
+          show: true,
+          adjust: false
         });
       }
     }
