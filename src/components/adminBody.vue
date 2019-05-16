@@ -60,14 +60,14 @@
                     <div class="row mar justify-content-center" style="width:100%;">
                       <div class="col-sm-4"><button type="button" class="btn btn-success " style="width:100%;" ><i class="fas fa-comment-dots"></i></button></div>
                       <div class="col-sm-4 "><button type="button" @click="adjust(user)" class="btn btn-warning " style="width:100%;" ><i class="fas fa-cog"></i></button></div>
-                      <div class="col-sm-4 "><button type="button" class="btn btn-primary " style="width:100%;" ><i class="fas fa-undo-alt"></i></button></div>
+                      <div class="col-sm-4 "><button type="button" class="btn btn-primary " @click="clickUser(user) " style="width:100%;" ><i class="fas fa-undo-alt"></i></button></div>
                     </div>
                   </div>
-                  <transition mode="out-in" name="custom-classes-transition" enter-active-class="animated zoomInDown " leave-active-class=" animated zoomOutUp">
+                  <transition mode="out-in" name="custom-classes-transition" enter-active-class="animated fadeInDown " leave-active-class=" animated fadeOutUp">
                   <div v-if="user.adjust"   style="margin:15px">
                     <div class="row mar justify-content-center" style="width:100%;">
-                      <div class="col-sm-6"><button type="button"  class="btn btn-success " style="width:100%;" ><i class="fas fa-comment-dots"></i></button></div>
-                      <div class="col-sm-6 "><button type="button" class="btn btn-warning " style="width:100%;" ><i class="fas fa-cog"></i></button></div>
+                      <div class="col-sm-6"><button type="button"  class="btn btn-success " style="width:100%;" ><i class="fas fa-user-alt"></i></button></div>
+                      <div class="col-sm-6 "><button type="button" class="btn btn-danger " style="width:100%;" ><i class="fas fa-user-times"></i></button></div>
                      
                     </div>
                   </div>
@@ -127,6 +127,7 @@ export default {
           if(user.show){
             this.selectedAdmin = user.username
           user.show = false
+          user.adjust = false
           }else{
             this.selectedAdmin = user.username
             user.show = true
