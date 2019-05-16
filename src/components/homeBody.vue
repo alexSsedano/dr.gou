@@ -56,16 +56,17 @@
             <div class="row  " style="margin-top: 100px">
                 <div class="  col-sm-4 ">
                     <h2 class="text-center" style="margin: 10px"><strong>¿ Cómo surge DR.GOU ?</strong></h2>
-                    <p class="text-center" style="margin: 10px">La idea de crear este grupo surge como respuesta a las diversas necesidades y demandas que el alumnado plantea a lo largo de los diferentes cursos académicos y de las distintas promociones que van pasando por la Universidad. Estas necesidades y demandas están presentes de forma general en este alumnado, tanto al comenzar su andadura universitaria como al finalizarla, y hacen que sea más complicado su proceso de adaptación a la Universidad.</p>
+                    <p class="text-center" style="margin: 10px">Este grupo nace para cubrir las demandas y necesidades del alumnado en los diferentes cursos de la carrera. Trata de facilitar el proceso de adaptación de los estudiantes, al igual que crear una comunidad integrada, donde haya un aprendizaje mutuo entre las distintas facultades de la UMA.</p>
                 </div>
                 <div class="  col-sm-4 ">
-                    <h2 class="text-center" style="margin: 10px"><strong>¿ Que es DR.GOU ?</strong></h2>
-                    <p class="text-center" style="margin: 10px">El GOU es un Grupo de Orientación Universitaria formado por un equipo de profesores/as, voluntarios/as y alumnos/as de diversas Facultades de la Universidad Málaga, que trabajan con el objetivo de ejercer una labor informativa y formativa en su alumnado durante todo el período académico.</p>
+                    <h2 class="text-center" style="margin: 10px"><strong>¿ A quién atiende DR.GOU ?</strong></h2>
+                    <p class="text-center" style="margin: 10px">Atiende a aquellos estudiantes que necesiten orientación en sus primeros cursos de carrera,  que no estén seguros de qué carrera realizar, los que tengan problemas de salud y necesiten recursos del profesorado, etc. En definitiva, DR. GOU actúa como mediador en los problemas, ayudando a resolverlos desde la facultad de origen o poniendo al alumno en contacto con el GOU de otras facultades si lo necesitara. </p>
                 </div>
                 <div class="  col-sm-4 ">
-                    <h2 class="text-center" style="margin: 10px"><strong>¿ A quien atiende DR.GOU ?</strong></h2>
-                    <p class="text-center" style="margin: 10px">Cada facultad atendemos al su alumnado en particular, especialmente al alumnado de nueva entrada y a los que se encuentren en los últimos cursos de la formación universitaria.No obstante, el GOU está disponible para responder cuestiones de carácter general que puedan surgir a cualquier alumno/a de otras facultades de la UMA, ya que existen determinadas cuestiones que son de interés para el conjunto del alumnado universitario.</p>
+                    <h2 class="text-center" style="margin: 10px"><strong>¿ Qué es DR.GOU ?</strong></h2>
+                    <p class="text-center" style="margin: 10px">Es un grupo de orientación universitaria formado por un equipo de profesores/as, voluntarios/as y alumnos/as de diversas facultades de la Universidad de Málaga. Todas trabajan con un objetivo en común, ayudar al alumno. Para ello, se reúnen periódicamente con el fin de formarse mejorando la atención que prestan.</p>
                 </div>
+                
             </div>
             <h2 class="text-center" style="margin: 100px"><strong>¿ Donde puedes encontrarnos ?</strong></h2> 
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3198.308949404649!2d-4.47983668486812!3d36.7151406801831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd72f74b9f3606f1%3A0x9fa32cc2e6b0bbf9!2sE.T.S.+Ingenier%C3%ADa+Inform%C3%A1tica.+Universidad+de+M%C3%A1laga!5e0!3m2!1ses!2ses!4v1557700216191!5m2!1ses!2ses" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>                 

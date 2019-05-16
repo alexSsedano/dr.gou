@@ -1,7 +1,7 @@
 <template >
   <div class="chatBody anti">
     <div class="row mar h-100">
-      <div class="col-sm-2 h-100 cg" style="overflow-y: scroll; ">
+      <div class="col-sm-3 h-100 cg" style="overflow-y: scroll; ">
         <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
           <div class="col-sm-12">
             <div class="card border-primary mb-3">
@@ -13,7 +13,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-8">
+      <div class="col-sm-6">
         <div class="row">
           <div class="col-sm-12 ">
             <h2 class="text-center" style="padding: 15px">Seleccione un mensaje y un administrador</h2>
@@ -32,7 +32,7 @@
           <div class="col-sm-6"><h2 class="text-center" style="padding: 15px">{{this.selectedAdmin}}</h2></div>
         </div>
       </div>
-      <div class="col-sm-2 h-100 cg" style="overflow-y: scroll; ">
+      <div class="col-sm-3 h-100 cg" style="overflow-y: scroll; ">
         <div class="row">
           <div class="btn-group w-100" style="padding: 15px">
             <button
@@ -50,17 +50,17 @@
           </div>
         </div>
         <div v-for="user in this.usersFiltered" v-bind:key="user.id" class="row"  style="padding-top: 15px">
-          <div class="col-sm-12">
+          <div class="col-sm-12 pad">
             <transition mode="out-in" name="custom-classes-transition" enter-active-class="animated slideInLeft " leave-active-class=" animated slideOutLeft">
               <div v-if="user.show" key="1" class="card border-primary mb-3" @click="clickUser(user)">
                   <div  class="card-header">{{user.username}}</div>
               </div>
               <div v-if="!user.show" key="2" class="card border-primary mb-3" @click="clickUser(user)">
-                  <div  class="card-header" style="padding:0px">
-                    <div class="row">
-                      <div class="col-sm-3"><button type="button" class="btn btn-primary">Primary</button></div>
-                      <div class="col-sm-3"><button type="button" class="btn btn-warning">Primary</button></div>
-                      <div class="col-sm-3"><button type="button" class="btn btn-danger">Primary</button></div>
+                  <div  class="card-header pad clear" >
+                    <div class="row clear">
+                      <div class="col-sm-4 pad"><button type="button" class="btn btn-primary pad" style="width:100%; margin-left:5px; margin-right:5px">a</button></div>
+                      <div class="col-sm-4 pad"><button type="button" class="btn btn-warning pad" style="width:100%; margin-left:5px; margin-right:5px">a</button></div>
+                      <div class="col-sm-4 pad"><button type="button" class="btn btn-danger pad" style="width:100%; margin-left:5px; margin-right:5px">a</button></div>
                     </div>
                   </div>
               </div>
@@ -173,5 +173,9 @@ export default {
 .component-fade-enter, .component-fade-leave-to
 /* .component-fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+.pad{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 </style>
