@@ -25,6 +25,12 @@
           </div>
           <div class="col-sm-6"><h2 class="text-center" style="padding: 15px">Administrador</h2></div>
         </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <h2 class="text-center" style="padding: 15px">{{this.selectedMsg}}</h2>
+          </div>
+          <div class="col-sm-6"><h2 class="text-center" style="padding: 15px">{{this.selectedAdmin}}</h2></div>
+        </div>
       </div>
       <div class="col-sm-2 h-100 cg" style="overflow-y: scroll; ">
         <div class="row">
@@ -43,16 +49,22 @@
             </div>
           </div>
         </div>
-        <div
-          v-for="user in this.usersFiltered"
-          v-bind:key="user.id"
-          class="row"
-          style="padding-top: 15px"
-        >
+        <div v-for="user in this.usersFiltered" v-bind:key="user.id" class="row"  style="padding-top: 15px">
           <div class="col-sm-12">
-            <div class="card border-primary mb-3">
-              <div class="card-header">{{user.username}}</div>
-            </div>
+            <transition mode="out-in" name="custom-classes-transition" enter-active-class="animated slideInLeft " leave-active-class=" animated slideOutLeft">
+              <div v-if="user.show" key="1" class="card border-primary mb-3" @click="clickUser(user)">
+                  <div  class="card-header">{{user.username}}</div>
+              </div>
+              <div v-if="!user.show" key="2" class="card border-primary mb-3" @click="clickUser(user)">
+                  <div  class="card-header" style="padding:0px">
+                    <div class="row">
+                      <div class="col-sm-3"><button type="button" class="btn btn-primary">Primary</button></div>
+                      <div class="col-sm-3"><button type="button" class="btn btn-warning">Primary</button></div>
+                      <div class="col-sm-3"><button type="button" class="btn btn-danger">Primary</button></div>
+                    </div>
+                  </div>
+              </div>
+            </transition>
           </div>
         </div>
       </div>
@@ -69,7 +81,9 @@ export default {
       users: [],
       usersFiltered: [],
       userT: "",
-      drop: ""
+      drop: "",
+      selectedMsg:'',
+      selectedAdmin:'',
     };
   },
   methods: {
@@ -85,6 +99,23 @@ export default {
           }
         }
       }
+    },
+    clickUser: function(user){
+         
+        if(user.userTipe == 'admin'){
+          if(user.show){
+            this.selectedAdmin = user.username
+          user.show = false
+          }else{
+            this.selectedAdmin = user.username
+            user.show = true
+          }
+          
+        }else{
+
+        }
+      
+      
     },
     loadChat: function(x) {
       for (let key in x) {
@@ -105,7 +136,8 @@ export default {
             .substr(2, 27),
           username: x[key].username,
           email: x[key].email,
-          userTipe: x[key].userType
+          userTipe: x[key].userType,
+          show: true
         });
       }
     }
@@ -134,5 +166,12 @@ export default {
 }
 .mar {
   margin: 0px !important;
+}
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity .3s ease;
+}
+.component-fade-enter, .component-fade-leave-to
+/* .component-fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

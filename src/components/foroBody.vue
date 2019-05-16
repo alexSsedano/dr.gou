@@ -12,7 +12,7 @@
         </div>
         <div v-for="msg in this.foro" v-bind:key="msg.id" class="row justify-content-center">
           <div style="padding-top: 16px" class="col-sm-11">
-            <div class="card border-secondary mb-3" style="">
+            <div class="card border-secondary mb-3" >
               <div class="card-header">
                 <div class="row justify-content-between">
                   <div class="col-sm-2">

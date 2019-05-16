@@ -39,15 +39,20 @@ let router = new Router({
               })
             }
             for (let i = 0; i <= registeredUsers.length; i++) {
+              
               if (id == registeredUsers[i].userId) {
                 if (registeredUsers[i].userType == "user" || registeredUsers[i].userType == "admin" || registeredUsers[i].userType == "superAdmin") {
                   return next();
                 } else {
                   return next('/');
                 }
+              }else{
+                return next('/');
               }
             }
           })
+        }else{
+          return next('/');
         }
       }
     },
@@ -76,10 +81,14 @@ let router = new Router({
                 } else {
                   return next('/');
                 }
-
+              }else{
+                return next('/');
               }
+                
             }
           })
+        }else{
+          return next('/');
         }
 
       }
@@ -110,9 +119,13 @@ let router = new Router({
                   return next('/');
                 }
 
+              }else{
+                return next('/');
               }
             }
           })
+        }else{
+          return next('/');
         }
 
       }
@@ -143,9 +156,13 @@ let router = new Router({
                   return next('/');
                 }
 
+              }else{
+                return next('/');
               }
             }
           })
+        }else{
+          return next('/');
         }
 
       }
