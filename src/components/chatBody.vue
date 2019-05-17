@@ -14,12 +14,12 @@
               <input v-model="newChatText" type="text" class="w-100" style="margin-top:10px;">
             </div>
             <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
-          <div class="col-sm-12">
-            <div class="card border-primary mb-3"  @click="sMsg(msg)">
-              <div class="card-header">{{msg.user1}}</div>
+              <div class="col-sm-12">
+                <div class="card border-primary mb-3" @click="sMsg(msg)">
+                  <div class="card-header">{{msg.user1}}</div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
           </div>
           <div class="col-sm-10"></div>
         </div>
@@ -36,7 +36,8 @@ export default {
       add: false,
       newChatText: "",
       chat: [],
-      username: ''
+      username: "",
+      chatShow: []
     };
   },
   methods: {
@@ -62,46 +63,53 @@ export default {
               newChat: this.newChatText,
               userName: name
             });
-          
         }
         this.add = false;
       } else {
         this.add = true;
       }
     },
-    loadUser: function(users){
+    loadUser: function(users) {
       for (let key in users) {
-        if(users[key].userId == localStorage.getItem("userId")){
-          this.userName = users[key].username
+        if (users[key].userId == localStorage.getItem("userId")) {
+          this.userName = users[key].username;
         }
       }
-
     },
+    showChat: function() {},
     loadChat: function(x) {
       this.chat = [];
       let arr = [];
+      let mensage = [];
+
       for (let key in x) {
-          if(x[key].user1 == this.userName || x[key].user2 == this.userName){
-              for(let keo in x[key]){
-                arr.push({
-                    msg: x[key][keo].msg,
-                    user: x[key][keo].user
-                })
-              }
-        this.chat.push({
+        if (x[key].user1 == this.userName || x[key].user2 == this.userName) {
+          mensage = [];
+          for (let keo in x[key].msg) {
+            mensage.push({
+              msg: x[key].msg[keo].msg,
+              user: x[key].msg[keo].user
+            });
+          }
+        }
+        arr.push({
           user1: x[key].user1,
           user2: x[key].user2,
-          msgs: arr
-        });
-        }
+          mensages: mensage
+        })
       }
-      
+      this.chat=arr;
     }
   },
   mounted() {
-    firebase.database().ref("users/").on("value", snapshot => this.loadUser(snapshot.val())) 
-    firebase.database().ref("chat/").on("value", snapshot => this.loadChat(snapshot.val()));
-     
+    firebase
+      .database()
+      .ref("users/")
+      .on("value", snapshot => this.loadUser(snapshot.val()));
+    firebase
+      .database()
+      .ref("chat/")
+      .on("value", snapshot => this.loadChat(snapshot.val()));
   }
 };
 </script>
