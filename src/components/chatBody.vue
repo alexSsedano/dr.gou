@@ -33,7 +33,8 @@ import firebase from "firebase";
                     if(this.newChatText!=''){
                         firebase.database().ref("newChat/").push({
                             newChat: this.newChatText,
-                            userName: name
+                            userName: name,
+                           
                         });
                     this.newChatText = "";
                     }

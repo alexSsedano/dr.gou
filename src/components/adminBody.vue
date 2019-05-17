@@ -4,7 +4,7 @@
       <div class="col-sm-3 h-100 cg" style="overflow-y: scroll; ">
         <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
           <div class="col-sm-12">
-            <div class="card border-primary mb-3">
+            <div class="card border-primary mb-3"  @click="sMsg(msg)">
               <div class="card-header">{{msg.username}}</div>
               <div class="card-body">
                 <p class="card-text">{{msg.msg}}</p>
@@ -27,10 +27,14 @@
         </div>
         <div class="row">
           <div class="col-sm-6">
-            <h2 class="text-center" style="padding: 15px">{{this.selectedMsg}}</h2>
+            <h2 class="text-center" style="padding: 15px">{{this.msg}}</h2>
           </div>
           <div class="col-sm-6"><h2 class="text-center" style="padding: 15px">{{this.selectedAdmin}}</h2></div>
         </div>
+        <div class="col-sm-12 ">
+           <div class="col-sm-12 "><button type="button" @click="acept(user)" class="btn btn-success " style="width:100%;" ><i class="fas fa-check"></i></button></div>
+
+          </div>
       </div>
       <div class="col-sm-3 h-100 cg" style="overflow-y: scroll; ">
         <div class="row">
@@ -49,8 +53,31 @@
             </div>
           </div>
         </div>
-        <div v-for="user in this.usersFiltered" v-bind:key="user.id" class="row"  style="padding-top: 15px">
-          <div class="col-sm-12 pad">
+        <div v-for="user in this.usersFiltered" v-bind:key="user.id" class="row"  style="padding-top: 15px">  
+          <div v-if="user.userType == 'user'" class="col-sm-12 pad">
+            <transition mode="out-in" name="custom-classes-transition" enter-active-class="animated slideInLeft " leave-active-class=" animated slideOutLeft">
+              <div v-if="user.show" key="1" class="card border-primary mb-3" @click="clickUser(user) " style="margin:15px">
+                <div  class="card-header">{{user.username}}</div>
+              </div>
+              <div v-if="!user.show" key="2" class="card border-primary mb-3" style="margin:15px">
+                  <div  class="card-header pad " >
+                    <div class="row mar justify-content-center" style="width:100%;">
+                      <div class="col-sm-6 "><button type="button" @click="adjust(user)" class="btn btn-warning " style="width:100%;" ><i class="fas fa-cog"></i></button></div>
+                      <div class="col-sm-6 "><button type="button" @click="clickUser(user)" class="btn btn-primary "  style="width:100%;" ><i class="fas fa-undo-alt"></i></button></div>
+                    </div>
+                  </div>
+                  <transition mode="out-in" name="custom-classes-transition" enter-active-class="animated fadeInDown " leave-active-class=" animated fadeOutUp">
+                  <div v-if="user.adjust"   style="margin-top:15px; margin-bottom:15px">
+                    <div class="row mar justify-content-center" style="width:100%;">
+                      <div class="col-sm-6"><button type="button"  @click="userToAdmin(user)" class="btn btn-success " style="width:100%;" ><i class="fas fa-user-shield"></i></button></div>
+                      <div class="col-sm-6 "><button type="button" @click="deleteUser(user)" class="btn btn-danger " style="width:100%;" ><i class="fas fa-user-times"></i></button></div>
+                    </div>
+                  </div>
+                </transition>
+              </div>
+            </transition>
+          </div>
+          <div v-else class="col-sm-12 pad">
             <transition mode="out-in" name="custom-classes-transition" enter-active-class="animated slideInLeft " leave-active-class=" animated slideOutLeft">
               <div v-if="user.show" key="1" class="card border-primary mb-3" @click="clickUser(user) " style="margin:15px">
                   <div  class="card-header">{{user.username}}</div>
@@ -58,27 +85,27 @@
               <div v-if="!user.show" key="2" class="card border-primary mb-3" style="margin:15px">
                   <div  class="card-header pad " >
                     <div class="row mar justify-content-center" style="width:100%;">
-                      <div class="col-sm-4"><button type="button" class="btn btn-success " style="width:100%;" ><i class="fas fa-comment-dots"></i></button></div>
+                      <div class="col-sm-4"><button type="button" @click="selctAdmin(user)" class="btn btn-success " style="width:100%;" ><i class="fas fa-comment-dots"></i></button></div>
                       <div class="col-sm-4 "><button type="button" @click="adjust(user)" class="btn btn-warning " style="width:100%;" ><i class="fas fa-cog"></i></button></div>
-                      <div class="col-sm-4 "><button type="button" class="btn btn-primary " @click="clickUser(user) " style="width:100%;" ><i class="fas fa-undo-alt"></i></button></div>
+                      <div class="col-sm-4 "><button type="button" @click="clickUser(user)" class="btn btn-primary "  style="width:100%;" ><i class="fas fa-undo-alt"></i></button></div>
                     </div>
                   </div>
                   <transition mode="out-in" name="custom-classes-transition" enter-active-class="animated fadeInDown " leave-active-class=" animated fadeOutUp">
-                  <div v-if="user.adjust"   style="margin:15px">
+                  <div v-if="user.adjust"   style="margin-top:15px; margin-bottom:15px">
                     <div class="row mar justify-content-center" style="width:100%;">
-                      <div class="col-sm-6"><button type="button"  class="btn btn-success " style="width:100%;" ><i class="fas fa-user-alt"></i></button></div>
-                      <div class="col-sm-6 "><button type="button" class="btn btn-danger " style="width:100%;" ><i class="fas fa-user-times"></i></button></div>
-                     
+                      <div class="col-sm-6"><button type="button"  @click="adminToUser(user)" class="btn btn-success " style="width:100%;" ><i class="fas fa-user-alt"></i></button></div>
+                      <div class="col-sm-6 "><button type="button" @click="deleteUser(user)" class="btn btn-danger " style="width:100%;" ><i class="fas fa-user-times"></i></button></div>
                     </div>
                   </div>
                 </transition>
               </div>
             </transition>
           </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  
 </template>
 <script>
 import firebase from "firebase";
@@ -91,8 +118,9 @@ export default {
       usersFiltered: [],
       userT: "",
       drop: "",
-      selectedMsg:'',
       selectedAdmin:'',
+      msg: '',
+      id: ''
     };
   },
   methods: {
@@ -102,53 +130,75 @@ export default {
       if (user == "todos") {
         this.usersFiltered = this.users;
       } else {
-        for (let i = 0; i <= this.users.length; i++) {
-          if (this.users[i].userTipe == user) {
+        for (let i = 0; i <= this.users.length-1; i++) {
+          if (this.users[i].userType == user) {
             this.usersFiltered.push(this.users[i]);
           }
         }
       }
     },
     adjust: function(user){
-         console.log('entra')
-        if(user.adjust ){
-            user.adjust = false
-          }else{
-            user.adjust = true
-          }
-          
-       
-
-        },
-    
-    clickUser: function(user){
-         
-        if(user.userTipe == 'admin'){
-          if(user.show){
-            this.selectedAdmin = user.username
-          user.show = false
+      if(user.adjust ){
           user.adjust = false
-          }else{
-            this.selectedAdmin = user.username
-            user.show = true
-          }
-          
-        }else{
-
-        }
+      }else{
+        user.adjust = true
+      }
+    },
+    adminToUser: function(user){
+      firebase.database().ref('users/' + user.username).set({
+        userType: 'user',
+        email: user.email,
+        userId: user.userId,
+        username: user.username,
+        password: user.password
+      });
+      this.filoterUsers(user.userType);
+    },
+    userToAdmin: function(user){
+      firebase.database().ref('users/' + user.username).set({
+        userType: 'admin',
+        email: user.email,
+        userId: user.userId,
+        username: user.username,
+        password: user.password
+      });
+      this.filoterUsers(user.userType);
+    },
+    selctAdmin:function(user){
+      this.selectedAdmin = user.username
+    },
+    sMsg: function(user){
+      this.id = user.id
+      this.msg = user.username
+    },
+    acept:function(){
+      this.selectedAdmin = user.username
+    },
+    deleteUser:function(user){
+      firebase.database().ref('users/' + user.username).remove()
+    },
+    clickUser: function(user){
+      if(user.show){ 
+        user.show = false
+        user.adjust = false
+      }else{
+        user.show = true
+      }    
     },
     loadChat: function(x) {
+      this.chat=[]
       for (let key in x) {
         this.chat.push({
-          id: Math.random()
-            .toString(36)
-            .substr(2, 27),
+          id: Math.random().toString(36).substr(2, 27),
           username: x[key].userName,
           msg: x[key].newChat
         });
       }
+      this.chat = this.chat.reverse()
+
     },
     loadUsers: function(x) {
+    this.users =[]
       for (let key in x) {
         this.users.push({
           id: Math.random()
@@ -156,23 +206,25 @@ export default {
             .substr(2, 27),
           username: x[key].username,
           email: x[key].email,
-          userTipe: x[key].userType,
+          userType: x[key].userType,
+          password: x[key].password,
+          userId: x[key].userId,
           show: true,
           adjust: false
         });
       }
-    }
+      this.filoterUsers("todos");
+    },
   },
   mounted() {
-    firebase
+      firebase
       .database()
       .ref("newChat/")
       .on("value", snapshot => this.loadChat(snapshot.val()));
-    firebase
+      firebase
       .database()
       .ref("users/")
       .on("value", snapshot => this.loadUsers(snapshot.val()));
-    this.filoterUsers("todos");
   }
 };
 </script>

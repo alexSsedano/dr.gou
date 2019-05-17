@@ -68,10 +68,12 @@ export default {
     loadForo: function(users) {
       this.foro= []
       for (let key in users) {
+
         this.foro.push({
           date: users[key].date,
           msg: users[key].msg,
           username: users[key].userName
+          
         });
       }
       this.foro = this.foro.reverse()
