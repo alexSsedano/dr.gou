@@ -27,12 +27,12 @@
         </div>
         <div class="row">
           <div class="col-sm-6">
-            <h2 class="text-center" style="padding: 15px">{{this.msg}}</h2>
+            <h2 class="text-center" style="padding: 15px">{{this.userN}}</h2>
           </div>
           <div class="col-sm-6"><h2 class="text-center" style="padding: 15px">{{this.selectedAdmin}}</h2></div>
         </div>
         <div class="col-sm-12 ">
-           <div class="col-sm-12 "><button type="button" @click="acept(user)" class="btn btn-success " style="width:100%;" ><i class="fas fa-check"></i></button></div>
+           <div class="col-sm-12 "><button type="button" @click="acept()" class="btn btn-success " style="width:100%;" ><i class="fas fa-check"></i></button></div>
 
           </div>
       </div>
@@ -45,7 +45,7 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-            >{{ this.drop}}</button>
+            >{{this.drop}}</button>
             <div class="dropdown-menu w-100">
               <a class="dropdown-item" @click="filoterUsers('todos')">Todos</a>
               <a class="dropdown-item" @click="filoterUsers('admin')">Administradores</a>
@@ -117,9 +117,10 @@ export default {
       users: [],
       usersFiltered: [],
       userT: "",
-      drop: "",
+      drop: "todos",
       selectedAdmin:'',
       msg: '',
+      userN: '',
       id: ''
     };
   },
@@ -152,7 +153,7 @@ export default {
         username: user.username,
         password: user.password
       });
-      this.filoterUsers(user.userType);
+      this.filoterUsers(this.drop);
     },
     userToAdmin: function(user){
       firebase.database().ref('users/' + user.username).set({
@@ -162,17 +163,39 @@ export default {
         username: user.username,
         password: user.password
       });
-      this.filoterUsers(user.userType);
+      this.filoterUsers(this.drop);
     },
     selctAdmin:function(user){
       this.selectedAdmin = user.username
     },
     sMsg: function(user){
       this.id = user.id
-      this.msg = user.username
+      this.userN = user.username
+      this.msg = user.msg
     },
     acept:function(){
-      this.selectedAdmin = user.username
+      firebase.database().ref("chat/"+this.id ).set({
+
+        user1: this.userN,
+        user2: this.selectedAdmin
+      });
+      firebase.database().ref("chat/"+this.id+'/msg' ).push({
+
+        user: this.userN,
+        msg: this.msg
+      });
+      firebase.database().ref('users/'+this.selectedAdmin+'/chats/').push({
+        chat: this.id
+      });
+      firebase.database().ref('users/'+this.userN+'/chats/').push({
+        chat: this.id
+      });
+      
+      firebase.database().ref('newChat/' + this.id).remove()
+      this.id = '',
+      this.userN = '',
+      this.msg = '',
+      this.selectedAdmin =''
     },
     deleteUser:function(user){
       firebase.database().ref('users/' + user.username).remove()
@@ -189,7 +212,7 @@ export default {
       this.chat=[]
       for (let key in x) {
         this.chat.push({
-          id: Math.random().toString(36).substr(2, 27),
+          id: x[key].id,
           username: x[key].userName,
           msg: x[key].newChat
         });
@@ -213,7 +236,7 @@ export default {
           adjust: false
         });
       }
-      this.filoterUsers("todos");
+      this.filoterUsers(this.drop);
     },
   },
   mounted() {
