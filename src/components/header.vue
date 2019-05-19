@@ -14,7 +14,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div  v-if="this.userT == 'superAdmin'" class="collapse navbar-collapse" id="navbarColor01">
+      <div v-if="this.userT == 'superAdmin'" class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="home">Inicio</a>
@@ -25,14 +25,13 @@
           <li class="nav-item">
             <a class="nav-link" href="chat">Chat</a>
           </li>
-          
+
           <li class="nav-item">
             <a class="nav-link" href="admin">Administracion</a>
           </li>
-          
         </ul>
       </div>
-         <div  v-else class="collapse navbar-collapse" id="navbarColor01">
+      <div v-else class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="home">Inicio</a>
@@ -43,9 +42,6 @@
           <li class="nav-item">
             <a class="nav-link" href="chat">Chat</a>
           </li>
-          
-          
-          
         </ul>
       </div>
     </nav>
@@ -55,24 +51,22 @@
 import firebase from "firebase";
 export default {
   name: "headi",
-  ata: function() {
+  data: function() {
     return {
-        userT: ''
+      userT: ""
     };
   },
   methods: {
-      loadUser: function(users) {
+    loadUser: function(users) {
       for (let key in users) {
         if (users[key].userId == localStorage.getItem("userId")) {
           this.userT = users[key].userType;
         }
       }
-      
-    },
-
+    }
   },
- created(){
-      firebase
+  created() {
+    firebase
       .database()
       .ref("users/")
       .on("value", snapshot => this.loadUser(snapshot.val()));

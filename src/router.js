@@ -80,12 +80,13 @@ let router = new Router({
                 } else {
                   return next('/');
                 }
-              } else {
-                return next('/');
               }
             }
           })
+        } else {
+          return next('/');
         }
+
       }
     },
     {
