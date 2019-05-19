@@ -3,13 +3,8 @@
     <div class="anti">
       <div class="w-100 h-100">
         <div class="row w-100 antim h-100">
-          <div class="col-sm-2 h-100 cg">
-            <button
-              type="button "
-              style="margin-top:10px; "
-              @click="changeAdd"
-              class="btn btn-primary btn w-100"
-            >Añadir chat</button>
+          <div class="col-sm-2 h-100 cg" style="overflow-y: scroll; ">
+            <button type="button " style="margin-top:10px; " @click="changeAdd" class="btn btn-primary btn w-100">Añadir chat</button>
             <div v-if="this.add">
               <input v-model="newChatText" type="text" class="w-100" style="margin-top:10px;">
             </div>
@@ -21,20 +16,27 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-10">
-            <div
-              v-for="msg in this.chatShow"
-              v-bind:key="msg.id"
-              class="row"
-              style="padding-top: 15px"
-            >
+          <div class=" col-sm-10" style="height: 100%">
+          <div class="col-sm-12 " style="overflow-y: scroll; height: 90%">
+            <div v-for="msg in this.chatShow" v-bind:key="msg.id" class="row"  style="padding-top: 15px ; height: 100%">
               <div class="col-sm-12">
                 <div class="card border-primary mb-3">
                   <div class="card-header">{{msg.msg}}</div>
                 </div>
               </div>
             </div>
-          </div>
+            </div>
+            <div class="row" >
+              <div class="col-sm-9" >
+                <input v-model="msg" type="text" class="form-control" placeholder="¿ Que esta ocurriendo ?">
+              </div>
+              <div class="col-sm-3">
+                <button style="width: 100%"  type="button" class="btn btn-primary">Publicar</button>
+              </div>
+            </div>
+            </div>
+          
+          
         </div>
       </div>
     </div>
@@ -50,7 +52,8 @@ export default {
       newChatText: "",
       chat: [],
       username: "",
-      chatShow: []
+      chatShow: [],
+      msg: ''
     };
   },
   methods: {
