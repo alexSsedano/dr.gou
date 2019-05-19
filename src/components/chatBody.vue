@@ -15,13 +15,26 @@
             </div>
             <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
               <div class="col-sm-12">
-                <div class="card border-primary mb-3" @click="sMsg(msg)">
+                <div class="card border-primary mb-3" @click="conversacion(msg)">
                   <div class="card-header">{{msg.user1}}</div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-10"></div>
+          <div class="col-sm-10">
+            <div
+              v-for="msg in this.chatShow"
+              v-bind:key="msg.id"
+              class="row"
+              style="padding-top: 15px"
+            >
+              <div class="col-sm-12">
+                <div class="card border-primary mb-3">
+                  <div class="card-header">{{msg.msg}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -42,7 +55,6 @@ export default {
   },
   methods: {
     changeAdd: function() {
-      let name = localStorage.getItem("userName");
       if (this.add) {
         if (this.newChatText != "") {
           let id =
@@ -61,7 +73,7 @@ export default {
             .set({
               id: id,
               newChat: this.newChatText,
-              userName: name
+              userName: this.username
             });
         }
         this.add = false;
@@ -72,18 +84,26 @@ export default {
     loadUser: function(users) {
       for (let key in users) {
         if (users[key].userId == localStorage.getItem("userId")) {
-          this.userName = users[key].username;
+          this.username = users[key].username;
         }
       }
     },
-    showChat: function() {},
+    conversacion: function(x) {
+      this.chatShow = [];
+      for (let keo in x.mensages) {
+        this.chatShow.push({
+          msg: x.mensages[keo].msg,
+          user: x.mensages[keo].user
+        });
+      }
+    },
     loadChat: function(x) {
       this.chat = [];
       let arr = [];
       let mensage = [];
 
       for (let key in x) {
-        if (x[key].user1 == this.userName || x[key].user2 == this.userName) {
+        if (x[key].user1 == this.username || x[key].user2 == this.username) {
           mensage = [];
           for (let keo in x[key].msg) {
             mensage.push({
@@ -92,13 +112,21 @@ export default {
             });
           }
         }
-        arr.push({
-          user1: x[key].user1,
-          user2: x[key].user2,
-          mensages: mensage
-        })
+        if (x[key].user1 == this.username || x[key].user2 == this.username) {
+          if (x[key].user1 == this.userName) {
+            arr.push({
+              user1: x[key].user2,
+              mensages: mensage
+            });
+          } else {
+            arr.push({
+              user1: x[key].user1,
+              mensages: mensage
+            });
+          }
+        }
       }
-      this.chat=arr;
+      this.chat = arr;
     }
   },
   mounted() {

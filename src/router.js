@@ -39,19 +39,18 @@ let router = new Router({
               })
             }
             for (let i = 0; i <= registeredUsers.length; i++) {
-              
+
               if (id == registeredUsers[i].userId) {
                 if (registeredUsers[i].userType == "user" || registeredUsers[i].userType == "admin" || registeredUsers[i].userType == "superAdmin") {
                   return next();
                 } else {
                   return next('/');
                 }
-              }else{
-                return next('/');
+
               }
             }
           })
-        }else{
+        } else {
           return next('/');
         }
       }
@@ -61,7 +60,7 @@ let router = new Router({
       name: 'foro',
       component: Foro,
       beforeEnter: (to, from, next) => {
-        
+
         let id = localStorage.getItem('userId')
         if (id) {
           let a = firebase.database().ref('users/');
@@ -81,16 +80,12 @@ let router = new Router({
                 } else {
                   return next('/');
                 }
-              }else{
+              } else {
                 return next('/');
               }
-                
             }
           })
-        }else{
-          return next('/');
         }
-
       }
     },
     {
@@ -98,7 +93,7 @@ let router = new Router({
       name: 'admin',
       component: Admin,
       beforeEnter: (to, from, next) => {
-        
+
         let id = localStorage.getItem('userId')
         if (id) {
           let a = firebase.database().ref('users/');
@@ -113,18 +108,15 @@ let router = new Router({
             }
             for (let i = 0; i <= registeredUsers.length; i++) {
               if (id == registeredUsers[i].userId) {
-                if (registeredUsers[i].userType == "user" || registeredUsers[i].userType == "admin" || registeredUsers[i].userType == "superAdmin") {
+                if ( registeredUsers[i].userType == "superAdmin") {
                   return next();
                 } else {
                   return next('/');
                 }
-
-              }else{
-                return next('/');
               }
             }
           })
-        }else{
+        } else {
           return next('/');
         }
 
@@ -135,7 +127,7 @@ let router = new Router({
       name: 'chat',
       component: Chat,
       beforeEnter: (to, from, next) => {
-        
+
         let id = localStorage.getItem('userId')
         if (id) {
           let a = firebase.database().ref('users/');
@@ -155,13 +147,10 @@ let router = new Router({
                 } else {
                   return next('/');
                 }
-
-              }else{
-                return next('/');
               }
             }
           })
-        }else{
+        } else {
           return next('/');
         }
 
