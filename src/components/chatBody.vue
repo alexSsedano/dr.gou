@@ -18,7 +18,7 @@
           </div>
           <div class=" col-sm-10" style="height: 100%">
           <div class="col-sm-12 " style="overflow-y: scroll; height: 90%">
-            <div v-for="msg in this.chatShow" v-bind:key="msg.id" class="row"  style="padding-top: 15px ; height: 100%">
+            <div v-for="msg in this.chatShow" v-bind:key="msg.id" class="row"  style="padding-top: 15px ;">
               <div class="col-sm-12">
                 <div class="card border-primary mb-3">
                   <div class="card-header">{{msg.msg}}</div>
@@ -26,12 +26,12 @@
               </div>
             </div>
             </div>
-            <div class="row" >
+            <div class="row" style="padding:15px" >
               <div class="col-sm-9" >
                 <input v-model="msg" type="text" class="form-control" placeholder="¿ Que esta ocurriendo ?">
               </div>
               <div class="col-sm-3">
-                <button style="width: 100%"  type="button" class="btn btn-primary">Publicar</button>
+                <button style="width: 100%" @click="send()" type="button" class="btn btn-primary">Publicar</button>
               </div>
             </div>
             </div>
@@ -51,6 +51,7 @@ export default {
       add: false,
       newChatText: "",
       chat: [],
+      id: '',
       username: "",
       chatShow: [],
       msg: ''
@@ -91,8 +92,19 @@ export default {
         }
       }
     },
+    send: function(){
+        firebase
+        .database()
+        .ref("chat/" + this.id + "/msg")
+        .push({
+          user: this.username,
+          msg: this.msg,
+          
+        });
+    },
     conversacion: function(x) {
       this.chatShow = [];
+      this. id= x.id
       for (let keo in x.mensages) {
         this.chatShow.push({
           msg: x.mensages[keo].msg,
@@ -119,11 +131,13 @@ export default {
           if (x[key].user1 == this.userName) {
             arr.push({
               user1: x[key].user2,
+              id: x[key].id,
               mensages: mensage
             });
           } else {
             arr.push({
               user1: x[key].user1,
+              id: x[key].id,
               mensages: mensage
             });
           }

@@ -309,14 +309,16 @@ export default {
         .ref("chat/" + this.id)
         .set({
           user1: this.userN,
-          user2: this.selectedAdmin
+          user2: this.selectedAdmin,
+          id: this.id
         });
       firebase
         .database()
         .ref("chat/" + this.id + "/msg")
         .push({
           user: this.userN,
-          msg: this.msg
+          msg: this.msg,
+          
         });
       firebase
         .database()
