@@ -4,7 +4,12 @@
       <div class="w-100 h-100">
         <div class="row w-100 antim h-100">
           <div class="col-sm-2 h-100 cg" style="overflow-y: scroll; ">
-            <button type="button " style="margin-top:10px; " @click="changeAdd" class="btn btn-primary btn w-100">Añadir chat</button>
+            <button
+              type="button "
+              style="margin-top:10px; "
+              @click="changeAdd"
+              class="btn btn-primary btn w-100"
+            >Añadir chat</button>
             <div v-if="this.add">
               <input v-model="newChatText" type="text" class="w-100" style="margin-top:10px;">
             </div>
@@ -16,27 +21,40 @@
               </div>
             </div>
           </div>
-          <div class=" col-sm-10" style="height: 100%">
-          <div class="col-sm-12 " style="overflow-y: scroll; height: 90%">
-            <div v-for="msg in this.chatShow" v-bind:key="msg.id" class="row"  style="padding-top: 15px ;">
-              <div class="col-sm-12">
-                <div class="card border-primary mb-3">
-                  <div class="card-header">{{msg.msg}}</div>
+          <div class="col-sm-10" style="height: 100%">
+            <div class="col-sm-12" style="overflow-y: scroll; height: 90%" id="scroll">
+              <div
+                v-for="msg in this.chatShow"
+                v-bind:key="msg.id"
+                class="row"
+                style="padding-top: 15px ;"
+              >
+                <div class="col-sm-12">
+                  <div class="card border-primary mb-3">
+                    <div class="card-header">{{msg.msg}}</div>
+                  </div>
                 </div>
               </div>
             </div>
-            </div>
-            <div class="row" style="padding:15px" >
-              <div class="col-sm-9" >
-                <input v-model="msg" type="text" class="form-control" placeholder="¿ Que esta ocurriendo ?">
+            <div class="row" style="padding:15px">
+              <div class="col-sm-9">
+                <input
+                  v-model="msg"
+                  type="text"
+                  class="form-control"
+                  placeholder="¿ Que esta ocurriendo ?"
+                >
               </div>
               <div class="col-sm-3">
-                <button style="width: 100%" @click="send()" type="button" class="btn btn-primary">Publicar</button>
+                <button
+                  style="width: 100%"
+                  @click="send()"
+                  type="button"
+                  class="btn btn-primary"
+                >Publicar</button>
               </div>
             </div>
-            </div>
-          
-          
+          </div>
         </div>
       </div>
     </div>
@@ -51,10 +69,10 @@ export default {
       add: false,
       newChatText: "",
       chat: [],
-      id: '',
+      id: "",
       username: "",
       chatShow: [],
-      msg: ''
+      msg: ""
     };
   },
   methods: {
@@ -92,19 +110,28 @@ export default {
         }
       }
     },
-    send: function(){
-        firebase
+    send: function() {
+      firebase
         .database()
         .ref("chat/" + this.id + "/msg")
         .push({
           user: this.username,
-          msg: this.msg,
-          
+          msg: this.msg
         });
     },
     conversacion: function(x) {
       this.chatShow = [];
-      this. id= x.id
+      this.id = x.id;
+      for (let keo in x.mensages) {
+        this.chatShow.push({
+          msg: x.mensages[keo].msg,
+          user: x.mensages[keo].user
+        });
+      }
+    },
+    loadConversacion: function(x) {
+      this.chatShow = [];
+      this.id = x.id;
       for (let keo in x.mensages) {
         this.chatShow.push({
           msg: x.mensages[keo].msg,
@@ -113,6 +140,7 @@ export default {
       }
     },
     loadChat: function(x) {
+      this.chatShow = []
       this.chat = [];
       let arr = [];
       let mensage = [];
@@ -121,10 +149,22 @@ export default {
         if (x[key].user1 == this.username || x[key].user2 == this.username) {
           mensage = [];
           for (let keo in x[key].msg) {
-            mensage.push({
-              msg: x[key].msg[keo].msg,
-              user: x[key].msg[keo].user
-            });
+            if (this.id == x[key].id) {
+              mensage.push({
+                msg: x[key].msg[keo].msg,
+                user: x[key].msg[keo].user
+              });
+              
+              this.chatShow.push({
+                msg: x[key].msg[keo].msg,
+                user: x[key].msg[keo].user
+              });
+            } else {
+              mensage.push({
+                msg: x[key].msg[keo].msg,
+                user: x[key].msg[keo].user
+              });
+            }
           }
         }
         if (x[key].user1 == this.username || x[key].user2 == this.username) {
@@ -144,6 +184,9 @@ export default {
         }
       }
       this.chat = arr;
+      var elmnt = document.getElementById("scroll");
+      
+      elmnt.scrollIntoView(false)
     }
   },
   mounted() {
