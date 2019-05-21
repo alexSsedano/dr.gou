@@ -5,18 +5,8 @@
         <h2 class="textcolour marginTop">Bienvenido a Dr.gou</h2>
         <br>
         <h5 class="textcolour">Somos una organizacion sin animo de lucro creada para ayudarte.</h5>
-        <button
-          v-if="!register"
-          type="button"
-          class="btn btn-outline-primary marginBot buttonColorWhite"
-          v-on:click="registerButton()"
-        >Inicia sesion</button>
-        <button
-          v-if="register"
-          type="button"
-          class="btn btn-outline-primary marginBot buttonColorWhite"
-          v-on:click="registerButton()"
-        >Registrate</button>
+        <button v-if="!register" type="button" class="btn btn-outline-primary marginBot buttonColorWhite" v-on:click="registerButton()">Inicia sesion</button>
+        <button v-if="register" type="button" class="btn btn-outline-primary marginBot buttonColorWhite" v-on:click="registerButton()">Registrate</button>
       </div>
 
       <div class="col-sm-4 backgroundWhite" v-if="register">
@@ -136,6 +126,7 @@ export default {
   },
   methods: {
     signUp: function() {
+      if(this.registerUserName!='' && this.registerPassword!= '' && this.registerEmail!=''){
       this.coincidencesName = 0;
       this.coincidencesEmail = 0;
       if (this.registerPassword == this.registerPassword2) {
@@ -183,6 +174,15 @@ export default {
           position: "top left"
         });
       }
+      }else{
+        this.$notify({
+          group: "foo",
+          title: "Registro invalido.",
+          type: "error",
+          position: "top left"
+        });
+
+      }
     },
 
     removeUserId() {
@@ -217,7 +217,7 @@ export default {
 
     login: function() {
       let redirect = false;
-      if(this.registerUserName!='' && this.registerPassword!= '' && this.registerEmail!=''){
+      
         for (let i = 0; i < this.registeredUsers.length; i++) {
           if (
             this.loginUser == this.registeredUsers[i].username &&
@@ -240,7 +240,7 @@ export default {
             i = this.registeredUsers.length - 1;
           }
         }
-      }
+      
       if (redirect) {
         this.$router.push("Home");
       } else {
@@ -274,10 +274,7 @@ export default {
     window.addEventListener("onunload", this.removeUserId);
   },
   mounted() {
-    firebase
-      .database()
-      .ref("users/")
-      .on("value", snapshots => this.loadUsers(snapshots.val()));
+    firebase.database().ref("users/").on("value", snapshots => this.loadUsers(snapshots.val()));
   }
 };
 </script>
