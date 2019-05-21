@@ -68,7 +68,7 @@
           </div>
         </div>
         <div v-for="user in this.usersFiltered" v-bind:key="user.id" class="row" style="padding-top: 15px">
-          <div v-if="user.userType == 'user'" class="col-sm-12 pad">
+          <div v-if="user.userType != 'admin' || user.userType != 'superAdmin' " class="col-sm-12 pad">
             <transition mode="out-in" name="custom-classes-transition" enter-active-class="animated slideInLeft " leave-active-class=" animated slideOutLeft">
               <div v-if="user.show" key="1" class="card border-primary mb-3" @click="clickUser(user) " style="margin:15px">
                 <div class="card-header">{{user.username}}</div>
