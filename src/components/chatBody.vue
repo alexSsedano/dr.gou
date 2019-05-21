@@ -62,6 +62,8 @@
 </template>
 <script>
 import firebase from "firebase";
+import JQuery from 'jquery'
+
 export default {
   name: "chatBody",
   data: function() {
@@ -128,6 +130,8 @@ export default {
           user: x.mensages[keo].user
         });
       }
+      let $ = JQuery
+      $("#scroll").animate({ scrollTop: 9999999 }, 1000);
     },
     loadConversacion: function(x) {
       this.chatShow = [];
@@ -172,22 +176,23 @@ export default {
             arr.push({
               user1: x[key].user2,
               id: x[key].id,
-              mensages: mensage
+              mensages: mensage.reverse()
             });
           } else {
             arr.push({
               user1: x[key].user1,
               id: x[key].id,
-              mensages: mensage
+              mensages: mensage.reverse()
             });
           }
         }
       }
+
       this.chat = arr;
-      var elmnt = document.getElementById("scroll");
-      
-      elmnt.scrollIntoView(false)
-    }
+      let $ = JQuery
+      $("#scroll").animate({ scrollTop: 99999999999999 }, 1000);
+    },
+    
   },
   mounted() {
     firebase

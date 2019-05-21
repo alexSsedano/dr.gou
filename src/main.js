@@ -3,10 +3,12 @@ import firebase from 'firebase'
 import App from './App.vue'
 import router from './router'
 import Notifications from 'vue-notification'
+
 import('./css/style.css')
 
 Vue.use(Notifications)
 Vue.config.productionTip = false;
+
 
 
   // Initialize Firebase
