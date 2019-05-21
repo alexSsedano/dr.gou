@@ -135,12 +135,17 @@
                 <transition mode="out-in" name="custom-classes-transition" enter-active-class="animated fadeInDown " leave-active-class=" animated fadeOutUp" >
                   <div v-if="user.adjust" style="margin-top:15px; margin-bottom:15px">
                     <div class="row mar justify-content-center" style="width:100%;">
-                      <div class="col-sm-6">
+                      <div class="col-sm-4">
                         <button type="button" @click="adminToUser(user)" class="btn btn-success" style="width:100%;">
                           <i class="fas fa-user-alt"></i>
                         </button>
                       </div>
-                      <div class="col-sm-6">
+                      <div class="col-sm-4">
+                        <button type="button" @click="adminToSuperUser(user)" class="btn btn-success" style="width:100%;">
+                         <i class="fas fa-crown"></i>
+                        </button>
+                      </div>
+                      <div class="col-sm-4">
                         <button type="button" @click="deleteUser(user)" class="btn btn-danger" style="width:100%;">
                           <i class="fas fa-user-times"></i>
                         </button>
@@ -197,6 +202,16 @@ export default {
     adminToUser: function(user) {
       firebase.database().ref("users/" + user.username).set({
           userType: "user",
+          email: user.email,
+          userId: user.userId,
+          username: user.username,
+          password: user.password
+        });
+      this.filoterUsers(this.drop);
+    },
+    adminToSuperUser: function(user) {
+      firebase.database().ref("users/" + user.username).set({
+          userType: "superUser",
           email: user.email,
           userId: user.userId,
           username: user.username,
