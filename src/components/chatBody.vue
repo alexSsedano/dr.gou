@@ -26,25 +26,25 @@
               <div
                 v-for="msg in this.chatShow"
                 v-bind:key="msg.id"
-                class="row"
-                style="padding-top: 15px ;"
+                
+                style="padding-top: 15px ;" 
               >
-              <div v-if="msg.align" class="w-100">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-10">
+              <div v-if="msg.align == true" class="w-100 row justify-content-end">
+                
+                <div class="col-sm-10 align-self-end">
                   <div class="card border-primary mb-3">
                     <div class="card-header">{{msg.msg}}</div>
                   </div>
                 </div>
               </div>
-              <div v-else class="w-100">
+              <div v-else class="w-100 row ">
                 
                 <div class="col-sm-10">
-                  <div class="card border-secondary mb-3">
+                  <div class="card border-success mb-3">
                     <div class="card-header">{{msg.msg}}</div>
                   </div>
                 </div>
-                <div class="col-sm-2"></div>
+                
 
               </div>
               </div>
@@ -138,25 +138,27 @@ export default {
       this.chatShow = [];
       this.id = x.id;
       for (let keo in x.mensages) {
+        if(this.username == x.mensages[keo].user){
         this.chatShow.push({
           msg: x.mensages[keo].msg,
-          user: x.mensages[keo].user
+          user: x.mensages[keo].user,
+          align: true
+
         });
-      }
-      let $ = JQuery
-      $("#scroll").animate({ scrollTop: 9999999 }, 1000);
-    },
-    loadConversacion: function(x) {
-      this.chatShow = [];
-      this.id = x.id;
-      for (let keo in x.mensages) {
+      }else{
         this.chatShow.push({
           msg: x.mensages[keo].msg,
           user: x.mensages[keo].user,
           align: false
+
         });
+
       }
+      }
+      let $ = JQuery
+      $("#scroll").animate({ scrollTop: 9999999 }, 1000);
     },
+    
     loadChat: function(x) {
       this.chatShow = []
       this.chat = [];
@@ -168,6 +170,8 @@ export default {
           mensage = [];
           for (let keo in x[key].msg) {
             if (this.id == x[key].id) {
+              if(this.username == x[key].msg[keo].user ){
+                console.log('i')
               mensage.push({
                 msg: x[key].msg[keo].msg,
                 user: x[key].msg[keo].user,
@@ -179,18 +183,41 @@ export default {
                 user: x[key].msg[keo].user,
                 align: true
               });
+            }else{
+              console.log('d')
+              mensage.push({
+                msg: x[key].msg[keo].msg,
+                user: x[key].msg[keo].user,
+                align: false
+              });
+              
+              this.chatShow.push({
+                msg: x[key].msg[keo].msg,
+                user: x[key].msg[keo].user,
+                align: false
+              });
+
+            }
             } else {
+              if(this.username == x[key].msg[keo].user ){
               mensage.push({
                 msg: x[key].msg[keo].msg,
                 user: x[key].msg[keo].user,
                 align: true
               });
+              }else{
+                 mensage.push({
+                msg: x[key].msg[keo].msg,
+                user: x[key].msg[keo].user,
+                align: false
+              });
+              }
             }
           }
         }
         if (x[key].user1 == this.username || x[key].user2 == this.username) {
           if (x[key].user1 == this.username) {
-            console.log(x[key].user1)
+            
             arr.push({
               user1: x[key].user2,
               id: x[key].id,
@@ -198,7 +225,7 @@ export default {
               
             });
           } else {
-            console.log(x[key].user2)
+            
             arr.push({
               user1: x[key].user1,
               id: x[key].id,
@@ -206,9 +233,11 @@ export default {
               
             });
           }
+          
         }
       }
       this.chat = arr;
+ 
       let $ = JQuery
       $("#scroll").animate({ scrollTop: 99999999999999 }, 1000);
     },
@@ -222,7 +251,7 @@ export default {
       .database()
       .ref("chat/")
       .on("value", snapshot => this.loadChat(snapshot.val()));
-      console.log(this.username)
+      
   }
 };
 </script>
