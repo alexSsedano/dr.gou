@@ -35,7 +35,20 @@
             <h2 class="text-center" style="padding: 15px">{{this.selectedAdmin}}</h2>
           </div>
         </div>
-        <div class="col-sm-12">
+        <div class="row "  style="padding: 15px">
+          <div class="col-sm-2 center-block">
+          </div><div class="col-sm-2 center-block">
+            <button type="button" @click="deleteMsg()" class="btn btn-danger center-block" style="width:100%;"><i class="fas fa-times"></i></button>
+          </div><div class="col-sm-2 center-block">
+          </div><div class="col-sm-2 center-block">
+          </div>
+          <div class="col-sm-2 center-block">
+            <button type="button" @click="deleteSelectedAdmin()" class="btn btn-danger center-block" style="width:100%;"><i class="fas fa-times"></i> </button>
+          </div>
+          <div class="col-sm-2 center-block">
+          </div>
+        </div>
+        <div class="row " style="padding: 15px">
           <div class="col-sm-12">
             <button type="button" @click="acept()" class="btn btn-success" style="width:100%;">
               <i class="fas fa-check"></i>
@@ -282,6 +295,18 @@ export default {
         });
       this.filoterUsers(this.drop);
     },
+    deleteMsg: function(){
+      this.id = '';
+      this.userN = '';
+      this.msg = '';
+
+    },
+    deleteSelectedAdmin: function(){
+    this.selectedAdmin = '';
+
+    },
+
+    
     userToAdmin: function(user) {
       firebase
         .database()

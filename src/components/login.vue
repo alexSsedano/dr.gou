@@ -5,18 +5,15 @@
         <h2 class="textcolour marginTop">Bienvenido a Dr.gou</h2>
         <br>
         <h5 class="textcolour">Somos una organizacion sin animo de lucro creada para ayudarte.</h5>
-        <button
-          type="button"
-          class="btn btn-outline-primary marginBot buttonColorWhite"
-          v-on:click="registerButton()"
-        >Registrate</button>
+        <button  v-if="!register" type="button" class="btn btn-outline-primary marginBot buttonColorWhite" v-on:click="registerButton()">Inicia sesion</button>
+        <button  v-if="register" type="button" class="btn btn-outline-primary marginBot buttonColorWhite" v-on:click="registerButton()">Registrate</button>
       </div>
 
       <div class="col-sm-4 backgroundWhite" v-if="register">
         <form>
           <fieldset>
             <div class="form-group marginTop">
-              <label for="exampleInputEmail1">Correo electronico</label>
+              <label for="exampleInputEmail1">Nombre de usuario</label>
               <input
                 v-model="loginUser"
                 type="email"
@@ -25,10 +22,7 @@
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
               >
-              <small
-                id="emailHelp"
-                class="form-text text-muted"
-              >No comparetiremos tu correo con nadie.</small>
+              
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Contraseña</label>
@@ -40,7 +34,7 @@
                 placeholder="Password"
               >
             </div>
-            <button @click="login" type="button" class="btn btn-outline-primary marginBot">Login</button>
+            <button @click="login" type="button" class="btn btn-outline-primary marginBot">Iniciar sesion</button>
           </fieldset>
         </form>
       </div>
@@ -96,7 +90,7 @@
                 placeholder="Password"
               >
             </div>
-            <button @click="signUp" type="button" class="btn btn-outline-primary marginBot">Register</button>
+            <button @click="signUp" type="button" class="btn btn-outline-primary marginBot">Registrar</button>
           </fieldset>
         </form>
       </div>
