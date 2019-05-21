@@ -29,11 +29,24 @@
                 class="row"
                 style="padding-top: 15px ;"
               >
-                <div class="col-sm-12">
+              <div v-if="msg.align" class="w-100">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
                   <div class="card border-primary mb-3">
                     <div class="card-header">{{msg.msg}}</div>
                   </div>
                 </div>
+              </div>
+              <div v-else class="w-100">
+                
+                <div class="col-sm-10">
+                  <div class="card border-secondary mb-3">
+                    <div class="card-header">{{msg.msg}}</div>
+                  </div>
+                </div>
+                <div class="col-sm-2"></div>
+
+              </div>
               </div>
             </div>
             <div class="row" style="padding:15px">
@@ -139,7 +152,8 @@ export default {
       for (let keo in x.mensages) {
         this.chatShow.push({
           msg: x.mensages[keo].msg,
-          user: x.mensages[keo].user
+          user: x.mensages[keo].user,
+          align: false
         });
       }
     },
@@ -156,43 +170,48 @@ export default {
             if (this.id == x[key].id) {
               mensage.push({
                 msg: x[key].msg[keo].msg,
-                user: x[key].msg[keo].user
+                user: x[key].msg[keo].user,
+                align: true
               });
               
               this.chatShow.push({
                 msg: x[key].msg[keo].msg,
-                user: x[key].msg[keo].user
+                user: x[key].msg[keo].user,
+                align: true
               });
             } else {
               mensage.push({
                 msg: x[key].msg[keo].msg,
-                user: x[key].msg[keo].user
+                user: x[key].msg[keo].user,
+                align: true
               });
             }
           }
         }
         if (x[key].user1 == this.username || x[key].user2 == this.username) {
-          if (x[key].user1 == this.userName) {
+          if (x[key].user1 == this.username) {
+            console.log(x[key].user1)
             arr.push({
               user1: x[key].user2,
               id: x[key].id,
-              mensages: mensage.reverse()
+              mensages: mensage.reverse(),
+              
             });
           } else {
+            console.log(x[key].user2)
             arr.push({
               user1: x[key].user1,
               id: x[key].id,
-              mensages: mensage.reverse()
+              mensages: mensage.reverse(),
+              
             });
           }
         }
       }
-
       this.chat = arr;
       let $ = JQuery
       $("#scroll").animate({ scrollTop: 99999999999999 }, 1000);
     },
-    
   },
   mounted() {
     firebase
@@ -203,6 +222,7 @@ export default {
       .database()
       .ref("chat/")
       .on("value", snapshot => this.loadChat(snapshot.val()));
+      console.log(this.username)
   }
 };
 </script>
