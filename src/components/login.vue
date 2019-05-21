@@ -5,8 +5,18 @@
         <h2 class="textcolour marginTop">Bienvenido a Dr.gou</h2>
         <br>
         <h5 class="textcolour">Somos una organizacion sin animo de lucro creada para ayudarte.</h5>
-        <button  v-if="!register" type="button" class="btn btn-outline-primary marginBot buttonColorWhite" v-on:click="registerButton()">Inicia sesion</button>
-        <button  v-if="register" type="button" class="btn btn-outline-primary marginBot buttonColorWhite" v-on:click="registerButton()">Registrate</button>
+        <button
+          v-if="!register"
+          type="button"
+          class="btn btn-outline-primary marginBot buttonColorWhite"
+          v-on:click="registerButton()"
+        >Inicia sesion</button>
+        <button
+          v-if="register"
+          type="button"
+          class="btn btn-outline-primary marginBot buttonColorWhite"
+          v-on:click="registerButton()"
+        >Registrate</button>
       </div>
 
       <div class="col-sm-4 backgroundWhite" v-if="register">
@@ -22,7 +32,6 @@
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
               >
-              
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Contraseña</label>
@@ -34,7 +43,11 @@
                 placeholder="Password"
               >
             </div>
-            <button @click="login" type="button" class="btn btn-outline-primary marginBot">Iniciar sesion</button>
+            <button
+              @click="login"
+              type="button"
+              class="btn btn-outline-primary marginBot"
+            >Iniciar sesion</button>
           </fieldset>
         </form>
       </div>
@@ -90,7 +103,11 @@
                 placeholder="Password"
               >
             </div>
-            <button @click="signUp" type="button" class="btn btn-outline-primary marginBot">Registrar</button>
+            <button
+              @click="signUp"
+              type="button"
+              class="btn btn-outline-primary marginBot"
+            >Registrar</button>
           </fieldset>
         </form>
       </div>
@@ -147,19 +164,16 @@ export default {
             position: "top left"
           });
         } else {
-          firebase
-            .database()
-            .ref("users/" + this.registerUserName)
-            .set({
-              username: this.registerUserName,
-              email: this.registerEmail,
-              password: this.registerPassword,
-              userType: "user",
-              userId: ""
-            })
-            .then(() => {
-              this.registerSuccess(), (this.register = true);
-            });
+          firebase.database().ref("users/" + this.registerUserName).set({
+            username: this.registerUserName,
+            email: this.registerEmail,
+            password: this.registerPassword,
+            userType: "user",
+            userId: ""
+          })
+          .then(() => {
+            this.registerSuccess(), (this.register = true);
+          });
         }
       } else {
         this.$notify({
@@ -174,19 +188,15 @@ export default {
     removeUserId() {
       for (let i = 0; i < this.registeredUsers.length; i++) {
         let id = localStorage.getItem("userId");
-
         if (id == this.registeredUsers[i].userId) {
           let path = "users/" + this.registeredUsers[i].username;
-          firebase
-            .database()
-            .ref(path)
-            .set({
-              username: this.registeredUsers[i].username,
-              email: this.registeredUsers[i].email,
-              password: this.registeredUsers[i].password,
-              userType: "user",
-              userId: ""
-            });
+          firebase.database().ref(path).set({
+            username: this.registeredUsers[i].username,
+            email: this.registeredUsers[i].email,
+            password: this.registeredUsers[i].password,
+            userType: "user",
+            userId: ""
+          });
         }
       }
       localStorage.removeItem("userId");
@@ -207,37 +217,31 @@ export default {
 
     login: function() {
       let redirect = false;
-      for (let i = 0; i < this.registeredUsers.length; i++) {
-        
-        if (
-          this.loginUser == this.registeredUsers[i].username &&
-          this.loginPassword == this.registeredUsers[i].password
-        ) {
-          
-          this.iduniq = function() {
-            return Math.random()
-              .toString(36)
-              .substr(2, 27);
-          };
-          let path = "users/" + this.loginUser;
-          let userId = "" + this.iduniq() + this.iduniq() + this.iduniq();
-          localStorage.setItem("userId", userId);
-          firebase
-            .database()
-            .ref(path)
-            .set({
-              username: this.registeredUsers[i].username,
-              email: this.registeredUsers[i].email,
-              password: this.registeredUsers[i].password,
-              userType: this.registeredUsers[i].userType,
-              userId: userId
-            });
-          redirect = true;
-          i = this.registeredUsers.length - 1;
+      if(this.registerUserName!='' && this.registerPassword!= '' && this.registerEmail!=''){
+        for (let i = 0; i < this.registeredUsers.length; i++) {
+          if (
+            this.loginUser == this.registeredUsers[i].username &&
+            this.loginPassword == this.registeredUsers[i].password
+          ) {
+            this.iduniq = function() {
+              return Math.random().toString(36).substr(2, 27);
+            };
+            let path = "users/" + this.loginUser;
+            let userId = "" + this.iduniq() + this.iduniq() + this.iduniq();
+            localStorage.setItem("userId", userId);
+            firebase.database().ref(path).set({
+                username: this.registeredUsers[i].username,
+                email: this.registeredUsers[i].email,
+                password: this.registeredUsers[i].password,
+                userType: this.registeredUsers[i].userType,
+                userId: userId
+              });
+            redirect = true;
+            i = this.registeredUsers.length - 1;
+          }
         }
       }
       if (redirect) {
-       
         this.$router.push("Home");
       } else {
         this.$notify({
