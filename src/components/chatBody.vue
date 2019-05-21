@@ -171,7 +171,7 @@ export default {
           for (let keo in x[key].msg) {
             if (this.id == x[key].id) {
               if(this.username == x[key].msg[keo].user ){
-                console.log('i')
+                
               mensage.push({
                 msg: x[key].msg[keo].msg,
                 user: x[key].msg[keo].user,
@@ -184,7 +184,7 @@ export default {
                 align: true
               });
             }else{
-              console.log('d')
+           
               mensage.push({
                 msg: x[key].msg[keo].msg,
                 user: x[key].msg[keo].user,
@@ -221,7 +221,7 @@ export default {
             arr.push({
               user1: x[key].user2,
               id: x[key].id,
-              mensages: mensage.reverse(),
+              mensages: mensage,
               
             });
           } else {
@@ -229,7 +229,7 @@ export default {
             arr.push({
               user1: x[key].user1,
               id: x[key].id,
-              mensages: mensage.reverse(),
+              mensages: mensage,
               
             });
           }
