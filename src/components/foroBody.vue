@@ -7,7 +7,7 @@
              <textarea class="form-control" v-model="msg" placeholder="¿ Que esta ocurriendo ?" id="exampleTextarea" rows="1"></textarea>
           </div>
           <div  class="col-sm-2">
-            <button style="width: 100%" @click="addPost" type="button" class="btn btn-primary">Publicar</button>
+            <button style="width: 100%" @click="addPost" type="button" class="btn btn-primary">Publihyjghjcar</button>
           </div>
         </div>
         <div v-for="msg in this.foro" v-bind:key="msg.id" class="row justify-content-center">
