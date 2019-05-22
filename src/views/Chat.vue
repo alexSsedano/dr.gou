@@ -1,9 +1,9 @@
 <template>
-  <div class="chat" style="height: 80%" >
+  <div class="chat" style="height: 100%" >
     
     <Header ></Header>
     <ChatBody class="h"></ChatBody>
-    <Footer ></Footer>
+    <Footer  ></Footer>
     <notifications group="foo" />
     <router-view></router-view>
     </div>

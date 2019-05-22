@@ -1,6 +1,6 @@
 <template>
-<footer id="myFooter">
-        <div class="container">
+<footer id="myFooter" style="height: 100%">
+        <div class="container" style="height: 100%">
             <div class="row">
                 <div class="col-sm-3">
                     <h5>Get started</h5>

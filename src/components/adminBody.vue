@@ -1,5 +1,5 @@
 <template >
-  <div class="chatBody anti">
+  <div class="chatBody anti h-100">
     <div class="row mar h-100">
       <div class="col-sm-3 h-100 cg" style="overflow-y: scroll; ">
         <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
