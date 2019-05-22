@@ -95,11 +95,13 @@ export default {
       }
     },
     send: function() {
+      if(this.msg != ''){
       firebase.database().ref("chat/" + this.id + "/msg").push({
         user: this.username,
         msg: this.msg
       });
       this.msg = []
+      }
     },
     conversacion: function(x) {
       this.chatShow = [];
