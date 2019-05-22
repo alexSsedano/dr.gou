@@ -14,7 +14,7 @@
           <div style="padding-top: 16px" class="col-sm-11">
             <div class="card border-secondary mb-3" >
               <div class="card-header">
-                <div class="row justify-content-between">
+                <div class="row justify-content-around">
                   <div class="col-sm-2">
                     <p>{{msg.username}}</p>
                   </div>
