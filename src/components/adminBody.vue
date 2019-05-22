@@ -6,7 +6,16 @@
         <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
           <div class="col-sm-12 h-100">
             <div class="card border-primary mb-3" @click="sMsg(msg)">
-              <div class="card-header">{{msg.username}}</div>
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-sm-6">
+                  <p>{{msg.username}} </p>
+                  </div>
+                  <div class="col-sm-6 d-flex align-items-end flex-column">
+                  <button @click="deleteNewMsg(msg)"><i class="fas fa-times"></i></button>
+                  </div>
+                </div>
+              </div>
               <div class="card-body">
                 <p class="card-text">{{msg.msg}}</p>
               </div>
@@ -198,6 +207,11 @@ export default {
           }
         }
       }
+    },
+    deleteNewMsg(x){
+      if (confirm("¿ Esta seguro de que desea eliminar este mensaje ?")) {
+      firebase.database().ref("newChat/" + x.id).remove();
+    }
     },
     adjust: function(user) {
       if (user.adjust) {
