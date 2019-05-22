@@ -1,6 +1,6 @@
 <template>
   <div class="headi">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary " style="margin-bottom: 0px">
       <a class="navbar-brand" href="home">Dr.gou</a>
       <button
         class="navbar-toggler"
