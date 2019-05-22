@@ -53,17 +53,17 @@
             </div>
         </div>
         <div class="container">
-            <div class="row  " style="margin-top: 100px">
+            <div class="row" style="margin-top: 100px">
                 <div class="  col-sm-4 ">
-                    <h2 class="text-center" style="margin: 10px"><strong>¿ Cómo surge DR.GOU ?</strong></h2>
+                    <h2 class="text-center" style="margin: 10px"><strong>¿Cómo surge DR.GOU?</strong></h2>
                     <p class="text-center" style="margin: 10px">Este grupo nace para cubrir las demandas y necesidades del alumnado en los diferentes cursos de la carrera. Trata de facilitar el proceso de adaptación de los estudiantes, al igual que crear una comunidad integrada, donde haya un aprendizaje mutuo entre las distintas facultades de la UMA.</p>
                 </div>
                 <div class="  col-sm-4 ">
-                    <h2 class="text-center" style="margin: 10px"><strong>¿ A quién atiende DR.GOU ?</strong></h2>
+                    <h2 class="text-center" style="margin: 10px"><strong>¿A quién atiende DR.GOU?</strong></h2>
                     <p class="text-center" style="margin: 10px">Atiende a aquellos estudiantes que necesiten orientación en sus primeros cursos de carrera,  que no estén seguros de qué carrera realizar, los que tengan problemas de salud y necesiten recursos del profesorado, etc. En definitiva, DR. GOU actúa como mediador en los problemas, ayudando a resolverlos desde la facultad de origen o poniendo al alumno en contacto con el GOU de otras facultades si lo necesitara. </p>
                 </div>
                 <div class="  col-sm-4 ">
-                    <h2 class="text-center" style="margin: 10px"><strong>¿ Qué es DR.GOU ?</strong></h2>
+                    <h2 class="text-center" style="margin: 10px"><strong>¿Qué es DR.GOU?</strong></h2>
                     <p class="text-center" style="margin: 10px">Es un grupo de orientación universitaria formado por un equipo de profesores/as, voluntarios/as y alumnos/as de diversas facultades de la Universidad de Málaga. Todas trabajan con un objetivo en común, ayudar al alumno. Para ello, se reúnen periódicamente con el fin de formarse mejorando la atención que prestan.</p>
                 </div>
                 

@@ -14,30 +14,13 @@
           <fieldset>
             <div class="form-group marginTop">
               <label for="exampleInputEmail1">Nombre de usuario</label>
-              <input
-                v-model="loginUser"
-                type="email"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
-              >
+              <input v-model="loginUser"  @keyup.enter="login" type="user" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombre de usuario">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Contraseña</label>
-              <input
-                v-model="loginPassword"
-                type="password"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
-              >
+              <input v-model="loginPassword"  @keyup.enter="login" type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
             </div>
-            <button
-              @click="login"
-              type="button"
-              class="btn btn-outline-primary marginBot"
-            >Iniciar sesion</button>
+            <button  @click="login" type="button" class="btn btn-outline-primary marginBot">Iniciar sesion</button>
           </fieldset>
         </form>
       </div>
@@ -47,57 +30,23 @@
           <fieldset>
             <div class="form-group marginTop">
               <label for="exampleInputEmail1">Correo electronico</label>
-              <input
-                v-model="registerEmail"
-                type="email"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
-              >
-              <small
-                id="emailHelp"
-                class="form-text text-muted"
-              >No comparetiremos tu correo con nadie.</small>
+              <input v-model="registerEmail" @keyup.enter="signUp" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted" >No comparetiremos tu correo con nadie.</small>
             </div>
             <div class="form-group marginTop">
               <label for="exampleInputEmail1">Nombre de usuario</label>
-              <input
-                v-model="registerUserName"
-                type="text"
-                class="form-control"
-                placeholder="Nombre usuario"
-              >
-              <small
-                id="emailHelp"
-                class="form-text text-muted"
-              >No comparetiremos tu correo con nadie.</small>
+              <input v-model="registerUserName" @keyup.enter="signUp" type="text" class="form-control" placeholder="Nombre usuario">
+              <small id="emailHelp"  class="form-text text-muted">No comparetiremos tu correo con nadie.</small>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Introduce tu contraseña</label>
-              <input
-                v-model="registerPassword"
-                type="password"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
-              >
+              <input v-model="registerPassword" @keyup.enter="signUp" type="password" class="form-control"  placeholder="Password">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Vuelve a introducir tu contraseña</label>
-              <input
-                v-model="registerPassword2"
-                type="password"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
-              >
+              <input v-model="registerPassword2" @keyup.enter="signUp" type="password" class="form-control"   placeholder="Password">
             </div>
-            <button
-              @click="signUp"
-              type="button"
-              class="btn btn-outline-primary marginBot"
-            >Registrar</button>
+            <button @keyup.enter="signUp" @click="signUp" type="button" class="btn btn-outline-primary marginBot">Registrar</button>
           </fieldset>
         </form>
       </div>
@@ -181,8 +130,11 @@ export default {
           type: "error",
           position: "top left"
         });
-
       }
+    },
+     
+    lor: function(){
+      console.log('.')
     },
 
     removeUserId() {
@@ -246,7 +198,7 @@ export default {
       } else {
         this.$notify({
           group: "foo",
-          title: "Nmbre o contraseña incorrecto",
+          title: "Nombre o contraseña incorrectos",
           type: "error",
           position: "top left"
         });
