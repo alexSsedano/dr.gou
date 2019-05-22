@@ -84,7 +84,7 @@
                     </div>
                     <div class="col-sm-6">
                       <button type="button" @click="clickUser(user)" class="btn btn-primary" style="width:100%;">
-                        <i class="fas fa-undo-alt"></i>
+                        <i class="fas fa-arrow-left"></i>
                       </button>
                     </div>
                   </div>
@@ -133,7 +133,7 @@
                     </div>
                     <div class="col-sm-4">
                       <button type="button"  @click="clickUser(user)" class="btn btn-primary" style="width:100%;">
-                        <i class="fas fa-undo-alt"></i>
+                        <i class="fas fa-arrow-left"></i>
                       </button>
                     </div>
                   </div>

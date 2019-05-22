@@ -21,6 +21,9 @@
                   <div class="col-sm-2">
                     <p style="text-align:center">{{msg.date}}</p>
                   </div>
+                  <div class="col-sm-2">
+                    <i class="fas fa-times"></i>
+                  </div>
                 </div>
               </div>
               <div class="card-body">
@@ -52,7 +55,9 @@ export default {
       firebase.database().ref("post/").push({
           date: today.toLocaleDateString("es-ES") + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(),
           userName: this.userName,
-          msg: this.msg
+          msg: this.msg,
+          id :Math.random().toString(36).substr(2, 27) +Math.random().toString(36).substr(2, 27) +Math.random().toString(36).substr(2, 27)
+
         });
       this.msg = "";
     },
