@@ -1,7 +1,7 @@
 <template>
-  <div id="login">
+  <div id="login " style="height:10%">
     
-        <login></login>
+        <login class="h-100"></login>
         <notifications group="foo" />
         <router-view></router-view>
         

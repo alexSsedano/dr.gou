@@ -1,5 +1,5 @@
 <template>
-  <div class="container loginPosition">
+  <div class="container loginPosition ">
     <div class="row justify-content-between">
       <div class="col-sm-4">
         <h2 class="textcolour marginTop">Bienvenido a Dr.gou</h2>
