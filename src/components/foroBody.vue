@@ -4,7 +4,7 @@
       <div class="col-sm-12">
         <div class="row justify-content-center" style="padding-top: 16px">
           <div class="col-sm-7">
-             <textarea class="form-control" v-model="msg"   placeholder="¿ Que esta ocurriendo ?" id="exampleTextarea" rows="1"></textarea>
+             <textarea class="form-control" v-model="msg" placeholder="¿ Que esta ocurriendo ?" id="exampleTextarea" rows="1"></textarea>
           </div>
           <div  class="col-sm-2">
             <button style="width: 100%" @click="addPost" type="button" class="btn btn-primary">Publicar</button>
@@ -22,7 +22,7 @@
                     <p style="text-align:center">{{msg.date}}</p>
                   </div>
                   <div class="col-sm-2">
-                    <i class="fas fa-times"></i>
+                    <button><i class="fas fa-times"></i></button>
                   </div>
                 </div>
               </div>
