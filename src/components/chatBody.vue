@@ -1,8 +1,8 @@
 <template >
-  <div class="chatBody">
-    <div class="anti">
+  <div class="chatBody ">
+    <div class="anti h-100">
       <div class="w-100 h-100">
-        <div class="row w-100 antim h-100">
+        <div class="row w-100 antim " h>
           <div class="col-sm-2 h-100 cg" style="overflow-y: scroll; ">
             <button
               type="button "
@@ -258,7 +258,7 @@ export default {
 </script>
 <style>
 .anti {
-  height: 86vh;
+  
   background-color: white;
 }
 .antim {

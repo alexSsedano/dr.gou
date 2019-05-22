@@ -1,13 +1,13 @@
 <template>
-  <div class="chat"  >
-    <div >
-    <Header></Header>
-    <ChatBody ></ChatBody>
+  <div class="chat" style="height: 80%" >
+    
+    <Header ></Header>
+    <ChatBody class="h"></ChatBody>
     <Footer ></Footer>
     <notifications group="foo" />
     <router-view></router-view>
     </div>
-  </div>
+  
 </template>
 
 <script>
@@ -28,6 +28,10 @@ export default {
 <style>
   homeBody{
     background-color: white !important;
+    height: 100% !important;
+  }
+  .h{
+    height: 100% !important;
   }
 
  
