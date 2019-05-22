@@ -1,8 +1,8 @@
 <template>
-  <div class="admin"  >
+  <div class="admin" style="height: 100%" >
     <div >
     <Head></Head>
-    <AdminBody></AdminBody>
+    <AdminBody class="h"></AdminBody>
     <Footer ></Footer>
     <notifications group="foo" />
     <router-view></router-view>
@@ -26,7 +26,9 @@ export default {
 }
 </script>
 <style>
-  
+  .h{
+    height: 100% !important;
+  }
  
 </style>
 

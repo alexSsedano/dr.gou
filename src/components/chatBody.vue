@@ -3,13 +3,8 @@
  
       <div class="w-100 anti ">
         <div class="row w-100 antim h-100" >
-          <div class="col-sm-2  cg" style="overflow-y: scroll; ">
-            <button
-              type="button "
-              style="margin-top:10px; "
-              @click="changeAdd"
-              class="btn btn-primary btn w-100"
-            >Nueva consulta</button>
+          <div class="col-sm-2 h-100 cg" style="overflow-y: scroll; ">
+            <button type="button " style="margin-top:10px; " @click="changeAdd" class="btn btn-primary btn w-100" >Nueva consulta</button>
             <div v-if="this.add">
               <input v-model="newChatText" type="text" class="w-100" style="margin-top:10px;">
             </div>

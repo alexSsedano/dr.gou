@@ -1,9 +1,10 @@
 <template >
-  <div class="chatBody anti h-100">
+  <div class="chatBody ">
+  <div class='anti'>
     <div class="row mar h-100">
-      <div class="col-sm-3 h-100 cg" style="overflow-y: scroll; ">
+      <div class="col-sm-3 h-100 cg" style="overflow-y: scroll ">
         <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
-          <div class="col-sm-12">
+          <div class="col-sm-12 h-100">
             <div class="card border-primary mb-3" @click="sMsg(msg)">
               <div class="card-header">{{msg.username}}</div>
               <div class="card-body">
@@ -164,6 +165,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 <script>

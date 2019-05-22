@@ -1,7 +1,7 @@
 <template>
   <div class="chat" style="height: 100%" >
     
-    <Header ></Header>
+    <Header></Header>
     <ChatBody class="h"></ChatBody>
     <Footer  ></Footer>
     <notifications group="foo" />
@@ -26,10 +26,7 @@ export default {
 }
 </script>
 <style>
-  homeBody{
-    background-color: white !important;
-    height: 100% !important;
-  }
+ 
   .h{
     height: 100% !important;
   }
