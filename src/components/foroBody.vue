@@ -4,7 +4,7 @@
       <div class="col-sm-12">
         <div class="row justify-content-center" style="padding-top: 16px">
           <div class="col-sm-7">
-            <input v-model="msg" type="text" class="form-control" placeholder="¿ Que esta ocurriendo ?">
+             <textarea class="form-control" v-model="msg"   placeholder="¿ Que esta ocurriendo ?" id="exampleTextarea" rows="1"></textarea>
           </div>
           <div  class="col-sm-2">
             <button style="width: 100%" @click="addPost" type="button" class="btn btn-primary">Publicar</button>

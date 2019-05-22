@@ -132,11 +132,6 @@ export default {
         });
       }
     },
-     
-    lor: function(){
-      console.log('.')
-    },
-
     removeUserId() {
       for (let i = 0; i < this.registeredUsers.length; i++) {
         let id = localStorage.getItem("userId");

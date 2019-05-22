@@ -29,7 +29,7 @@
             <a class="nav-link" href="admin">Administracion</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" @click="exit" href="/">Salir</a>
+            <a class="nav-link" @click="exit" >Salir</a>
           </li>
         </ul>
       </div>
@@ -45,7 +45,7 @@
             <a class="nav-link" href="chat">Chat</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" @click="exit" href="/" >Salir</a>
+            <a class="nav-link" @click="exit"  >Salir</a>
           </li>
         </ul>
       </div>
@@ -70,7 +70,13 @@ export default {
       }
     },
     exit: function(){
+
+    if (confirm("¿ Esta seguro de que desea salir ?")) {
       localStorage.removeItem('userId');
+      this.$router.push("/");
+    } 
+
+      
 
     }
   },

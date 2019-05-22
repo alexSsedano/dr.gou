@@ -1,12 +1,11 @@
 <template >
   <div class="chatBody">
- 
       <div class="w-100 anti ">
         <div class="row w-100 antim h-100" >
           <div class="col-sm-2 h-100 cg" style="overflow-y: scroll; ">
             <button type="button " style="margin-top:10px; " @click="changeAdd" class="btn btn-primary btn w-100" >Nueva consulta</button>
             <div v-if="this.add">
-              <input v-model="newChatText" type="text" class="w-100" style="margin-top:10px;">
+              <textarea v-model="newChatText" @keyup.enter="changeAdd" type="text" class="w-100" style="margin-top:10px;"></textarea>
             </div>
             <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
               <div class="col-sm-12">
@@ -18,48 +17,29 @@
           </div>
           <div class="col-sm-10" style="height: 100%">
             <div class="col-sm-12" style="overflow-y: scroll; height: 90%" id="scroll">
-              <div
-                v-for="msg in this.chatShow"
-                v-bind:key="msg.id"
-                
-                style="padding-top: 15px ;" 
-              >
+              <div v-for="msg in this.chatShow" v-bind:key="msg.id" style="padding-top: 15px ;" >
               <div v-if="msg.align == true" class="w-100 row justify-content-end">
-                
                 <div class="col-sm-10 align-self-end">
                   <div class="card border-primary mb-3">
                     <div class="card-header">{{msg.msg}}</div>
                   </div>
                 </div>
               </div>
-              <div v-else class="w-100 row ">
-                
+              <div v-else class="w-100 row ">               
                 <div class="col-sm-10">
                   <div class="card border-success mb-3">
                     <div class="card-header">{{msg.msg}}</div>
                   </div>
                 </div>
-                
-
               </div>
               </div>
             </div>
             <div class="row" style="padding:15px">
               <div class="col-sm-9">
-                <input
-                  v-model="msg"
-                  type="text"
-                  class="form-control"
-                  placeholder="¿ Que esta ocurriendo ?"
-                >
+                <textarea v-model="msg" @keyup.enter="send()" type="text" class="form-control" placeholder="¿ Que esta ocurriendo ?" rows="1" ></textarea>
               </div>
               <div class="col-sm-3">
-                <button
-                  style="width: 100%"
-                  @click="send()"
-                  type="button"
-                  class="btn btn-primary"
-                >Publicar</button>
+                <button style="width: 100%" @click="send()" type="button" class="btn btn-primary">Publicar</button>
               </div>
             </div>
           </div>
@@ -89,24 +69,18 @@ export default {
     changeAdd: function() {
       if (this.add) {
         if (this.newChatText != "") {
-          let id =
-            Math.random()
-              .toString(36)
-              .substr(2, 27) +
-            Math.random()
-              .toString(36)
-              .substr(2, 27) +
-            Math.random()
-              .toString(36)
-              .substr(2, 27);
-          firebase
-            .database()
-            .ref("newChat/" + id)
-            .set({
-              id: id,
-              newChat: this.newChatText,
-              userName: this.username
-            });
+          let id =Math.random().toString(36).substr(2, 27) +Math.random().toString(36).substr(2, 27) +Math.random().toString(36).substr(2, 27);
+          firebase.database().ref("newChat/" + id).set({
+            id: id,
+            newChat: this.newChatText,
+            userName: this.username
+          });
+          this.$notify({
+            group: "foo",
+            title: "Consulta enviada",
+            type: "primary",
+            position: "top left"
+          });
         }
         this.add = false;
       } else {
@@ -121,35 +95,29 @@ export default {
       }
     },
     send: function() {
-      firebase
-        .database()
-        .ref("chat/" + this.id + "/msg")
-        .push({
-          user: this.username,
-          msg: this.msg
-        });
-        this.msg = []
+      firebase.database().ref("chat/" + this.id + "/msg").push({
+        user: this.username,
+        msg: this.msg
+      });
+      this.msg = []
     },
     conversacion: function(x) {
       this.chatShow = [];
       this.id = x.id;
       for (let keo in x.mensages) {
         if(this.username == x.mensages[keo].user){
-        this.chatShow.push({
-          msg: x.mensages[keo].msg,
-          user: x.mensages[keo].user,
-          align: true
-
-        });
-      }else{
-        this.chatShow.push({
-          msg: x.mensages[keo].msg,
-          user: x.mensages[keo].user,
-          align: false
-
-        });
-
-      }
+          this.chatShow.push({
+            msg: x.mensages[keo].msg,
+            user: x.mensages[keo].user,
+            align: true
+          });
+        }else{
+          this.chatShow.push({
+            msg: x.mensages[keo].msg,
+            user: x.mensages[keo].user,
+            align: false
+          });
+        }
       }
       let $ = JQuery
       $("#scroll").animate({ scrollTop: 9999999 }, 1000);
