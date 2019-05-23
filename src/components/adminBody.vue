@@ -12,7 +12,7 @@
                   <p>{{msg.username}} </p>
                   </div>
                   <div class="col-sm-6 d-flex align-items-end flex-column">
-                  <button @click="deleteNewMsg(msg)"><i class="fas fa-times"></i></button>
+                  <button data-toggle="tooltip" data-placement="bottom" title="Eliminar mensaje" @click="deleteNewMsg(msg)"><i class="fas fa-times"></i></button>
                   </div>
                 </div>
               </div>
@@ -48,12 +48,12 @@
         <div class="row "  style="padding: 15px">
           <div class="col-sm-2 center-block">
           </div><div class="col-sm-2 center-block">
-            <button type="button" @click="deleteMsg()" class="btn btn-danger center-block" style="width:100%;"><i class="fas fa-times"></i></button>
+            <button data-toggle="tooltip" data-placement="bottom" title="Deselecionar mensaje" type="button" @click="deleteMsg()" class="btn btn-danger center-block" style="width:100%;"><i class="fas fa-times"></i></button>
           </div><div class="col-sm-2 center-block">
           </div><div class="col-sm-2 center-block">
           </div>
           <div class="col-sm-2 center-block">
-            <button type="button" @click="deleteSelectedAdmin()" class="btn btn-danger center-block" style="width:100%;"><i class="fas fa-times"></i> </button>
+            <button data-toggle="tooltip" data-placement="bottom" title="Deselecionar administrador" type="button" @click="deleteSelectedAdmin()" class="btn btn-danger center-block" style="width:100%;"><i class="fas fa-times"></i> </button>
           </div>
           <div class="col-sm-2 center-block">
           </div>

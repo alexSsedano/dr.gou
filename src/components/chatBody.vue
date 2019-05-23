@@ -47,6 +47,7 @@
           </div>
           <div class="col-sm-9" style="height: 100%; padding-left:0px ; padding-right:0px">
             <div v-if="this.chatShow == []">
+              
             </div>
             <div v-else  style="height: 100%; ">
               <div class="col-sm-12" style="overflow-y: scroll; height: 90%" id="scroll">
