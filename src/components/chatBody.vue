@@ -45,25 +45,30 @@
             </div>
             </div>
           </div>
-          <div class="col-sm-9" style="height: 100%">
-            <div class="col-sm-12" style="overflow-y: scroll; height: 90%" id="scroll">
-              <div v-for="msg in this.chatShow" v-bind:key="msg.id" style="padding-top: 15px ;" >
-              <div v-if="msg.align == true" class="w-100 row justify-content-end">
-                <div class="col-sm-10 align-self-end">
-                  <div class="card border-primary mb-3">
-                    <div class="card-header">{{msg.msg}}</div>
-                  </div>
-                </div>
-              </div>
-              <div v-else class="w-100 row ">               
-                <div class="col-sm-10">
-                  <div class="card border-success mb-3">
-                    <div class="card-header">{{msg.msg}}</div>
-                  </div>
-                </div>
-              </div>
-              </div>
+          <div class="col-sm-9" style="height: 100%; ">
+            <div v-if="this.chatShow == []">
+
             </div>
+            <div v-else>
+              <div class="col-sm-12" style="overflow-y: scroll; height: 90%" id="scroll">
+                <div v-for="msg in this.chatShow" v-bind:key="msg.id" style="padding-top: 15px ;" >
+                <div v-if="msg.align == true" class="w-100 row justify-content-end">
+                  <div class="col-sm-10 align-self-end">
+                    <div class="card border-primary mb-3">
+                      <div class="card-header">{{msg.msg}}{{msg.date}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div v-else class="w-100 row ">               
+                  <div class="col-sm-10">
+                    <div class="card border-success mb-3">
+                      <div class="card-header">{{msg.msg}}{{msg.date}}</div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+            
             <div class="row" style="padding:15px">
               <div class="col-sm-9">
                 <textarea v-model="msg" @keyup.enter="send()" type="text" class="form-control" placeholder="¿ Que esta ocurriendo ?" rows="1" ></textarea>
@@ -72,6 +77,7 @@
                 <button style="width: 100%" @click="send()" type="button" class="btn btn-primary">Publicar</button>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -184,12 +190,14 @@ export default {
               mensage.push({
                 msg: x[key].msg[keo].msg,
                 user: x[key].msg[keo].user,
+                date: x[key].msg[keo].date,
                 align: true
               });
               
               this.chatShow.push({
                 msg: x[key].msg[keo].msg,
                 user: x[key].msg[keo].user,
+                date: x[key].msg[keo].date,
                 align: true
               });
             }else{
@@ -197,12 +205,14 @@ export default {
               mensage.push({
                 msg: x[key].msg[keo].msg,
                 user: x[key].msg[keo].user,
+                date: x[key].msg[keo].date,
                 align: false
               });
               
               this.chatShow.push({
                 msg: x[key].msg[keo].msg,
                 user: x[key].msg[keo].user,
+                date: x[key].msg[keo].date,
                 align: false
               });
 
@@ -212,12 +222,14 @@ export default {
               mensage.push({
                 msg: x[key].msg[keo].msg,
                 user: x[key].msg[keo].user,
+                date: x[key].msg[keo].date,
                 align: true
               });
               }else{
                  mensage.push({
                 msg: x[key].msg[keo].msg,
                 user: x[key].msg[keo].user,
+                date: x[key].msg[keo].date,
                 align: false
               });
               }

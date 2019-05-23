@@ -191,7 +191,8 @@ export default {
       selectedAdmin: "",
       msg: "",
       userN: "",
-      id: ""
+      id: "",
+      date: ''
     };
   },
   methods: {
@@ -244,6 +245,7 @@ export default {
       this.id = '';
       this.userN = '';
       this.msg = '';
+      this.date ='';
     },
     deleteSelectedAdmin: function(){
     this.selectedAdmin = '';
@@ -265,16 +267,19 @@ export default {
       this.id = user.id;
       this.userN = user.username;
       this.msg = user.msg;
+      this.date = user.date;
     },
     acept: function() {
       firebase.database().ref("chat/" + this.id).set({
           user1: this.userN,
           user2: this.selectedAdmin,
           id: this.id
+          
         });
       firebase.database().ref("chat/" + this.id + "/msg").push({
           user: this.userN,
           msg: this.msg,
+          date: this.date
         });
       firebase.database().ref("users/" + this.selectedAdmin + "/chats/").push({
           chat: this.id
@@ -306,7 +311,8 @@ export default {
         this.chat.push({
           id: x[key].id,
           username: x[key].userName,
-          msg: x[key].newChat
+          msg: x[key].newChat,
+          date: x[key].date
         });
       }
       this.chat = this.chat.reverse();
@@ -321,6 +327,7 @@ export default {
           userType: x[key].userType,
           password: x[key].password,
           userId: x[key].userId,
+          date: x[key].date,
           show: true,
           adjust: false
         });
