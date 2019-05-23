@@ -7,6 +7,7 @@
             <div v-if="this.add">
               <textarea v-model="newChatText" @keyup.enter="changeAdd" type="text" class="w-100" style="margin-top:10px;"></textarea>
             </div>
+          <div v-if="this.userT =='superAdmin'">
             <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
               <div class="col-sm-12">
                 <div class="card border-primary mb-3" @click="conversacion(msg)">
@@ -16,12 +17,29 @@
                   <p>{{msg.user1}} </p>
                   </div>
                   <div class="col-sm-6 d-flex align-items-end flex-column">
-                  <button @click="deleteMsg(msg)"><i class="fas fa-times"></i></button>
+                  <button  @click="deleteMsg(msg)"><i class="fas fa-times"></i></button>
                   </div>
                 </div>
                 </div>
                 </div>
               </div>
+            </div>
+            </div>
+            <div v-else>
+              <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
+              <div class="col-sm-12">
+                <div class="card border-primary mb-3" @click="conversacion(msg)">
+                  <div class="card-header">
+                    <div class="row">
+                  <div class="col-sm-12">
+                  <p>{{msg.user1}} </p>
+                  </div>
+                  
+                </div>
+                </div>
+                </div>
+              </div>
+            </div>
             </div>
           </div>
           <div class="col-sm-10" style="height: 100%">
@@ -68,6 +86,7 @@ export default {
       add: false,
       newChatText: "",
       chat: [],
+      userT: "",
       id: "",
       username: "",
       chatShow: [],
@@ -76,13 +95,15 @@ export default {
   },
   methods: {
     changeAdd: function() {
+      let today = new Date();
       if (this.add) {
         if (this.newChatText != "") {
           let id =Math.random().toString(36).substr(2, 27) +Math.random().toString(36).substr(2, 27) +Math.random().toString(36).substr(2, 27);
           firebase.database().ref("newChat/" + id).set({
             id: id,
             newChat: this.newChatText,
-            userName: this.username
+            userName: this.username,
+            date: today.toLocaleDateString("es-ES") + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(),
           });
           this.$notify({
             group: "foo",
@@ -100,14 +121,18 @@ export default {
       for (let key in users) {
         if (users[key].userId == localStorage.getItem("userId")) {
           this.username = users[key].username;
+          this.userT = users[key].userType;
+          
         }
       }
     },
     send: function() {
+       let today = new Date();
       if(this.msg != ''){
       firebase.database().ref("chat/" + this.id + "/msg").push({
         user: this.username,
-        msg: this.msg
+        msg: this.msg,
+        date: today.toLocaleDateString("es-ES") + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(),
       });
       this.msg = []
       }
