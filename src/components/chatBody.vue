@@ -20,7 +20,7 @@
                   <p>{{msg.user1}} </p>
                   </div>
                   <div class="col-sm-6 d-flex align-items-end flex-column">
-                  <button  @click="deleteMsg(msg)"><i class="fas fa-times"></i></button>
+                  <button class="btn btn-primary btn "  @click="deleteMsg(msg)"><i class="fas fa-times"></i></button>
                   </div>
                 </div>
                 </div>
@@ -45,31 +45,31 @@
             </div>
             </div>
           </div>
-          <div class="col-sm-9" style="height: 100%; ">
+          <div class="col-sm-9" style="height: 100%; padding-left:0px ; padding-right:0px">
             <div v-if="this.chatShow == []">
             </div>
             <div v-else  style="height: 100%; ">
               <div class="col-sm-12" style="overflow-y: scroll; height: 90%" id="scroll">
                 <div v-for="msg in this.chatShow" v-bind:key="msg.id" style="padding-top: 15px ;" >
                 <div v-if="msg.align == true" class="w-100 row justify-content-end">
-                  <div class="col-sm-10 align-self-end">
+                  <div class="col-sm-11 align-self-end">
                     <div class="card border-primary mb-3">
                       <div class="card-header">
                         <div class="col">
-                          <div class="col-sm-10">{{msg.msg}}</div>
-                          <div class="col-sm-2">{{msg.date}}</div>
+                          <div class="col-sm-9">{{msg.msg}}</div>
+                          <div class="col-sm-3  d-flex align-items-end flex-column">{{msg.date}}</div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div v-else class="w-100 row ">               
-                  <div class="col-sm-10">
+                  <div class="col-sm-11">
                     <div class="card border-success mb-3">
                       <div class="card-header">
                         <div class="col">
-                          <div class="col-sm-2">{{msg.date}}</div>
-                          <div class="col-sm-10">{{msg.msg}}</div>
+                          <div class="col-sm-3">{{msg.date}}</div>
+                          <div class="col-sm-9 ">{{msg.msg}}</div>
                         </div>
                       </div>
                     </div>
@@ -78,7 +78,7 @@
                 </div>
               </div>
             
-            <div class="row" style="padding:15px">
+            <div class="row" style="padding:15px; padding-right:20px; padding-left:15px">
               <div class="col-sm-9">
                 <textarea v-model="msg" @keyup.enter="send()" type="text" class="form-control" placeholder="¿ Que esta ocurriendo ?" rows="1" ></textarea>
               </div>
