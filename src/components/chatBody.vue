@@ -115,6 +115,7 @@ export default {
     deleteMsg(x){
       if (confirm("¿ Esta seguro de que desea eliminar este chat ?")) {
       firebase.database().ref("chat/" + x.id).remove();
+      this.chatShow= []
     }
     },
     conversacion: function(x) {
