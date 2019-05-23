@@ -2,10 +2,13 @@
   <div class="chatBody">
       <div class="w-100 anti ">
         <div class="row w-100 antim h-100" >
-          <div class="col-sm-2 h-100 cg" style="overflow-y: scroll; ">
-            <button type="button " style="margin-top:10px; " @click="changeAdd" class="btn btn-primary btn w-100" >Nueva consulta</button>
-            <div v-if="this.add">
+          <div class="col-sm-3 h-100 cg" style="overflow-y: scroll; ">
+            <div v-if="!this.add">
+            <button type="button " style="margin-top:10px; " @click="changeAdd" class="btn btn-primary btn w-100" >Enviar consulta</button>            
               <textarea v-model="newChatText" @keyup.enter="changeAdd" type="text" class="w-100" style="margin-top:10px;"></textarea>
+            </div>
+            <div v-else>
+              <button type="button " style="margin-top:10px; " @click="changeAdd" class="btn btn-primary btn w-100" >Nueva consulta</button>
             </div>
           <div v-if="this.userT =='superAdmin'">
             <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
@@ -42,7 +45,7 @@
             </div>
             </div>
           </div>
-          <div class="col-sm-10" style="height: 100%">
+          <div class="col-sm-9" style="height: 100%">
             <div class="col-sm-12" style="overflow-y: scroll; height: 90%" id="scroll">
               <div v-for="msg in this.chatShow" v-bind:key="msg.id" style="padding-top: 15px ;" >
               <div v-if="msg.align == true" class="w-100 row justify-content-end">
