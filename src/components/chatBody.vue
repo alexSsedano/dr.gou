@@ -10,7 +10,16 @@
             <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
               <div class="col-sm-12">
                 <div class="card border-primary mb-3" @click="conversacion(msg)">
-                  <div class="card-header">{{msg.user1}}</div>
+                  <div class="card-header">
+                    <div class="row">
+                  <div class="col-sm-6">
+                  <p>{{msg.user1}} </p>
+                  </div>
+                  <div class="col-sm-6 d-flex align-items-end flex-column">
+                  <button @click="deleteMsg(msg)"><i class="fas fa-times"></i></button>
+                  </div>
+                </div>
+                </div>
                 </div>
               </div>
             </div>
@@ -102,6 +111,11 @@ export default {
       });
       this.msg = []
       }
+    },
+    deleteMsg(x){
+      if (confirm("¿ Esta seguro de que desea eliminar este chat ?")) {
+      firebase.database().ref("chat/" + x.id).remove();
+    }
     },
     conversacion: function(x) {
       this.chatShow = [];

@@ -250,12 +250,12 @@ export default {
     },
     userToAdmin: function(user) {
       firebase.database().ref("users/" + user.username).set({
-          userType: "admin",
-          email: user.email,
-          userId: user.userId,
-          username: user.username,
-          password: user.password
-        });
+        userType: "admin",
+        email: user.email,
+        userId: user.userId,
+        username: user.username,
+        password: user.password
+      });
       this.filoterUsers(this.drop);
     },
     selctAdmin: function(user) {

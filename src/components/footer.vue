@@ -2,43 +2,33 @@
 <footer id="myFooter" style="height: 100%">
         <div class="container" style="height: 100%">
             <div class="row">
-                <div class="col-sm-3">
-                    <h5>Get started</h5>
+                <div class="col-sm-4">
+                    <h5>Pestañas</h5>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Sign up</a></li>
-                        <li><a href="#">Downloads</a></li>
+                        <li><a href="Home">Inicio</a></li>
+                        <li><a href="Foro">Foro</a></li>
+                        <li><a href="Chat">Chat</a></li>
                     </ul>
                 </div>
-                <div class="col-sm-3">
-                    <h5>About us</h5>
-                    <ul>
-                        <li><a href="#">Company Information</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Reviews</a></li>
-                    </ul>
+                
+                <div class="col-sm-4">
+                    <h5>Copyright</h5>
+                    <p> © 2019 Alejandro Sedano Sanchez Todos los derechos reservados. </p>
+
                 </div>
-                <div class="col-sm-3">
-                    <h5>Support</h5>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Help desk</a></li>
-                        <li><a href="#">Forums</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3 info">
+                <div class="col-sm-4 info">
                     <h5>Information</h5>
-                    <p> Lorem ipsum dolor amet, consectetur adipiscing elit. Etiam consectetur aliquet aliquet. Interdum et malesuada fames ac ante ipsum primis in faucibus. </p>
+                    <p>En DR.GOU trabajaMOS con el objetivo de ejercer una labor de información, formación y capacitación del estudiantado que facilite la incorporación y la integración del estudiantado en sus centros y en la Universidad en las tres etapas de la vida universitaria. </p>
                 </div>
             </div>
         </div>
         <div class="second-bar">
            <div class="container">
-                <h2 class="logo"><a href="#"> LOGO </a></h2>
+                <h2 class="logo"><a href="Home"> DR.GOU </a></h2>
                 <div class="social-icons">
-                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                    <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                    <a href="https://twitter.com/Alex_S_Sedano" class="twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/alexSsedano" class="facebook"><i class="fab fa-github-square"></i></a>
+                    <a href="https://www.instagram.com/alex_s_sedano/?hl=es" class="google"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
