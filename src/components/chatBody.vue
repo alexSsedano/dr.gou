@@ -153,6 +153,8 @@ export default {
         date: today.toLocaleDateString("es-ES") + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(),
       });
       this.msg = []
+      let $ = JQuery
+      $("#scroll").animate({ scrollTop: 9999999 }, 1000);
       }
     },
     deleteMsg(x){
@@ -181,8 +183,7 @@ export default {
           });
         }
       }
-      let $ = JQuery
-      $("#scroll").animate({ scrollTop: 9999999 }, 1000);
+      
     },
     
     loadChat: function(x) {
@@ -270,8 +271,7 @@ export default {
       }
       this.chat = arr;
  
-      let $ = JQuery
-      $("#scroll").animate({ scrollTop: 99999999999999 }, 1000);
+      
     },
   },
   mounted() {
