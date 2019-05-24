@@ -96,6 +96,13 @@
       </div>
 
 </div>
+<div class=" anti d-md-none d-flex justify-content-center">
+  <ul class="nav nav-tabs" style="" role="tablist">
+    <li class="active"><a href="#men" role="tab" data-toggle="tab">Conversaciones</a></li>
+    <li><a href="#women" role="tab" data-toggle="tab">Chat</a></li>
+</ul>   
+
+</div>
 
 
 
