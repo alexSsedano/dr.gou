@@ -85,7 +85,8 @@
                         <p class="text-center" style="margin-top: 10px">Facultad de Derecho</p>
                     </div>
                 </div>
-            </div>  
+            </div>
+            <br>  
         </div>
     </div>
         

@@ -23,7 +23,7 @@
                     <p style="text-align:center">{{msg.date}}</p>
                   </div>
                   <div  class="col-sm-4 d-flex align-items-end flex-column" >
-                    <button @click="deleteMsg(msg)"><i class="fas fa-times"></i></button>
+                    <button class="btn btn-primary btn " @click="deleteMsg(msg)"><i class="fas fa-times"></i></button>
                   </div>
                 </div>
               </div>
