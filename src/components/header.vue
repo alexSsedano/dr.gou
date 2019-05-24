@@ -1,20 +1,12 @@
 <template>
   <div class="headi" style="height: 100%">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary " style="margin-bottom: 0px; height: 100%">
+    <div v-if="this.userT == 'superAdmin'">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary " style="margin-bottom: 0px; height: 100%">
       <a class="navbar-brand" href="home">Dr.gou</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarColor01"
-        aria-controls="navbarColor01"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div v-if="this.userT == 'superAdmin'" class="collapse navbar-collapse" id="navbarColor01">
+      <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="home">Inicio</a>
@@ -33,7 +25,18 @@
           </li>
         </ul>
       </div>
-      <div v-else class="collapse navbar-collapse" id="navbarColor01">
+      </nav>
+    </div>
+    
+
+      
+      <div v-else>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary " style="margin-bottom: 0px; height: 100%">
+      <a class="navbar-brand" href="home">Dr.gou</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="home">Inicio</a>
@@ -44,12 +47,14 @@
           <li class="nav-item">
             <a class="nav-link" href="chat">Chat</a>
           </li>
+          
           <li class="nav-item">
-            <a class="nav-link" @click="exit" href="#" >Salir</a>
+            <a class="nav-link" @click="exit" href="#">Salir</a>
           </li>
         </ul>
       </div>
-    </nav>
+      </nav>
+    </div>
   </div>
 </template>
 <script>
