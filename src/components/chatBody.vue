@@ -1,8 +1,8 @@
 <template >
-  <div class="chatBody">
+  <div class="chatBody h-100">
     <div class="anti hidden-sm hidden-xs">
       <div class="row w-100 antim h-100">
-        <div class="col-sm-3 h-100 cg" style="overflow-y: scroll; ">
+        <div class="col-sm-3  cg" style="overflow-y: scroll ; height: 100%">
           <div v-if="this.add">
             <button
               type="button "
@@ -65,7 +65,7 @@
         <div class="col-sm-9" style="height: 100%; padding-left:0px ; padding-right:0px">
           <div v-if="this.chatShow == []"></div>
           <div v-else style="height: 100%; ">
-            <div class="col-sm-12" style="; height: 90%" id="scroll">
+            <div class="col-sm-12" style="overflow-y: scroll; height: 90%" id="scroll">
               <div v-for="msg in this.chatShow" v-bind:key="msg.id" style="padding-top: 15px ;">
                 <div v-if="msg.align == true" class="w-100 row justify-content-end">
                   <div class="col-sm-11 align-self-end">
