@@ -1,6 +1,6 @@
 <template >
-  <div class="chatBody h-100 ">
-    <div class="anti hidden-sm  hidden-xs">
+  <div class="chatBody  ">
+    <div class="anti d-none d-md-block">
       <div class="row w-100 antim h-100">
         <div class="col-sm-3  cg" style="overflow-y: scroll ; height: 100%">
           <div v-if="this.add">
@@ -47,8 +47,8 @@
             </div>
           </div>
           <div v-else>
-            <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
-              <div class="col-sm-12">
+            <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style=" padding-top: 15px">
+              <div class="col-sm-12" >
                 <div class="card border-primary mb-3" @click="conversacion(msg)">
                   <div class="card-header">
                     <div class="row">
@@ -64,7 +64,7 @@
         </div>
         <div class="col-sm-9 bgw" style="height: 100%; padding-left:0px ; padding-right:0px">
           <div v-if="this.chatShow == []"></div>
-          <div v-else style="height: 100%; ">
+          <div v-else style="height: 100%; " class="bgw">
             <div class="col-sm-12" style="overflow-y: scroll; height: 90%" id="scroll">
               <div v-for="msg in this.chatShow" v-bind:key="msg.id" style="padding-top: 15px ;">
                 <div v-if="msg.align == true" class="w-100 row justify-content-end">
@@ -122,15 +122,15 @@
       </div>
     </div>
 
-    <div class="container-fluid anti d-lg-none">
+    <div class="container-fluid anti d-block d-md-none">
       <div class="row d-flex  justify-content-center">
         
-        <ul class="nav nav-tabs" style role="tablist">
-          <li class="active">
-            <a @click="movile = true" role="tab" data-toggle="tab">Conversaciones</a>
+        <ul class="nav nav-tabs w-100" style="padding-top: 15px">
+          <li class="nav-item">
+            <a @click="movile = true" class="nav-link active">Conversaciones</a>
           </li>
           <li>
-            <a @click="movile = false" role="tab" data-toggle="tab">Chat</a>
+            <a @click="movile = false" class="nav-link" >Chat</a>
           </li>
         </ul>
         
@@ -139,8 +139,8 @@
 
 
 
-        <div v-if="movile == true" class="w-100 col-sm-12" style="padding-left: 0%; padding-right: 0%">
-          <div class="col-sm-12">
+        <div v-if="movile == true" class="w-100 h-100 col-sm-12" style="padding-left: 0%; padding-right: 0%">
+          <div class="col-sm-12" style="height: 80%">
             <div v-if="this.add" class="row">
               <div class="col-sm-12">
                 <button type="button " style="margin-top:10px; " @click="changeAdd" class="btn btn-primary btn w-100">Enviar consulta</button>
@@ -155,8 +155,9 @@
                 class="btn btn-primary btn"
               >Nueva consulta</button>
             </div>
-            <div v-if="this.userT =='superAdmin'">
-              <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="margin-left:0px; margin-right:0px;padding-top: 15px">
+            <div v-if="this.userT =='superAdmin'" class="h-100">
+              <div style="overflow-y: scroll; height: 90%">
+              <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style=" margin-left:0px; margin-right:0px;padding-top: 15px">
                 <div class="col-sm-12">
                   <div class="card border-primary mb-3" @click="conversacion(msg)">
                     <div class="card-header">
@@ -173,6 +174,7 @@
                     </div>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
             <div v-else>
@@ -201,7 +203,8 @@
          
             <div v-if="this.chatShow == []"></div>
             <div v-else class="container-fluid h-100" >
-              <div class="col-sm-12 " style=" overflow-y: scroll; height: 85%" id="scroll">
+              <div class="row" style="height: 80%">
+              <div class="col-sm-12 h-100" style=" overflow-y: scroll" id="scroll">
                 <div v-for="msg in this.chatShow" v-bind:key="msg.id" style="padding-top: 15px ;">
                   <div v-if="msg.align == true" class="w-100 row justify-content-end">
                     <div class="col-sm-11 align-self-end">
@@ -229,9 +232,10 @@
                   </div>
                 </div>
               </div>
+              </div>
 
-              <div class="row" style="padding:15px; padding-right:20px; padding-left:15px">
-                <div class="col-sm-9">
+              <div class="row" >
+                <div class="col-sm-9" >
                   <textarea
                     v-model="msg"
                     @keyup.enter="send()"
@@ -241,7 +245,7 @@
                     rows="1"
                   ></textarea>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3" >
                   <button
                     style="width: 100%"
                     @click="send()"
@@ -475,7 +479,7 @@ export default {
 .anti {
   background-color: white;
 }
-body {
+.bgw {
   background-color: white
 }
 .antim {

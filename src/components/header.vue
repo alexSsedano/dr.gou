@@ -31,14 +31,14 @@
 
       
       <div v-else>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary " style="margin-bottom: 0px; height: 100%">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary " style="margin-bottom: 0px; ">
       <a class="navbar-brand" href="home">Dr.gou</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+        <ul class="navbar-nav ">
+          <li class="nav-item ">
             <a class="nav-link" href="home">Inicio</a>
           </li>
           <li class="nav-item">
@@ -47,7 +47,6 @@
           <li class="nav-item">
             <a class="nav-link" href="chat">Chat</a>
           </li>
-          
           <li class="nav-item">
             <a class="nav-link" @click="exit" href="#">Salir</a>
           </li>

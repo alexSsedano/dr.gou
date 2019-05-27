@@ -1,4 +1,4 @@
-<template>
+<template >
   <div id="login " style="height:10%">
     
         <login class="h-100"></login>
@@ -24,5 +24,7 @@ export default {
 }
 </script>
 <style>
-
+body{
+background-color: rgb(255, 255, 255)!important;
+}
 </style>

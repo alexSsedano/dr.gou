@@ -32,6 +32,9 @@ export default {
   .h{
     height: 100% !important;
   }
+  body {
+    background-color: white !important;
+  }
 
  
 </style>
