@@ -1,6 +1,6 @@
 <template >
-  <div class="chatBody h-100">
-    <div class="anti hidden-sm hidden-xs">
+  <div class="chatBody h-100 ">
+    <div class="anti hidden-sm  hidden-xs">
       <div class="row w-100 antim h-100">
         <div class="col-sm-3  cg" style="overflow-y: scroll ; height: 100%">
           <div v-if="this.add">
@@ -62,7 +62,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-9" style="height: 100%; padding-left:0px ; padding-right:0px">
+        <div class="col-sm-9 bgw" style="height: 100%; padding-left:0px ; padding-right:0px">
           <div v-if="this.chatShow == []"></div>
           <div v-else style="height: 100%; ">
             <div class="col-sm-12" style="overflow-y: scroll; height: 90%" id="scroll">
@@ -123,7 +123,7 @@
     </div>
 
     <div class="container-fluid anti d-lg-none">
-      <div class="row d-flex justify-content-center">
+      <div class="row d-flex  justify-content-center">
         
         <ul class="nav nav-tabs" style role="tablist">
           <li class="active">
@@ -135,7 +135,7 @@
         </ul>
         
       </div>
-      <div class="row">
+      <div class="row bgw h-100">
 
 
 
@@ -200,8 +200,8 @@
         <div v-if="movile == false" class="w-100 h-100 col-sm-12" style="padding-left: 0%; padding-right: 0%">
          
             <div v-if="this.chatShow == []"></div>
-            <div v-else class="container-fluid h-100" style="; overflow-y: scroll">
-              <div class="col-sm-12 h-100"  id="scroll">
+            <div v-else class="container-fluid h-100" >
+              <div class="col-sm-12 " style=" overflow-y: scroll; height: 85%" id="scroll">
                 <div v-for="msg in this.chatShow" v-bind:key="msg.id" style="padding-top: 15px ;">
                   <div v-if="msg.align == true" class="w-100 row justify-content-end">
                     <div class="col-sm-11 align-self-end">
@@ -475,8 +475,8 @@ export default {
 .anti {
   background-color: white;
 }
-.bgw{
-  
+body {
+  background-color: white
 }
 .antim {
   margin: 0%;

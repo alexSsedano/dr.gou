@@ -3,7 +3,9 @@
     
     <Header></Header>
     <ChatBody class="h"></ChatBody>
+  <div class="hidden-sm hidden-xs">
     <Footer  ></Footer>
+  </div>
     <notifications group="foo" />
     <router-view></router-view>
     </div>
