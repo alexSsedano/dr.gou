@@ -127,7 +127,7 @@
         
         <ul class="nav nav-tabs w-100" style="padding-top: 15px">
           <li class="nav-item">
-            <a @click="movile = true" class="nav-link active">Conversaciones</a>
+            <a @click="movile = true" class="nav-link ">Conversaciones</a>
           </li>
           <li>
             <a @click="movile = false" class="nav-link" >Chat</a>
@@ -159,7 +159,7 @@
               <div style="overflow-y: scroll; height: 90%">
               <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style=" margin-left:0px; margin-right:0px;padding-top: 15px">
                 <div class="col-sm-12">
-                  <div class="card border-primary mb-3" @click="conversacion(msg)">
+                  <div class="card border-primary mb-3" @click="conversacion(msg);movile = false">
                     <div class="card-header">
                       <div class="row">
                         <div class="col-sm-6">
@@ -181,7 +181,7 @@
               <div style="overflow-y: scroll; height: 90%">
               <div v-for="msg in this.chat" v-bind:key="msg.id" class="row container" style="padding-top: 15px">
                 <div class="col-sm-12">
-                  <div class="card border-primary mb-3" @click="conversacion(msg)">
+                  <div class="card border-primary mb-3" @click="conversacion(msg);movile = false">
                     <div class="card-header">
                       <div class="row">
                         <div class="col-sm-12">
