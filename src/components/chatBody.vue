@@ -177,7 +177,8 @@
               </div>
               </div>
             </div>
-            <div v-else>
+            <div v-else class="h-100">
+              <div style="overflow-y: scroll; height: 90%">
               <div v-for="msg in this.chat" v-bind:key="msg.id" class="row container" style="padding-top: 15px">
                 <div class="col-sm-12">
                   <div class="card border-primary mb-3" @click="conversacion(msg)">
@@ -190,6 +191,7 @@
                     </div>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           </div>
