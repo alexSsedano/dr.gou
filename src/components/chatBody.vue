@@ -333,6 +333,7 @@ export default {
             position: "top left"
           });
         }
+        this.newChatText == '';
         this.add = false;
       } else {
         this.add = true;
