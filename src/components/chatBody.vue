@@ -365,7 +365,7 @@ export default {
               ":" +
               today.getSeconds()
           });
-        this.msg = [];
+        this.msg = '';
         let $ = JQuery;
         $("#scroll").animate({ scrollTop: 9999999 }, 1000);
       }
