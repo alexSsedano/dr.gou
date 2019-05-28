@@ -1,8 +1,16 @@
 <template >
   <div class="chatBody">
     <div class="anti d-none d-md-block">
+      
       <div class="row mar h-100">
-        <div class="col-sm-3 h-100 cg" style="overflow-y: scroll ">
+        <div v-if="!this.chat[0]" class="col-sm-3 h-100 cg">
+            
+            <div class="col-sm-12  h-100 cg">
+              <h2 class="text-center" style="padding: 15px; padding-top: 30px">No hay nuevas peticiones de chat.</h2>
+            
+          </div>
+          </div>
+        <div v-else class="col-sm-3 h-100 cg" style="overflow-y: scroll ">
           <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
             <div class="col-sm-12 h-100">
               <div class="card border-primary mb-3" @click="sMsg(msg); movile = 'panel'">
@@ -330,7 +338,14 @@
           </li>
         </ul>
         <div v-if="movile=='mensajes'" class="row h-100 w-100">
-          <div class="col-sm-12  " style="overflow-y: scroll; height:90% ">
+          <div v-if="!this.chat[0]" class="col-sm-3 ">
+            
+            <div class="col-sm-12  ">
+              <h2 class="text-center" style="padding: 15px; padding-top: 30px">No hay nuevas peticiones de chat.</h2>
+            
+          </div>
+          </div>
+          <div v-else class="col-sm-12  " style="overflow-y: scroll; height:90% ">
           <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
             <div class="col-sm-12 h-100">
               <div class="card border-primary mb-3" @click="sMsg(msg); movile='panel'">
