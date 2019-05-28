@@ -33,15 +33,15 @@
         <div class="col-sm-6">
           <div class="row">
             <div class="col-sm-12">
-              <h2 class="text-center" style="padding: 15px">Seleccione un mensaje y un administrador</h2>
+              <h2 class="text-center font-weight-bold" style="padding: 15px">Seleccione un mensaje y un administrador</h2>
             </div>
           </div>
-          <div class="row">
+          <div class="row" style="padding-top:30px">
             <div class="col-sm-6">
-              <h2 class="text-center" style="padding: 15px">Mensaje</h2>
+              <h2 class="text-center font-weight-bold" style="padding: 15px">Mensaje</h2>
             </div>
             <div class="col-sm-6">
-              <h2 class="text-center" style="padding: 15px">Administrador</h2>
+              <h2 class="text-center font-weight-bold" style="padding: 15px">Administrador</h2>
             </div>
           </div>
           <div class="row">
@@ -86,7 +86,7 @@
           </div>
           <div class="row" style="padding: 15px">
             <div class="col-sm-12">
-              <button type="button" @click="acept()" class="btn btn-success" style="width:100%;">
+              <button type="button" @click="acept()" title="Crear nueva conversacion." class="btn btn-success" style="width:100%;">
                 <i class="fas fa-check"></i>
               </button>
             </div>
@@ -106,6 +106,7 @@
                 <a class="dropdown-item" @click="filoterUsers('todos')">Todos</a>
                 <a class="dropdown-item" @click="filoterUsers('admin')">Administradores</a>
                 <a class="dropdown-item" @click="filoterUsers('user')">Usuarios</a>
+                <a class="dropdown-item" @click="filoterUsers('superAdmin')">superAdmin</a>
               </div>
             </div>
           </div>
@@ -140,6 +141,7 @@
                       <div class="col-sm-6">
                         <button
                           type="button"
+                          title="Ajustes."
                           @click="adjust(user)"
                           class="btn btn-warning"
                           style="width:100%;"
@@ -150,6 +152,7 @@
                       <div class="col-sm-6">
                         <button
                           type="button"
+                          title="Seleccionar administrador."
                           @click="clickUser(user)"
                           class="btn btn-primary"
                           style="width:100%;"
@@ -170,6 +173,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
+                            title="Convertir usuario a administrador."
                             @click="userToAdmin(user)"
                             class="btn btn-success"
                             style="width:100%;"
@@ -180,6 +184,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
+                            title="Convertir administrador en superAdministrador"
                             @click="adminToSuperUser(user)"
                             class="btn btn-info"
                             style="width:100%;"
@@ -190,6 +195,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
+                            title="Eliminar usuario."
                             @click="deleteUser(user)"
                             class="btn btn-danger"
                             style="width:100%;"
@@ -225,6 +231,7 @@
                       <div class="col-sm-4">
                         <button
                           type="button"
+                          title="Seleccionar administrador."
                           @click="selctAdmin(user)"
                           class="btn btn-success"
                           style="width:100%;"
@@ -235,6 +242,7 @@
                       <div class="col-sm-4">
                         <button
                           type="button"
+                          title="Ajustes."
                           @click="adjust(user)"
                           class="btn btn-warning"
                           style="width:100%;"
@@ -245,6 +253,7 @@
                       <div class="col-sm-4">
                         <button
                           type="button"
+                          title="Atras."
                           @click="clickUser(user)"
                           class="btn btn-primary"
                           style="width:100%;"
@@ -265,6 +274,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
+                            title="Convertir administrador a usuario."
                             @click="adminToUser(user)"
                             class="btn btn-success"
                             style="width:100%;"
@@ -275,6 +285,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
+                            title="Convertir administrador en superAdministrador."
                             @click="adminToSuperUser(user)"
                             class="btn btn-info"
                             style="width:100%;"
@@ -285,6 +296,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
+                            title="Eliminar usuario."
                             @click="deleteUser(user)"
                             class="btn btn-danger"
                             style="width:100%;"
@@ -331,7 +343,8 @@
                       <button
                         data-toggle="tooltip"
                         data-placement="bottom"
-                        title="Eliminar mensaje"
+                        
+                        title="Eliminar peticion de mensaje."
                         @click="deleteNewMsg(msg)"
                       >
                         <i class="fas fa-times"></i>
@@ -428,6 +441,7 @@
                 <a class="dropdown-item" @click="filoterUsers('todos')">Todos</a>
                 <a class="dropdown-item" @click="filoterUsers('admin')">Administradores</a>
                 <a class="dropdown-item" @click="filoterUsers('user')">Usuarios</a>
+                <a class="dropdown-item" @click="filoterUsers('superAdmin')">SuperAdmin</a>
               </div>
             </div>
           </div>
@@ -462,6 +476,7 @@
                       <div class="col-sm-6">
                         <button
                           type="button"
+                          title="Ajustes."
                           @click="adjust(user)"
                           class="btn btn-warning"
                           style="width:100%;"
@@ -472,6 +487,7 @@
                       <div class="col-sm-6">
                         <button
                           type="button"
+                          title="Atras."
                           @click="clickUser(user)"
                           class="btn btn-primary"
                           style="width:100%;"
@@ -492,6 +508,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
+                            title="Convertir usuario en administrador."
                             @click="userToAdmin(user)"
                             class="btn btn-success"
                             style="width:100%;"
@@ -502,6 +519,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
+                            title="Convertir administrador a superAdministrador."
                             @click="adminToSuperUser(user)"
                             class="btn btn-info"
                             style="width:100%;"
@@ -512,6 +530,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
+                            title="Eliminar usuario."
                             @click="deleteUser(user)"
                             class="btn btn-danger"
                             style="width:100%;"
@@ -547,6 +566,7 @@
                       <div class="col-sm-4">
                         <button
                           type="button"
+                          title="Seleccionar administrador."
                           @click="selctAdmin(user); movile='panel'"
                           class="btn btn-success"
                           style="width:100%;"
@@ -557,6 +577,7 @@
                       <div class="col-sm-4">
                         <button
                           type="button"
+                          title="Ajustes."
                           @click="adjust(user)"
                           class="btn btn-warning"
                           style="width:100%;"
@@ -567,6 +588,7 @@
                       <div class="col-sm-4">
                         <button
                           type="button"
+                          title="Atras."
                           @click="clickUser(user)"
                           class="btn btn-primary"
                           style="width:100%;"
@@ -587,6 +609,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
+                            title="Convertir administrador en usuario."
                             @click="adminToUser(user)"
                             class="btn btn-success"
                             style="width:100%;"
@@ -597,6 +620,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
+                            title="Convertir administrador a superAdmin."
                             @click="adminToSuperUser(user)"
                             class="btn btn-info"
                             style="width:100%;"
@@ -607,6 +631,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
+                            title="Elimminar usuario."
                             @click="deleteUser(user)"
                             class="btn btn-danger"
                             style="width:100%;"
