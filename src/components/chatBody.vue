@@ -349,25 +349,27 @@ export default {
     },
     send: function() {
       let today = new Date();
-      if (this.msg != "") {
-        firebase
-          .database()
-          .ref("chat/" + this.id + "/msg")
-          .push({
-            user: this.username,
-            msg: this.msg,
-            date:
-              today.toLocaleDateString("es-ES") +
-              " " +
-              today.getHours() +
-              ":" +
-              today.getMinutes() +
-              ":" +
-              today.getSeconds()
-          });
-        this.msg = '';
-        let $ = JQuery;
-        $("#scroll").animate({ scrollTop: 9999999 }, 1000);
+      if(this.chatShow != []){
+        if (this.msg != "") {
+          firebase
+            .database()
+            .ref("chat/" + this.id + "/msg")
+            .push({
+              user: this.username,
+              msg: this.msg,
+              date:
+                today.toLocaleDateString("es-ES") +
+                " " +
+                today.getHours() +
+                ":" +
+                today.getMinutes() +
+                ":" +
+                today.getSeconds()
+            });
+          this.msg = '';
+          let $ = JQuery;
+          $("#scroll").animate({ scrollTop: 9999999 }, 1000);
+        }
       }
     },
     deleteMsg(x) {
