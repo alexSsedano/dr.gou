@@ -1,6 +1,6 @@
 <template >
   <div class="chatBody  ">
-    <div class="anti d-none d-md-block">
+    <div class="anti d-none d-lg-block">
       <div class="row w-100 antim h-100">
         <div class="col-sm-3  cg" style="overflow-y: scroll ; height: 100%">
           <div v-if="this.add">
@@ -122,7 +122,7 @@
       </div>
     </div>
 
-    <div class="container-fluid anti d-block d-md-none">
+    <div class="container-fluid anti d-block d-lg-none">
       <div class="row d-flex  justify-content-center">
         
         <ul class="nav nav-tabs w-100" style="padding-top: 15px">
@@ -156,7 +156,7 @@
               >Nueva consulta</button>
             </div>
             <div v-if="this.userT =='superAdmin'" class="h-100">
-              <div style="overflow-y: scroll; height: 90%">
+              <div style="overflow-y: scroll; height: 100%">
               <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style=" margin-left:0px; margin-right:0px;padding-top: 15px">
                 <div class="col-sm-12">
                   <div class="card border-primary mb-3" @click="conversacion(msg);movile = false">
@@ -204,7 +204,7 @@
         <div v-if="movile == false" class="w-100 h-100 col-sm-12" style="padding-left: 0%; padding-right: 0%">
          
             <div v-if="this.chatShow == []"></div>
-            <div v-else class="container-fluid h-100" >
+            <div v-else class="container-fluid " style="height: 100%" >
               <div class="row" style="height: 80%">
               <div class="col-sm-12 h-100" style=" overflow-y: scroll" id="scroll">
                 <div v-for="msg in this.chatShow" v-bind:key="msg.id" style="padding-top: 15px ;">
@@ -237,7 +237,7 @@
               </div>
 
               <div class="row" >
-                <div class="col-sm-9" >
+                <div class="col-sm-9" style="padding:15px">
                   <textarea
                     v-model="msg"
                     @keyup.enter="send()"
@@ -256,10 +256,23 @@
                   >Publicar</button>
                 </div>
               </div>
+              
             </div>
          
         </div>
       </div>
+      <footer id="myFooter" >
+              <div class="second-bar " >
+           <div class="" >
+                <h2 class="logo "><a href="Home" style="color: black"> DR.GOU </a></h2>
+                <div class="social-icons">
+                    <a href="https://twitter.com/Alex_S_Sedano" class="twitter"><i class="fa fa-twitter" style="color: black"></i></a>
+                    <a href="https://github.com/alexSsedano" class="facebook"><i class="fab fa-github-square" style="color: black"></i></a>
+                    <a href="https://www.instagram.com/alex_s_sedano/?hl=es" class="google"><i class="fab fa-instagram" style="color: black"></i></a>
+                </div>
+            </div>
+        </div>
+              </footer>
     </div>
   </div>
 </template>
