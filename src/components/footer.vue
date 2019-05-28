@@ -1,6 +1,6 @@
 <template>
 <footer id="myFooter" style="height: 100%">
-        <div class="container" style="height: 100%">
+        <div class="container h-100" style="height: 100%">
             <div class="row">
                 <div class="col-sm-4">
                     <h5>Pestañas</h5>
@@ -22,13 +22,13 @@
                 </div>
             </div>
         </div>
-        <div class="second-bar">
-           <div class="container">
-                <h2 class="logo"><a href="Home"> DR.GOU </a></h2>
+        <div class="second-bar bcol h-100" >
+           <div class="container bcol h-100">
+                <h2 class="logo bcol h-100"><a href="Home" style="color: black"> DR.GOU </a></h2>
                 <div class="social-icons">
-                    <a href="https://twitter.com/Alex_S_Sedano" class="twitter"><i class="fa fa-twitter"></i></a>
-                    <a href="https://github.com/alexSsedano" class="facebook"><i class="fab fa-github-square"></i></a>
-                    <a href="https://www.instagram.com/alex_s_sedano/?hl=es" class="google"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/Alex_S_Sedano" class="twitter"><i class="fa fa-twitter" style="color: black"></i></a>
+                    <a href="https://github.com/alexSsedano" class="facebook"><i class="fab fa-github-square" style="color: black"></i></a>
+                    <a href="https://www.instagram.com/alex_s_sedano/?hl=es" class="google"><i class="fab fa-instagram" style="color: black"></i></a>
                 </div>
             </div>
         </div>
@@ -85,6 +85,9 @@
     line-height: 68px;
     margin: 0;
     padding: 0;
+}
+.bcol{
+    background-color: #33373e !important;
 }
 
 #myFooter a {
