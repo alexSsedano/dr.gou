@@ -1,6 +1,6 @@
 <template >
   <div class="chatBody">
-    <div class="anti d-none d-md-block">
+    <div class="anti d-none d-lg-block">
       
       <div class="row mar h-100">
         <div v-if="!this.chat[0]" class="col-sm-3 h-100 cg">
@@ -323,7 +323,7 @@
       </div>
     </div>
 
-    <div class="container-fluid anti d-block d-md-none">
+    <div class="container-fluid anti d-block d-lg-none">
       <div class="row d-flex h-100 justify-content-center">
         
         <ul class="nav nav-tabs w-100" style="padding-top: 15px">
@@ -338,7 +338,7 @@
           </li>
         </ul>
         <div v-if="movile=='mensajes'" class="row h-100 w-100">
-          <div v-if="!this.chat[0]" class="col-sm-3 ">
+          <div v-if="!this.chat[0]" class="col-sm-12 ">
             
             <div class="col-sm-12  ">
               <h2 class="text-center" style="padding: 15px; padding-top: 30px">No hay nuevas peticiones de chat.</h2>
