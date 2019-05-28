@@ -351,28 +351,19 @@
           <div class="col-sm-12">
           <div class="row">
             <div class="col-sm-12">
-              <h2 class="text-center" style="padding: 15px">Seleccione un mensaje y un administrador</h2>
+              <h2 class="text-center" style="padding: 15px; padding-top: 30px">Seleccione un mensaje y un administrador</h2>
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-6">
-              <h2 class="text-center" style="padding: 15px">Mensaje</h2>
-            </div>
-            <div class="col-sm-6">
-              <h2 class="text-center" style="padding: 15px">Administrador</h2>
+            <div class="col-sm-12">
+              <h2 class="text-center font-weight-bold" style="padding: 30px">Mensaje</h2>
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col">
               <h2 class="text-center" style="padding: 15px">{{this.userN}}</h2>
-            </div>
-            <div class="col-sm-6">
-              <h2 class="text-center" style="padding: 15px">{{this.selectedAdmin}}</h2>
-            </div>
-          </div>
-          <div class="row" style="padding: 15px">
-            <div class="col-sm-2 center-block"></div>
-            <div class="col-sm-2 center-block">
+              </div>
+              <div class="col">
               <button
                 data-toggle="tooltip"
                 data-placement="bottom"
@@ -380,33 +371,254 @@
                 type="button"
                 @click="deleteMsg()"
                 class="btn btn-danger center-block"
-                style="width:100%;"
+                style="width:100%;padding: 15px"
               >
                 <i class="fas fa-times"></i>
               </button>
+              </div>
+            
             </div>
-            <div class="col-sm-2 center-block"></div>
-            <div class="col-sm-2 center-block"></div>
-            <div class="col-sm-2 center-block">
+            <div class="row">
+            <div class="col-sm-12">
+              <h2 class="text-center font-weight-bold" style="padding: 30px">Administrador</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h2 class="text-center" style="padding: 15px">{{this.selectedAdmin}}</h2>
+              </div>
+              <div class="col">
               <button
                 data-toggle="tooltip"
                 data-placement="bottom"
-                title="Deselecionar administrador"
+                title="Deselecionar mensaje"
                 type="button"
                 @click="deleteSelectedAdmin()"
                 class="btn btn-danger center-block"
-                style="width:100%;"
+                style="width:100%;padding: 15px"
               >
                 <i class="fas fa-times"></i>
               </button>
+              </div>
+            
             </div>
-            <div class="col-sm-2 center-block"></div>
-          </div>
-          <div class="row" style="padding: 15px">
+          
+         
+          <div class="row" style="padding: 30px">
             <div class="col-sm-12">
               <button type="button" @click="acept()" class="btn btn-success" style="width:100%;">
                 <i class="fas fa-check"></i>
               </button>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div v-if="movile=='usuarios'" class="row h-100 w-100">
+          <div class="col-sm-3 " style="overflow-y: scroll; height: 85%">
+          <div class="row">
+            <div class="btn-group w-100" style="padding: 15px">
+              <button
+                type="button"
+                class="btn btn-primary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >{{this.drop}}</button>
+              <div class="dropdown-menu w-100">
+                <a class="dropdown-item" @click="filoterUsers('todos')">Todos</a>
+                <a class="dropdown-item" @click="filoterUsers('admin')">Administradores</a>
+                <a class="dropdown-item" @click="filoterUsers('user')">Usuarios</a>
+              </div>
+            </div>
+          </div>
+          <div
+            v-for="user in this.usersFiltered"
+            v-bind:key="user.id"
+            class="row"
+            style="padding-top: 15px"
+          >
+            <div
+              v-if="user.userType != 'admin' && user.userType != 'superAdmin' "
+              class="col-sm-12 pad"
+            >
+              <transition
+                mode="out-in"
+                name="custom-classes-transition"
+                enter-active-class="animated slideInLeft "
+                leave-active-class=" animated slideOutLeft"
+              >
+                <div
+                  v-if="user.show"
+                  key="1"
+                  class="card border-primary mb-3"
+                  @click="clickUser(user) "
+                  style="margin:15px"
+                >
+                  <div class="card-header">{{user.username}}</div>
+                </div>
+                <div v-if="!user.show" key="2" class="card border-primary mb-3" style="margin:15px">
+                  <div class="card-header pad">
+                    <div class="row mar justify-content-center" style="width:100%;">
+                      <div class="col-sm-6">
+                        <button
+                          type="button"
+                          @click="adjust(user)"
+                          class="btn btn-warning"
+                          style="width:100%;"
+                        >
+                          <i class="fas fa-cog"></i>
+                        </button>
+                      </div>
+                      <div class="col-sm-6">
+                        <button
+                          type="button"
+                          @click="clickUser(user)"
+                          class="btn btn-primary"
+                          style="width:100%;"
+                        >
+                          <i class="fas fa-arrow-left"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <transition
+                    mode="out-in"
+                    name="custom-classes-transition"
+                    enter-active-class="animated fadeInDown "
+                    leave-active-class=" animated fadeOutUp"
+                  >
+                    <div v-if="user.adjust" style="margin-top:15px; margin-bottom:15px">
+                      <div class="row mar justify-content-center" style="width:100%;">
+                        <div class="col-sm-4">
+                          <button
+                            type="button"
+                            @click="userToAdmin(user)"
+                            class="btn btn-success"
+                            style="width:100%;"
+                          >
+                            <i class="fas fa-user-shield"></i>
+                          </button>
+                        </div>
+                        <div class="col-sm-4">
+                          <button
+                            type="button"
+                            @click="adminToSuperUser(user)"
+                            class="btn btn-info"
+                            style="width:100%;"
+                          >
+                            <i class="fas fa-crown"></i>
+                          </button>
+                        </div>
+                        <div class="col-sm-4">
+                          <button
+                            type="button"
+                            @click="deleteUser(user)"
+                            class="btn btn-danger"
+                            style="width:100%;"
+                          >
+                            <i class="fas fa-user-times"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </transition>
+                </div>
+              </transition>
+            </div>
+            <div v-else class="col-sm-12 pad">
+              <transition
+                mode="out-in"
+                name="custom-classes-transition"
+                enter-active-class="animated slideInLeft "
+                leave-active-class=" animated slideOutLeft"
+              >
+                <div
+                  v-if="user.show"
+                  key="1"
+                  class="card border-primary mb-3"
+                  @click="clickUser(user) "
+                  style="margin:15px"
+                >
+                  <div class="card-header">{{user.username}}</div>
+                </div>
+                <div v-if="!user.show" key="2" class="card border-primary mb-3" style="margin:15px">
+                  <div class="card-header pad">
+                    <div class="row mar justify-content-center" style="width:100%;">
+                      <div class="col-sm-4">
+                        <button
+                          type="button"
+                          @click="selctAdmin(user)"
+                          class="btn btn-success"
+                          style="width:100%;"
+                        >
+                          <i class="fas fa-comment-dots"></i>
+                        </button>
+                      </div>
+                      <div class="col-sm-4">
+                        <button
+                          type="button"
+                          @click="adjust(user)"
+                          class="btn btn-warning"
+                          style="width:100%;"
+                        >
+                          <i class="fas fa-cog"></i>
+                        </button>
+                      </div>
+                      <div class="col-sm-4">
+                        <button
+                          type="button"
+                          @click="clickUser(user)"
+                          class="btn btn-primary"
+                          style="width:100%;"
+                        >
+                          <i class="fas fa-arrow-left"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <transition
+                    mode="out-in"
+                    name="custom-classes-transition"
+                    enter-active-class="animated fadeInDown "
+                    leave-active-class=" animated fadeOutUp"
+                  >
+                    <div v-if="user.adjust" style="margin-top:15px; margin-bottom:15px">
+                      <div class="row mar justify-content-center" style="width:100%;">
+                        <div class="col-sm-4">
+                          <button
+                            type="button"
+                            @click="adminToUser(user)"
+                            class="btn btn-success"
+                            style="width:100%;"
+                          >
+                            <i class="fas fa-user-alt"></i>
+                          </button>
+                        </div>
+                        <div class="col-sm-4">
+                          <button
+                            type="button"
+                            @click="adminToSuperUser(user)"
+                            class="btn btn-info"
+                            style="width:100%;"
+                          >
+                            <i class="fas fa-crown"></i>
+                          </button>
+                        </div>
+                        <div class="col-sm-4">
+                          <button
+                            type="button"
+                            @click="deleteUser(user)"
+                            class="btn btn-danger"
+                            style="width:100%;"
+                          >
+                            <i class="fas fa-user-times"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </transition>
+                </div>
+              </transition>
             </div>
           </div>
         </div>
