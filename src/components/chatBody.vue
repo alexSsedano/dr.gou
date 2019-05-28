@@ -237,7 +237,7 @@
               </div>
 
               <div class="row" >
-                <div class="col-sm-9" style="padding:15px">
+                <div class="col-sm-9"  style="padding:15px">
                   <textarea
                     v-model="msg"
                     @keyup.enter="send()"
@@ -247,7 +247,7 @@
                     rows="1"
                   ></textarea>
                 </div>
-                <div class="col-sm-3" >
+                <div class="col-sm-3" style="padding:15px">
                   <button
                     style="width: 100%"
                     @click="send()"
