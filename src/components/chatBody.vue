@@ -350,7 +350,6 @@ export default {
     send: function() {
       let today = new Date();
       if(this.chatShow[0] ){
-      console.log(this.msg ==" ")
         if (this.msg != '' && this.msg != undefined) {
           firebase
             .database()

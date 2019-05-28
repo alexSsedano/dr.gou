@@ -5,7 +5,7 @@
         <div class="col-sm-3 h-100 cg" style="overflow-y: scroll ">
           <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
             <div class="col-sm-12 h-100">
-              <div class="card border-primary mb-3" @click="sMsg(msg)">
+              <div class="card border-primary mb-3" @click="sMsg(msg); movile = 'panel'">
                 <div class="card-header">
                   <div class="row">
                     <div class="col-sm-6">
@@ -321,7 +321,7 @@
           <div class="col-sm-12  " style="overflow-y: scroll; height:90% ">
           <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style="padding-top: 15px">
             <div class="col-sm-12 h-100">
-              <div class="card border-primary mb-3" @click="sMsg(msg)">
+              <div class="card border-primary mb-3" @click="sMsg(msg); movile='panel'">
                 <div class="card-header">
                   <div class="row">
                     <div class="col-sm-6">
@@ -547,7 +547,7 @@
                       <div class="col-sm-4">
                         <button
                           type="button"
-                          @click="selctAdmin(user)"
+                          @click="selctAdmin(user); movile='panel'"
                           class="btn btn-success"
                           style="width:100%;"
                         >
