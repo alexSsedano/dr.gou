@@ -68,7 +68,7 @@
                 </div>
                 
             </div>
-            <h2 class="text-center" style="margin: 100px"><strong>¿ Donde puedes encontrarnos ?</strong></h2> 
+            <h2 class="text-center" style="margin: 100px"><strong>¿Donde puedes encontrarnos?</strong></h2> 
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3198.308949404649!2d-4.47983668486812!3d36.7151406801831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd72f74b9f3606f1%3A0x9fa32cc2e6b0bbf9!2sE.T.S.+Ingenier%C3%ADa+Inform%C3%A1tica.+Universidad+de+M%C3%A1laga!5e0!3m2!1ses!2ses!4v1557700216191!5m2!1ses!2ses" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>                 
             <div class="row ">  
                 <div class="col-sm-12">
