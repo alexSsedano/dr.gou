@@ -349,8 +349,9 @@ export default {
     },
     send: function() {
       let today = new Date();
-      if(this.chatShow != []){
-        if (this.msg != "") {
+      if(this.chatShow[0] ){
+      console.log(this.msg ==" ")
+        if (this.msg != '' && this.msg != undefined) {
           firebase
             .database()
             .ref("chat/" + this.id + "/msg")
