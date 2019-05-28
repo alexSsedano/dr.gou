@@ -64,8 +64,8 @@
         </div>
         <div class="col-sm-9 bgw" style="height: 100%; padding-left:0px ; padding-right:0px">
           <div v-if="!this.chatShow[0]">
-            <div class="row">
-            <div class="col-sm-12">
+            <div class="row w-100">
+            <div class="col-sm-12 ">
               <h2 class="text-center" style="padding: 15px; padding-top: 30px">Seleccione un chat.</h2>
             </div>
           </div>
@@ -211,7 +211,7 @@
         <div v-if="movile == false" class="w-100 h-100 col-sm-12" style="padding-left: 0%; padding-right: 0%">
          
             <div v-if="!this.chatShow[0]">
-            <div class="row">
+            <div class="row w-100">
             <div class="col-sm-12">
               <h2 class="text-center" style="padding: 15px; padding-top: 30px">Seleccione un chat.</h2>
             </div>
