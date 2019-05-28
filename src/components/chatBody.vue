@@ -63,7 +63,13 @@
           </div>
         </div>
         <div class="col-sm-9 bgw" style="height: 100%; padding-left:0px ; padding-right:0px">
-          <div v-if="this.chatShow == []"></div>
+          <div v-if="!this.chatShow[0]">
+            <div class="row">
+            <div class="col-sm-12">
+              <h2 class="text-center" style="padding: 15px; padding-top: 30px">Seleccione un chat.</h2>
+            </div>
+          </div>
+          </div>
           <div v-else style="height: 100%; " class="bgw">
             <div class="col-sm-12" style="overflow-y: scroll; height: 90%" id="scroll">
               <div v-for="msg in this.chatShow" v-bind:key="msg.id" style="padding-top: 15px ;">
@@ -157,6 +163,7 @@
             </div>
             <div v-if="this.userT =='superAdmin'" class="h-100">
               <div style="overflow-y: scroll; height: 100%">
+              
               <div v-for="msg in this.chat" v-bind:key="msg.id" class="row" style=" margin-left:0px; margin-right:0px;padding-top: 15px">
                 <div class="col-sm-12">
                   <div class="card border-primary mb-3" @click="conversacion(msg);movile = false">
@@ -203,7 +210,13 @@
 
         <div v-if="movile == false" class="w-100 h-100 col-sm-12" style="padding-left: 0%; padding-right: 0%">
          
-            <div v-if="this.chatShow == []"></div>
+            <div v-if="!this.chatShow[0]">
+            <div class="row">
+            <div class="col-sm-12">
+              <h2 class="text-center" style="padding: 15px; padding-top: 30px">Seleccione un chat.</h2>
+            </div>
+          </div>
+          </div>
             <div v-else class="container-fluid " style="height: 100%" >
               <div class="row" style="height: 80%">
               <div class="col-sm-12 h-100" style=" overflow-y: scroll" id="scroll">
