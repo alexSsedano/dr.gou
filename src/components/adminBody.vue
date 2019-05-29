@@ -568,7 +568,7 @@
             style="padding-top: 15px"
           >
             <div
-              v-if="user.userType != 'admin' && user.userType != 'superAdmin' "
+              v-if="user.userType == 'user' "
               class="col-sm-12 pad"
             >
               <transition
@@ -603,7 +603,7 @@
                       <div class="col-sm-6">
                         <button
                           type="button"
-                          title="Atras."
+                          title="Seleccionar administrador."
                           @click="clickUser(user)"
                           class="btn btn-primary"
                           style="width:100%;"
@@ -624,7 +624,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Convertir usuario en administrador."
+                            title="Convertir usuario a administrador."
                             @click="userToAdmin(user)"
                             class="btn btn-primary"
                             style="width:100%;"
@@ -635,7 +635,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Convertir administrador a superAdministrador."
+                            title="Convertir administrador en superAdministrador"
                             @click="adminToSuperUser(user)"
                             class="btn btn-info"
                             style="width:100%;"
@@ -660,7 +660,7 @@
                 </div>
               </transition>
             </div>
-            <div v-else class="col-sm-12 pad">
+            <div v-if="user.userType == 'admin' " class="col-sm-12 pad">
               <transition
                 mode="out-in"
                 name="custom-classes-transition"
@@ -683,7 +683,7 @@
                         <button
                           type="button"
                           title="Seleccionar administrador."
-                          @click="selctAdmin(user); movile='panel'"
+                          @click="selctAdmin(user)"
                           class="btn btn-success"
                           style="width:100%;"
                         >
@@ -725,7 +725,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Convertir administrador en usuario."
+                            title="Convertir administrador a usuario."
                             @click="adminToUser(user)"
                             class="btn btn-success"
                             style="width:100%;"
@@ -736,7 +736,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Convertir administrador a superAdmin."
+                            title="Convertir administrador en superAdministrador."
                             @click="adminToSuperUser(user)"
                             class="btn btn-info"
                             style="width:100%;"
@@ -747,7 +747,108 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Elimminar usuario."
+                            title="Eliminar usuario."
+                            @click="deleteUser(user)"
+                            class="btn btn-danger"
+                            style="width:100%;"
+                          >
+                            <i class="fas fa-user-times"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </transition>
+                </div>
+              </transition>
+            </div>
+            <div v-if="user.userType == 'superAdmin' " class="col-sm-12 pad">
+              <transition
+                mode="out-in"
+                name="custom-classes-transition"
+                enter-active-class="animated slideInLeft "
+                leave-active-class=" animated slideOutLeft"
+              >
+                <div
+                  v-if="user.show"
+                  key="1"
+                  class="card border-primary mb-3"
+                  @click="clickUser(user) "
+                  style="margin:15px"
+                >
+                  <div class="card-header">{{user.username}}</div>
+                </div>
+                <div v-if="!user.show" key="2" class="card border-primary mb-3" style="margin:15px">
+                  <div class="card-header pad">
+                    <div class="row mar justify-content-center" style="width:100%;">
+                      <div class="col-sm-4">
+                        <button
+                          type="button"
+                          title="Seleccionar administrador."
+                          @click="selctAdmin(user)"
+                          class="btn btn-success"
+                          style="width:100%;"
+                        >
+                          <i class="fas fa-comment-dots"></i>
+                        </button>
+                      </div>
+                      <div class="col-sm-4">
+                        <button
+                          type="button"
+                          title="Ajustes."
+                          @click="adjust(user)"
+                          class="btn btn-warning"
+                          style="width:100%;"
+                        >
+                          <i class="fas fa-cog"></i>
+                        </button>
+                      </div>
+                      <div class="col-sm-4">
+                        <button
+                          type="button"
+                          title="Atras."
+                          @click="clickUser(user)"
+                          class="btn btn-primary"
+                          style="width:100%;"
+                        >
+                          <i class="fas fa-arrow-left"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <transition
+                    mode="out-in"
+                    name="custom-classes-transition"
+                    enter-active-class="animated fadeInDown "
+                    leave-active-class=" animated fadeOutUp"
+                  >
+                    <div v-if="user.adjust" style="margin-top:15px; margin-bottom:15px">
+                      <div class="row mar justify-content-center" style="width:100%;">
+                        <div class="col-sm-4">
+                          <button
+                            type="button"
+                            title="Convertir administrador a usuario."
+                            @click="adminToUser(user)"
+                            class="btn btn-success"
+                            style="width:100%;"
+                          >
+                            <i class="fas fa-user-alt"></i>
+                          </button>
+                        </div>
+                        <div class="col-sm-4">
+                          <button
+                            type="button"
+                            title="Convertir administrador en superAdministrador."
+                            @click="userToAdmin(user)"
+                            class="btn btn-primary"
+                            style="width:100%;"
+                          >
+                            <i class="fas fa-user-shield"></i>
+                          </button>
+                        </div>
+                        <div class="col-sm-4">
+                          <button
+                            type="button"
+                            title="Eliminar usuario."
                             @click="deleteUser(user)"
                             class="btn btn-danger"
                             style="width:100%;"
