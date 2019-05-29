@@ -21,6 +21,7 @@
                     </div>
                     <div class="col-sm-6 d-flex align-items-end flex-column">
                       <button
+                      class="btn btn-primary btn"
                         data-toggle="tooltip"
                         data-placement="bottom"
                         title="Eliminar mensaje"
@@ -459,7 +460,7 @@
                       <button
                         data-toggle="tooltip"
                         data-placement="bottom"
-                        
+                        class="btn btn-primary btn"
                         title="Eliminar peticion de mensaje."
                         @click="deleteNewMsg(msg)"
                       >
