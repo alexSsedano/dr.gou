@@ -160,7 +160,7 @@
                       <div class="col-sm-6">
                         <button
                           type="button"
-                          title="Seleccionar administrador."
+                          title="Atras."
                           @click="clickUser(user)"
                           class="btn btn-primary"
                           style="width:100%;"
@@ -181,7 +181,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Convertir usuario a administrador."
+                            title="Convertir en administrador."
                             @click="userToAdmin(user)"
                             class="btn btn-primary"
                             style="width:100%;"
@@ -192,7 +192,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Convertir administrador en superAdministrador"
+                            title="Convertir en superAdministrador."
                             @click="adminToSuperUser(user)"
                             class="btn btn-info"
                             style="width:100%;"
@@ -282,7 +282,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Convertir administrador a usuario."
+                            title="Convertir en usuario."
                             @click="adminToUser(user)"
                             class="btn btn-success"
                             style="width:100%;"
@@ -293,7 +293,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Convertir administrador en superAdministrador."
+                            title="Convertir en superAdministrador."
                             @click="adminToSuperUser(user)"
                             class="btn btn-info"
                             style="width:100%;"
@@ -383,7 +383,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Convertir administrador a usuario."
+                            title="Convertir en usuario."
                             @click="adminToUser(user)"
                             class="btn btn-success"
                             style="width:100%;"
@@ -394,7 +394,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Convertir administrador en superAdministrador."
+                            title="Convertir en administrador."
                             @click="userToAdmin(user)"
                             class="btn btn-primary"
                             style="width:100%;"
@@ -603,7 +603,7 @@
                       <div class="col-sm-6">
                         <button
                           type="button"
-                          title="Seleccionar administrador."
+                          title="Atras."
                           @click="clickUser(user)"
                           class="btn btn-primary"
                           style="width:100%;"
@@ -624,7 +624,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Convertir usuario a administrador."
+                            title="Convertir en administrador."
                             @click="userToAdmin(user)"
                             class="btn btn-primary"
                             style="width:100%;"
@@ -635,7 +635,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Convertir administrador en superAdministrador"
+                            title="Convertir en superAdministrador."
                             @click="adminToSuperUser(user)"
                             class="btn btn-info"
                             style="width:100%;"
@@ -725,7 +725,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Convertir administrador a usuario."
+                            title="Convertir en usuario."
                             @click="adminToUser(user)"
                             class="btn btn-success"
                             style="width:100%;"
@@ -736,7 +736,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Convertir administrador en superAdministrador."
+                            title="Convertir en superAdministrador."
                             @click="adminToSuperUser(user)"
                             class="btn btn-info"
                             style="width:100%;"
@@ -826,7 +826,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Convertir administrador a usuario."
+                            title="Convertir en usuario."
                             @click="adminToUser(user)"
                             class="btn btn-success"
                             style="width:100%;"
@@ -837,7 +837,7 @@
                         <div class="col-sm-4">
                           <button
                             type="button"
-                            title="Convertir administrador en superAdministrador."
+                            title="Convertir en administrador."
                             @click="userToAdmin(user)"
                             class="btn btn-primary"
                             style="width:100%;"
