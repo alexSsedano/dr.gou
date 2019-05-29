@@ -125,7 +125,7 @@
             style="padding-top: 15px"
           >
             <div
-              v-if="user.userType != 'admin' && user.userType != 'superAdmin' "
+              v-if="user.userType == 'user' "
               class="col-sm-12 pad"
             >
               <transition
@@ -183,7 +183,7 @@
                             type="button"
                             title="Convertir usuario a administrador."
                             @click="userToAdmin(user)"
-                            class="btn btn-success"
+                            class="btn btn-primary"
                             style="width:100%;"
                           >
                             <i class="fas fa-user-shield"></i>
@@ -217,7 +217,7 @@
                 </div>
               </transition>
             </div>
-            <div v-else class="col-sm-12 pad">
+            <div v-if="user.userType == 'admin' " class="col-sm-12 pad">
               <transition
                 mode="out-in"
                 name="custom-classes-transition"
@@ -299,6 +299,107 @@
                             style="width:100%;"
                           >
                             <i class="fas fa-crown"></i>
+                          </button>
+                        </div>
+                        <div class="col-sm-4">
+                          <button
+                            type="button"
+                            title="Eliminar usuario."
+                            @click="deleteUser(user)"
+                            class="btn btn-danger"
+                            style="width:100%;"
+                          >
+                            <i class="fas fa-user-times"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </transition>
+                </div>
+              </transition>
+            </div>
+            <div v-if="user.userType == 'superAdmin' " class="col-sm-12 pad">
+              <transition
+                mode="out-in"
+                name="custom-classes-transition"
+                enter-active-class="animated slideInLeft "
+                leave-active-class=" animated slideOutLeft"
+              >
+                <div
+                  v-if="user.show"
+                  key="1"
+                  class="card border-primary mb-3"
+                  @click="clickUser(user) "
+                  style="margin:15px"
+                >
+                  <div class="card-header">{{user.username}}</div>
+                </div>
+                <div v-if="!user.show" key="2" class="card border-primary mb-3" style="margin:15px">
+                  <div class="card-header pad">
+                    <div class="row mar justify-content-center" style="width:100%;">
+                      <div class="col-sm-4">
+                        <button
+                          type="button"
+                          title="Seleccionar administrador."
+                          @click="selctAdmin(user)"
+                          class="btn btn-success"
+                          style="width:100%;"
+                        >
+                          <i class="fas fa-comment-dots"></i>
+                        </button>
+                      </div>
+                      <div class="col-sm-4">
+                        <button
+                          type="button"
+                          title="Ajustes."
+                          @click="adjust(user)"
+                          class="btn btn-warning"
+                          style="width:100%;"
+                        >
+                          <i class="fas fa-cog"></i>
+                        </button>
+                      </div>
+                      <div class="col-sm-4">
+                        <button
+                          type="button"
+                          title="Atras."
+                          @click="clickUser(user)"
+                          class="btn btn-primary"
+                          style="width:100%;"
+                        >
+                          <i class="fas fa-arrow-left"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <transition
+                    mode="out-in"
+                    name="custom-classes-transition"
+                    enter-active-class="animated fadeInDown "
+                    leave-active-class=" animated fadeOutUp"
+                  >
+                    <div v-if="user.adjust" style="margin-top:15px; margin-bottom:15px">
+                      <div class="row mar justify-content-center" style="width:100%;">
+                        <div class="col-sm-4">
+                          <button
+                            type="button"
+                            title="Convertir administrador a usuario."
+                            @click="adminToUser(user)"
+                            class="btn btn-success"
+                            style="width:100%;"
+                          >
+                            <i class="fas fa-user-alt"></i>
+                          </button>
+                        </div>
+                        <div class="col-sm-4">
+                          <button
+                            type="button"
+                            title="Convertir administrador en superAdministrador."
+                            @click="userToAdmin(user)"
+                            class="btn btn-primary"
+                            style="width:100%;"
+                          >
+                            <i class="fas fa-user-shield"></i>
                           </button>
                         </div>
                         <div class="col-sm-4">
@@ -525,7 +626,7 @@
                             type="button"
                             title="Convertir usuario en administrador."
                             @click="userToAdmin(user)"
-                            class="btn btn-success"
+                            class="btn btn-primary"
                             style="width:100%;"
                           >
                             <i class="fas fa-user-shield"></i>
@@ -766,6 +867,7 @@ export default {
         });
       this.filoterUsers(this.drop);
     },
+    
     selctAdmin: function(user) {
       this.selectedAdmin = user.username;
     },
