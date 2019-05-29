@@ -13,11 +13,11 @@
                 
                 <div class="col-sm-4">
                     <h5>Copyright</h5>
-                    <p> © 2019 Alejandro Sedano Sanchez Todos los derechos reservados. </p>
+                    <p> © 2019 Alejandro Sedano Sánchez. Todos los derechos reservados. </p>
 
                 </div>
                 <div class="col-sm-4 info">
-                    <h5>Information</h5>
+                    <h5>Información</h5>
                     <p>En DR.GOU trabajamos con el objetivo de ejercer una labor de información, formación y capacitación del estudiantado que facilite la incorporación y la integración del estudiantado en sus centros y en la Universidad en las tres etapas de la vida universitaria. </p>
                 </div>
             </div>
