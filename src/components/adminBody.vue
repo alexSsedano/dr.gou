@@ -1018,10 +1018,12 @@ export default {
         (this.selectedAdmin = "");
     },
     deleteUser: function(user) {
+       if (confirm("¿ Esta seguro de que desea eliminar este usuario ?")) {
       firebase
         .database()
         .ref("users/" + user.username)
         .remove();
+       }
     },
     clickUser: function(user) {
       if (user.show) {
