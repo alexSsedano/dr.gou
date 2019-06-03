@@ -32,11 +32,30 @@
                 <div class="card border-primary mb-3" @click="conversacion(msg)">
                   <div class="card-header">
                     <div class="row">
-                      <div class="col-sm-6">
+                      <div class="col-sm-10">
                         <p>{{msg.user1}}</p>
                       </div>
-                      <div class="col-sm-6 d-flex align-items-end flex-column">
+                      <div class="col-sm-2 d-flex align-items-end flex-column">
                         <button class="btn btn-primary btn" @click="deleteMsg(msg)">
+                          <i class="fas fa-times"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div v-for="show in this.newChatShow" v-bind:key="show.id" class="row" style="padding-top: 15px">
+              <div class="col-sm-12">
+                <div class="card border-warning mb-3" >
+                  <div class="card-header">
+                    <div class="row">
+                      <div class="col-sm-10">
+                        <p>{{show.msg}}</p>
+                        <p class="text-muted">Espere la respuesta de un administrador.</p>
+                      </div>
+                      <div class="col-sm-2 d-flex align-items-end flex-column">
+                        <button class="btn btn-warning btn" @click="deleteNewMsg(show)">
                           <i class="fas fa-times"></i>
                         </button>
                       </div>
@@ -182,6 +201,26 @@
                   </div>
                 </div>
               </div>
+              <div v-for="show in this.newChatShow" v-bind:key="show.id" class="row" style=" margin-left:0px; margin-right:0px;padding-top: 15px">
+              <div class="col-sm-12">
+                <div class="card border-warning mb-3" >
+                  <div class="card-header">
+                    <div class="row">
+                      <div class="col-sm-10">
+                        <p>{{show.msg}}</p>
+                        <p class="text-muted">Espere la respuesta de un administrador.</p>
+                      </div>
+                      <div class="col-sm-2 d-flex align-items-end flex-column">
+                        <button class="btn btn-warning btn" @click="deleteNewMsg(show)">
+                          <i class="fas fa-times"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              
               </div>
             </div>
             <div v-else class="h-100">
@@ -395,6 +434,15 @@ export default {
         this.chatShow = [];
       }
     },
+    deleteNewMsg(x) {
+      if (confirm("¿ Esta seguro de que desea eliminar esta peticion de nuevo chat ?")) {
+        firebase
+          .database()
+          .ref("newChat/" + x.id)
+          .remove();
+        this.chatShow = [];
+      }
+    },
     conversacion: function(x) {
       this.chatShow = [];
       this.id = x.id;
@@ -417,11 +465,13 @@ export default {
       }
     },
     loadNewChat: function(x){
+      this.newChatShow = []
        for (let key in x) {
          if (x[key].userName == this.username){
-            newChatShow.push({
+            this.newChatShow.push({
                   msg: x[key].newChat,
-                  user: x[key].userName
+                  user: x[key].userName,
+                  id: x[key].id
                  
                 });
          }
