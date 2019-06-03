@@ -304,6 +304,7 @@ export default {
       id: "",
       username: "",
       chatShow: [],
+      newChatShow: [],
       msg: "",
       movile: true
     };
@@ -415,6 +416,18 @@ export default {
         }
       }
     },
+    loadNewChat: function(x){
+       for (let key in x) {
+         if (x[key].userName == this.username){
+            newChatShow.push({
+                  msg: x[key].newChat,
+                  user: x[key].userName
+                 
+                });
+         }
+
+       }     
+    },
 
     loadChat: function(x) {
       this.chatShow = [];
@@ -503,6 +516,10 @@ export default {
       .database()
       .ref("chat/")
       .on("value", snapshot => this.loadChat(snapshot.val()));
+      firebase
+      .database()
+      .ref("newChat/")
+      .on("value", snapshot => this.loadNewChat(snapshot.val()));
   }
 };
 </script>
