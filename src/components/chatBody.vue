@@ -238,6 +238,25 @@
                   </div>
                 </div>
               </div>
+              <div v-for="show in this.newChatShow" v-bind:key="show.id" class="row" style=" margin-left:0px; margin-right:0px;padding-top: 15px">
+              <div class="col-sm-12">
+                <div class="card border-warning mb-3" >
+                  <div class="card-header">
+                    <div class="row">
+                      <div class="col-sm-10">
+                        <p>{{show.msg}}</p>
+                        <p class="text-muted">Espere la respuesta de un administrador.</p>
+                      </div>
+                      <div class="col-sm-2 d-flex align-items-end flex-column">
+                        <button class="btn btn-warning btn" @click="deleteNewMsg(show)">
+                          <i class="fas fa-times"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
               </div>
             </div>
           </div>
