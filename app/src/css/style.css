@@ -1,0 +1,61 @@
+.background::before{
+    content: '';
+   
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    
+    height: 100%;
+    opacity: 1;
+    z-index:-999;
+}
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: -2000px 2000px; }
+}
+
+.animate-area	{ 
+    
+	width:100%; 
+	
+	background-image: url(../assets/landing-users.png);
+	background-position: 0px 0px;
+	background-repeat: repeat;
+    
+	animation: animatedBackground 100s alternate infinite;
+}
+.backgroundWhite{
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+}
+.textcolour{
+    color: white
+}
+.loginPosition{
+    margin-top: 15%
+}
+.marginTop{
+    margin-top: 20px
+}
+.marginBot{
+    margin-bottom: 20px
+}
+.buttonColorWhite{
+    color: white;
+    border-color: rgb(255, 255, 255);
+}
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.25s ease-out;
+  }
+  
+.fade-enter, .fade-leave-to {
+opacity: 0;
+}
+ .bgColorWhite{
+     background-color: white
+ }
+ .padingTop{
+    padding-top: 30px
+ }
