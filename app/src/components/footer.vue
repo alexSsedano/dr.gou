@@ -4,12 +4,13 @@
             <div class="row">
                 <div class="col-sm-3">
                     <h5>Pestañas</h5>
-                    <ul>
-                        <li><router-link :to="'/Home'"><a class="nav-link" >Inicio</a></router-link></li>
-                        <li><router-link :to="'/foro'"><a class="nav-link" >Foro</a></router-link></li>
-                        <li><router-link :to="'/chat'"><a class="nav-link" >Chat</a></router-link></li>
-                    </ul>
-                </div>
+                    
+                        <router-link :to="'/Home'"><a>Inicio</a></router-link>
+                        <br>
+                        <router-link :to="'/foro'"><a>Foro</a></router-link>
+                        <br>
+                        <router-link :to="'/chat'"><a>Chat</a></router-link>
+                    </div>
                 
                 <div class="col-sm-3">
                     <h5>Copyright</h5>
@@ -30,9 +31,9 @@
            <div class="container bcol h-100">
                 <h2 class="logo bcol h-100"><router-link :to="'/Home'"><a class="nav-link"  style="color:black">DR.GOU</a></router-link></h2>
                 <div class="social-icons">
-                    <a href="https://twitter.com/Alex_S_Sedano" class="twitter"><i class="fa fa-twitter" style="color: black"></i></a>
-                    <a href="https://github.com/alexSsedano" class="facebook"><i class="fab fa-github-square" style="color: black"></i></a>
-                    <a href="https://www.instagram.com/alex_s_sedano/?hl=es" class="google"><i class="fab fa-instagram" style="color: black"></i></a>
+                    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com"><i class="fa fa-twitter" style="color: black"></i></a>
+                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/alexSsedano"><i class="fab fa-github-square" style="color: black"></i></a>
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com"><i class="fab fa-instagram" style="color: black"></i></a>
                 </div>
             </div>
         </div>

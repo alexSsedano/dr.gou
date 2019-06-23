@@ -78,11 +78,11 @@
             <div class="container">
                 <div class="row ">  
                     <div class="col-sm-12">
-                        <p class="text-center" style="margin-top: 10px">Facultad de Psicología</p>
-                        <p class="text-center" style="margin-top: 10px">Facultad de Ciencias de la Educación</p>
-                        <p class="text-center" style="margin-top: 10px">Facultad de Telecomunicaciones</p>
-                        <p class="text-center" style="margin-top: 10px">FEST</p>
-                        <p class="text-center" style="margin-top: 10px">Facultad de Derecho</p>
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.uma.es/facultad-de-psicologia/"><p class="text-center" style="margin-top: 10px">Facultad de Psicología</p></a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.uma.es/centros-listado/info/4421/facultad-de-ciencias-de-la-educacion/"><p class="text-center" style="margin-top: 10px">Facultad de Ciencias de la Educación</p></a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.uma.es/etsi-de-telecomunicacion/"><p class="text-center" style="margin-top: 10px">Facultad de Telecomunicaciones</p></a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.uma.es/fest/"><p class="text-center" style="margin-top: 10px">FEST</p></a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.uma.es/facultad-de-derecho/"><p class="text-center" style="margin-top: 10px">Facultad de Derecho</p></a>
                     </div>
                 </div>
             </div>
