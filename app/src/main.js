@@ -31,7 +31,6 @@ Vue.use(new VueSocketIO({
 
  
 
-
 new Vue({
   router,
   render: h => h(App)

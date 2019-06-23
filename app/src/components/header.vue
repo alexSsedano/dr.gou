@@ -9,20 +9,28 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item ">
-            <a class="nav-link" href="home">Inicio</a>
+            <router-link :to="'/Home'">
+              <a class="nav-link" >Inicio</a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="foro">Foro</a>
+            <router-link :to="'/foro'">
+              <a class="nav-link" >Foro</a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="chat">Chat</a>
+            <router-link :to="'/chat'">
+              <a class="nav-link" >Chat</a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admin">Administracion</a>
+            <router-link :to="'/admin'">
+              <a class="nav-link" >Administracion</a>
+            </router-link>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" @click="exit" href="#">Salir</a>
-          </li>
+          <router-link :to="'#'">
+              <a class="nav-link" @click="exit" >Salir</a>
+            </router-link>
         </ul>
       </div>
       </nav>
@@ -39,16 +47,24 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav ">
           <li class="nav-item ">
-            <a class="nav-link" href="home">Inicio</a>
+            <router-link :to="'/Home'">
+              <a class="nav-link" >Inicio</a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="foro">Foro</a>
+            <router-link :to="'/foro'">
+              <a class="nav-link" >Foro</a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="chat">Chat</a>
+            <router-link :to="'/chat'">
+              <a class="nav-link" >Chat</a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" @click="exit" href="#">Salir</a>
+            <router-link :to="'#'">
+              <a class="nav-link" @click="exit" >Salir</a>
+            </router-link>
           </li>
         </ul>
       </div>

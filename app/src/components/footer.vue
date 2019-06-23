@@ -2,29 +2,33 @@
 <footer id="myFooter" style="height: 100%">
         <div class="container h-100" style="height: 100%">
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <h5>Pestañas</h5>
                     <ul>
-                        <li><a href="Home">Inicio</a></li>
-                        <li><a href="Foro">Foro</a></li>
-                        <li><a href="Chat">Chat</a></li>
+                        <li><router-link :to="'/Home'"><a class="nav-link" >Inicio</a></router-link></li>
+                        <li><router-link :to="'/foro'"><a class="nav-link" >Foro</a></router-link></li>
+                        <li><router-link :to="'/chat'"><a class="nav-link" >Chat</a></router-link></li>
                     </ul>
                 </div>
                 
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <h5>Copyright</h5>
                     <p> © 2019 Alejandro Sedano Sánchez. Todos los derechos reservados. </p>
 
                 </div>
-                <div class="col-sm-4 info">
+                <div class="col-sm-5 info">
                     <h5>Información</h5>
                     <p>En DR.GOU trabajamos con el objetivo de ejercer una labor de información, formación y capacitación del estudiantado que facilite la incorporación y la integración del estudiantado en sus centros y en la Universidad en las tres etapas de la vida universitaria. </p>
+                </div>
+                <div class="col-sm-1 info">
+                    <h5>Link</h5>
+                    <img src="../assets/QR.png" width="100px" height="100px">
                 </div>
             </div>
         </div>
         <div class="second-bar bcol h-100" >
            <div class="container bcol h-100">
-                <h2 class="logo bcol h-100"><a href="Home" style="color: black"> DR.GOU </a></h2>
+                <h2 class="logo bcol h-100"><router-link :to="'/Home'"><a class="nav-link"  style="color:black">DR.GOU</a></router-link></h2>
                 <div class="social-icons">
                     <a href="https://twitter.com/Alex_S_Sedano" class="twitter"><i class="fa fa-twitter" style="color: black"></i></a>
                     <a href="https://github.com/alexSsedano" class="facebook"><i class="fab fa-github-square" style="color: black"></i></a>

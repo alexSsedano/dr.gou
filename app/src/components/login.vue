@@ -14,7 +14,7 @@
           <fieldset>
             <div class="form-group marginTop">
               <label for="exampleInputEmail1">Nombre de usuario</label>
-              <input v-model="loginUser"  @keyup.enter="login" type="user" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombre de usuario">
+              <input v-model="loginUser"  @keyup.enter="login" type="user" class="form-control"  placeholder="Nombre de usuario">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Contraseña</label>
@@ -62,6 +62,7 @@ export default {
   data: function() {
     return {
       registeredUsers: [],
+      datosUser: [],
       register: false,
       registerEmail: "",
       registerPassword: "",
@@ -78,7 +79,9 @@ export default {
       if(this.registerUserName!='' && this.registerPassword!= '' && this.registerEmail!=''){
       this.coincidencesName = 0;
       this.coincidencesEmail = 0;
+      
       if (this.registerPassword == this.registerPassword2) {
+        if(this.registerPassword.length >= 6){
         for (let i = 0; i < this.registeredUsers.length; i++) {
           if (this.registerUserName == this.registeredUsers[i].username) {
             this.coincidencesName++;
@@ -104,6 +107,13 @@ export default {
             position: "top left"
           });
         } else {
+          this.datosUser = []
+          this.datosUser.push({
+          username: this.registerUserName,
+          email: this.registerEmail,
+          password: this.registerPassword,
+        });
+        
           firebase.database().ref("users/" + this.registerUserName).set({
             username: this.registerUserName,
             email: this.registerEmail,
@@ -115,15 +125,24 @@ export default {
             this.registerSuccess(), (this.register = true);
           });
           
-          this.$socket.emit('registrado', JSON.stringify(this.registerEmail));
+          this.$socket.emit('registrado', JSON.stringify(this.datosUser));
         }
       } else {
+        this.$notify({
+          group: "foo",
+          title: "La contraseña es muy corta.",
+          type: "error",
+          position: "top left"
+        });
+      }
+      }else{
         this.$notify({
           group: "foo",
           title: "Las contraseñas no coinciden.",
           type: "error",
           position: "top left"
         });
+
       }
       }else{
         this.$notify({
